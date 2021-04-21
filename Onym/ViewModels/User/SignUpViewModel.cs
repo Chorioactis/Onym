@@ -4,11 +4,11 @@ namespace Onym.ViewModels.User
 {
     public class SignUpViewModel
     {
-        [Display(Name = "Логин", Prompt = "Логин")]
-        [Required(ErrorMessage = "Введите логин.")]
+        [Display(Name = "Имя пользователя", Prompt = "Имя пользователя")]
+        [Required(ErrorMessage = "Введите имя пользователя.")]
         [RegularExpression(@"^(?=.*[a-zA-Z])\S{3,20}$",
-            ErrorMessage = "Логин должен быть от 3 до 20 символов латиницей без пробелов, минимум одна буква.")]
-        public string UserLogin { get; set; }
+            ErrorMessage = "Имя пользователя должно быть от 3 до 20 символов латиницей без пробелов, минимум одна буква.")]
+        public string UserName { get; set; }
 
         [Display(Name = "Электронная почта", Prompt = "Электронная почта")]
         [Required(ErrorMessage = "Введите электронную почту.")]

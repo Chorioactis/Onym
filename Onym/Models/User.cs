@@ -19,7 +19,6 @@ namespace Onym.Models
         }
 
         public int ProfilePicture { get; set; }
-        public int PasswordSalt { get; set; }
         public DateTime RegistrationDate { get; set; }
         public int RatingTotal { get; set; }
 

@@ -2,7 +2,7 @@
   {
     "outputFileName": "wwwroot/css/site.bundle.css",
     "inputFiles": [
-      "static/css/*.css"
+      "Content/css/*.css"
     ],
     "minify": {
       "enabled": true,
@@ -12,7 +12,7 @@
   {
     "outputFileName": "wwwroot/js/site.bundle.js",
     "inputFiles": [
-      "static/js/*.js"
+      "Content/js/*.js"
     ],
     "minify": {
       "enabled": true,

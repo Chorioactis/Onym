@@ -1,0 +1,8 @@
+﻿{
+  "short_name": "Onym",
+  "name": "Onym",
+  "start_url": "/",
+  "background_color": "#F2F2F2",
+  "display": "standalone",
+  "theme_color": "#49a669"
+}

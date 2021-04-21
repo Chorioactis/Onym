@@ -58,3 +58,11 @@ D:\Repos\Onym\Onym\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 D:\Repos\Onym\Onym\bin\Debug\net5.0\appsettings.Development.json
 D:\Repos\Onym\Onym\bin\Debug\net5.0\appsettings.json
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_ScriptsPartial.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_StylesPartial.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Best.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\New.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Random.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+D:\Repos\Onym\Onym\bin\Debug\net5.0\BundlerMinifier.TagHelpers.dll
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Onym.MvcApplicationPartsAssemblyInfo.cs

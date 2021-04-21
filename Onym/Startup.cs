@@ -8,20 +8,21 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Onym.Data;
 using Onym.Models;
+using Onym.Services;
 
 namespace Onym
 {
     public class Startup
     {
+        private IConfiguration Configuration { get; set; }
+        
         public Startup(IConfiguration configuration)
         {
             var configurationBuilder = new ConfigurationBuilder()
                 .AddConfiguration(configuration);
             Configuration = configurationBuilder.Build();
         }
-
-        private IConfiguration Configuration { get; set; }
-
+        
         public void ConfigureServices(IServiceCollection services)
         {
             //Database and identity context
@@ -35,23 +36,14 @@ namespace Onym
                 .AddDefaultTokenProviders();
             //Model-View-Controller
             services.AddMvc();
-            /*
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-            {
-                options.LoginPath = new PathString("/sign_in");
-            });
-            services.AddAuthentication().AddCookie("user_identity");
-            services.AddDistributedMemoryCache();
-            services.AddSession();
-            */
 
-            //Extension services
+            //Extension service
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             //Exceptions and status code pages
-            if (env.IsDevelopment())
+            if (env.IsDevelopment())    
                 app.UseDeveloperExceptionPage();
             else
                 app.UseHsts();
@@ -65,14 +57,14 @@ namespace Onym
                     ctx.Context.Response.Headers.Add("Cache-Control", "public,max-age=2419200");
                 }
             });
-
-            /*app.UseAuthentication();
-            app.UseAuthorization();
-            app.UseSession();
-            app.UseCookiePolicy();*/
-
-            //Routing config
+            
+            
+            //Router
             app.UseRouting();
+            //Authorization evaluate
+            app.UseAuthentication();
+            app.UseAuthorization();
+            //Routing config
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

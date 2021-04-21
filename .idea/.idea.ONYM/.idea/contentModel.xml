@@ -11,6 +11,19 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="bundleconfig.json" t="Include" />
+        <e p="Content" t="Include">
+          <e p="css" t="Include">
+            <e p="app.css" t="Include" />
+            <e p="common.css" t="Include" />
+            <e p="header.css" t="Include" />
+          </e>
+          <e p="js" t="Include" />
+          <e p="Less" t="Include">
+            <e p="app.less" t="Include" />
+            <e p="common.less" t="Include" />
+            <e p="header.less" t="Include" />
+          </e>
+        </e>
         <e p="Controllers" t="Include">
           <e p="FeedController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
@@ -18,11 +31,7 @@
         <e p="Data" t="Include">
           <e p="OnymDbContext.cs" t="Include" />
         </e>
-        <e p="Migrations" t="Include">
-          <e p="20210421014233_Initial.cs" t="Include" />
-          <e p="20210421014233_Initial.Designer.cs" t="Include" />
-          <e p="OnymDbContextModelSnapshot.cs" t="Include" />
-        </e>
+        <e p="gulpfile.js" t="Include" />
         <e p="Models" t="Include">
           <e p="Comment.cs" t="Include" />
           <e p="CommentMedia.cs" t="Include" />
@@ -52,8 +61,6 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Services" t="Include">
-          <e p="IUserControlService.cs" t="Include" />
-          <e p="PasswordHandler.cs" t="Include" />
           <e p="ServiceProviderExtensions.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
@@ -68,16 +75,33 @@
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Feed" t="Include">
+            <e p="Best.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="New.cshtml" t="Include" />
+            <e p="Random.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_ScriptsPartial.cshtml" t="Include" />
+            <e p="_StylesPartial.cshtml" t="Include" />
+          </e>
+          <e p="User" t="Include">
+            <e p="Index.cshtml" t="Include" />
           </e>
         </e>
         <e p="wwwroot" t="Include">
-          <e p="css" t="Include" />
-          <e p="js" t="Include" />
+          <e p="css" t="Include">
+            <e p="site.bundle.css" t="Include" />
+            <e p="site.bundle.min.css" t="Include" />
+          </e>
+          <e p="js" t="Include">
+            <e p="site.bundle.js" t="Include" />
+          </e>
           <e p="lib" t="Include" />
+          <e p="manifest.json" t="Include" />
+          <e p="media" t="Include">
+            <e p="user-avatar-placeholder.webp" t="Include" />
+          </e>
         </e>
       </e>
       <e p="ONYM.sln" t="IncludeFlat" />

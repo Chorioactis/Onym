@@ -6,22 +6,31 @@
     <meta name="theme-color">
     <title>@ViewBag.Title - Onym</title>
     @{
-        //await Html.RenderPartialAsync("_StylesPartial");
+        await Html.RenderPartialAsync("_StylesPartial");
     }
     <link rel="manifest" href="manifest.json">
 </head>
-<header>
-</header>
-<div>
-    <aside>
-    </aside>
-    <main>
+<!-- APP BODY -->
+<body class="app">
+    <!-- HEADER -->
+    <header class="header">
+        <nav>
+            
+        </nav>
+    </header>
+
+    <div>
+        <!-- SIDEBAR -->
+        <aside>
+
+        </aside>
+        <!-- MAIN -->
+        <main>
         @RenderBody()
-    </main>
-</div>
-<footer>
-</footer>
-@{
-    //await Html.RenderPartialAsync("_ScriptsPartial");
-}
-</html>
+        </main>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        
+    </footer>
+</body>

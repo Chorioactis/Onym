@@ -12,8 +12,29 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 1 "D:\Repos\Onym\Onym\Views\_ViewImports.cshtml"
+using Onym;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "D:\Repos\Onym\Onym\Views\_ViewImports.cshtml"
+using System.Diagnostics;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "D:\Repos\Onym\Onym\Views\_ViewImports.cshtml"
+using Microsoft.EntityFrameworkCore;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"77a2804b95fd303a20a56ec194ea6ca59278fafa", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57218c316b6921e2cd61027a2387edc31a2d9471", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1245d56ca21cf72ccc6992d5d3028c1fd5e8a22c", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

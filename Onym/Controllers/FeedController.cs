@@ -6,9 +6,7 @@ namespace Onym.Controllers
 {
     public class FeedController : Controller
     {
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<ViewResult> Index()
         {
             return View();
         }

@@ -40,9 +40,75 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\LICENSE.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.bundle.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.bundle.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.bundle.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.bundle.min.js.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\dist\bootstrap.min.css.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\bootstrap\LICENSE" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\fancybox-master\dist\jquery.fancybox.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\fancybox-master\dist\jquery.fancybox.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\fancybox-master\dist\jquery.fancybox.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\fancybox-master\dist\jquery.fancybox.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation\dist\additional-methods.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation\dist\additional-methods.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation\dist\jquery.validate.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation\dist\jquery.validate.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery-validation\LICENSE.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\bower.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\gulpfile.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\jquery.lazy.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\jquery.lazy.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\jquery.lazy.plugins.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\jquery.lazy.plugins.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\LICENSE" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\package-lock.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\package.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.ajax.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.ajax.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.av.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.av.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.iframe.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.iframe.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.noop.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.noop.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.picture.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.picture.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.script.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.script.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.vimeo.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.vimeo.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.youtube.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\jquery.lazy.youtube.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\plugins\README.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery.lazy-master\README.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery\dist\jquery.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery\dist\jquery.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery\dist\jquery.min.map" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\lib\jquery\LICENSE.txt" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_ScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_StylesPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\site.bundle.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\site.bundle.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\fancybox-master\dist\jquery.fancybox.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\fancybox-master\dist\jquery.fancybox.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\fancybox-master\dist\jquery.fancybox.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\fancybox-master\dist\jquery.fancybox.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Content\css" />
+      <Folder Include="Content\js" />
       <Folder Include="ViewModels\Feed" />
       <Folder Include="wwwroot\css" />
       <Folder Include="wwwroot\js" />
@@ -50,7 +116,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
       <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+      <PackageReference Include="BundlerMinifier.TagHelpers" Version="3.2.449" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.5" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
       <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.2.0" />
@@ -69,6 +137,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.5" />
+      <PackageReference Include="Npm" Version="3.5.2" />
     </ItemGroup>
 
     <ItemGroup>

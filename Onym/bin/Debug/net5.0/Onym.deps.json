@@ -25,7 +25,9 @@
     ".NETCoreApp,Version=v5.0": {
       "Onym/1.0.0": {
         "dependencies": {
+          "BuildBundlerMinifier": "3.2.449",
           "BundlerMinifier.Core": "3.2.449",
+          "BundlerMinifier.TagHelpers": "3.2.449",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.AspNetCore.ResponseCompression": "2.2.0",
@@ -38,6 +40,7 @@
           "Microsoft.Extensions.DependencyInjection": "5.0.1",
           "Microsoft.Extensions.Logging": "5.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.5",
+          "Npm": "3.5.2",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -323,6 +326,7 @@
           "Onym.dll": {}
         }
       },
+      "BuildBundlerMinifier/3.2.449": {},
       "BundlerMinifier.Core/3.2.449": {
         "dependencies": {
           "NUglify": "1.5.14",
@@ -336,6 +340,20 @@
         },
         "compile": {
           "lib/netcoreapp3.1/dotnet-bundle.dll": {}
+        }
+      },
+      "BundlerMinifier.TagHelpers/3.2.449": {
+        "dependencies": {
+          "BundlerMinifier.Core": "3.2.449"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/BundlerMinifier.TagHelpers.dll": {
+            "assemblyVersion": "3.2.449.0",
+            "fileVersion": "3.2.449.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/BundlerMinifier.TagHelpers.dll": {}
         }
       },
       "Castle.Core/4.4.1": {
@@ -855,6 +873,12 @@
           "lib/netstandard1.3/Newtonsoft.Json.dll": {}
         }
       },
+      "Node.js/0.12.7": {},
+      "NoGit/0.1.0": {
+        "dependencies": {
+          "Node.js": "0.12.7"
+        }
+      },
       "Npgsql/5.0.4": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.6.0"
@@ -884,6 +908,12 @@
         },
         "compile": {
           "lib/netstandard2.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll": {}
+        }
+      },
+      "Npm/3.5.2": {
+        "dependencies": {
+          "NoGit": "0.1.0",
+          "Node.js": "0.12.7"
         }
       },
       "NUglify/1.5.14": {
@@ -2990,12 +3020,26 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BuildBundlerMinifier/3.2.449": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uA9sYDy4VepL3xwzBTLcP2LyuVYMt0ZIT3gaSiXvGoX15Ob+rOP+hGydhevlSVd+rFo+Y+VQFEHDuWU8HBW+XA==",
+      "path": "buildbundlerminifier/3.2.449",
+      "hashPath": "buildbundlerminifier.3.2.449.nupkg.sha512"
+    },
     "BundlerMinifier.Core/3.2.449": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-8ssF9o8PavO/YUh1rA/xz2qmNfm7FjC3UxkP7C8BMo2fvSodpWpeUB6/0ISRgq4U3T6+i7+WuAqlSLWHo3n/2w==",
       "path": "bundlerminifier.core/3.2.449",
       "hashPath": "bundlerminifier.core.3.2.449.nupkg.sha512"
+    },
+    "BundlerMinifier.TagHelpers/3.2.449": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ejug3/NW0r4QxaBHahmCBSttRziSk/Nciyo3YBbxREH1eRllME0ltlTk0OKu4Gloj3Nas/EGrnDjKI7+ZID0mA==",
+      "path": "bundlerminifier.taghelpers/3.2.449",
+      "hashPath": "bundlerminifier.taghelpers.3.2.449.nupkg.sha512"
     },
     "Castle.Core/4.4.1": {
       "type": "package",
@@ -3403,6 +3447,20 @@
       "path": "newtonsoft.json/10.0.1",
       "hashPath": "newtonsoft.json.10.0.1.nupkg.sha512"
     },
+    "Node.js/0.12.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-15c78ckXi3Zv6FWU5/1XrcIPiE+a+oK3xZLAEAHXWbHv2dy/ILBG2qGFPGW92dei3/JJ11mHWhB941tQ465A6w==",
+      "path": "node.js/0.12.7",
+      "hashPath": "node.js.0.12.7.nupkg.sha512"
+    },
+    "NoGit/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NJY9sH90rT75WF3fAf832poUntcnw+zLGxk1fQR01efWj+eLEpvLbXtLyY4V0Gr07avyJByvrewyqbf01MhJCQ==",
+      "path": "nogit/0.1.0",
+      "hashPath": "nogit.0.1.0.nupkg.sha512"
+    },
     "Npgsql/5.0.4": {
       "type": "package",
       "serviceable": true,
@@ -3416,6 +3474,13 @@
       "sha512": "sha512-sxmLlqjeNgpMAHIyQj62fXtaP/jfJMUrHzXfrXsk1N9NvIbfqTbX/GMkscq/Cqi4JCH+zc1vxnS02KT0Zn5dFg==",
       "path": "npgsql.entityframeworkcore.postgresql/5.0.5",
       "hashPath": "npgsql.entityframeworkcore.postgresql.5.0.5.nupkg.sha512"
+    },
+    "Npm/3.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Jj3UFTTDCAP38rhGvwMe+Wv5hbPjBwePzvwtX69CeEtZ9uiIWKGiZdvpGV0JGlti2INa7k7DuL1uRaOlQunA8w==",
+      "path": "npm/3.5.2",
+      "hashPath": "npm.3.5.2.nupkg.sha512"
     },
     "NUglify/1.5.14": {
       "type": "package",

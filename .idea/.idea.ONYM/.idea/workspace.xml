@@ -14,8 +14,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JSON File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="package.json" />
+        <option value="Less File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/687CD3EF-1206-406C-8B82-2CB02EE0595E/7/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
@@ -23,9 +30,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/687CD3EF-1206-406C-8B82-2CB02EE0595E/1/ConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/metadata/DA854EC5-05B7-438A-A63B-28E95E0225CF/0a/fb21e417/Microsoft.AspNetCore.Identity.EntityFrameworkCore.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FF969794-BF49-4DEB-86B4-280D6D80AF0D/2/IdentityDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CE575B69-3781-4B45-B3D1-43925111B499/1D/UserManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1A6092E5-ED2B-4D2A-9232-CD9B650E85C3/F/SignInManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DA854EC5-05B7-438A-A63B-28E95E0225CF/3/IdentityUserContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DA854EC5-05B7-438A-A63B-28E95E0225CF/2/IdentityDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/resx/DA854EC5-05B7-438A-A63B-28E95E0225CF/f7/3d6f1573/Microsoft.AspNetCore.Identity.EntityFrameworkCore.Resources.resx" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CE575B69-3781-4B45-B3D1-43925111B499/29/IPasswordHasher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12CBADA5-1558-4324-8618-085C14A5EFEA/1/MvcServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/DD353774-C69D-417D-A72C-B4F41ABC07AA/3/IdentityUser.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1B730AB6-A97C-4DE3-A887-DB82694337BB/9e/64653973/IConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
@@ -36,35 +46,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Onym/Models/PublicationMedia.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/PublicationRatingTally.cs" />
-        <option value="$PROJECT_DIR$/Onym/connsettings.json" />
-        <option value="$PROJECT_DIR$/Onym/appsettings.json" />
-        <option value="$PROJECT_DIR$/Onym/appsettings.Development.json" />
-        <option value="$PROJECT_DIR$/Onym/Services/MessageSender.cs" />
-        <option value="$PROJECT_DIR$/Onym/Services/SmsMessageSender.cs" />
-        <option value="$PROJECT_DIR$/Onym/Services/EmailMessageSender.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/UserStatuses.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/UserRoles.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/PublicationTag.cs" />
-        <option value="$PROJECT_DIR$/Onym/onym_dbContext.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/PublicationMedium.cs" />
-        <option value="$PROJECT_DIR$/Onym/Data/onym_dbContext.cs" />
-        <option value="$PROJECT_DIR$/Onym/bundleconfig.json" />
-        <option value="$PROJECT_DIR$/Onym/Properties/appsettings.json" />
-        <option value="$PROJECT_DIR$/Onym/Services/IMessageSender.cs" />
-        <option value="$PROJECT_DIR$/Onym/Controllers/FeedController.cs" />
-        <option value="$PROJECT_DIR$/Onym/Views/_ViewStart.cshtml" />
-        <option value="$PROJECT_DIR$/Onym/Views/Feed/Index.cshtml" />
-        <option value="$PROJECT_DIR$/Onym/Views/Shared/_Layout.cshtml" />
-        <option value="$PROJECT_DIR$/Onym/Services/ServiceProviderExtensions.cs" />
-        <option value="$PROJECT_DIR$/Onym/Views/_ViewImports.cshtml" />
-        <option value="$PROJECT_DIR$/Onym/Services/IUserControlService.cs" />
-        <option value="$PROJECT_DIR$/Onym/Properties/Startup.cs" />
-        <option value="$PROJECT_DIR$/Onym/Services/PasswordHandler.cs" />
-        <option value="$PROJECT_DIR$/Onym/Data/Identity.cs" />
-        <option value="$PROJECT_DIR$/Onym/Migrations/20210419175618_Initial.cs" />
-        <option value="$PROJECT_DIR$/Onym/Migrations/20210419175618_Initial.Designer.cs" />
         <option value="$PROJECT_DIR$/Onym/Data/IdentityDbContext.cs" />
         <option value="$PROJECT_DIR$/Onym/Data/DbContext.cs" />
         <option value="$PROJECT_DIR$/Onym/Models/UserLogins.cs" />
@@ -78,17 +59,71 @@
         <option value="$PROJECT_DIR$/Onym/Models/Tag.cs" />
         <option value="$PROJECT_DIR$/Onym/Models/Publication.cs" />
         <option value="$PROJECT_DIR$/Onym/Models/Comment.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/User.cs" />
         <option value="$PROJECT_DIR$/Onym/Migrations/20210421005754_Identity.Designer.cs" />
         <option value="$PROJECT_DIR$/Onym/Migrations/20210421012155_Initial.Designer.cs" />
-        <option value="$PROJECT_DIR$/Onym/Startup.cs" />
-        <option value="$PROJECT_DIR$/Onym/ViewModels/User/SignUpViewModel.cs" />
         <option value="$PROJECT_DIR$/Onym/Migrations/20210421014233_Initial.Designer.cs" />
+        <option value="$PROJECT_DIR$/Onym/ViewModels/User/SignUpViewModel.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/User/SignIn.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Services/PasswordHandler.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/IUserControlService.cs" />
         <option value="$PROJECT_DIR$/Onym/Migrations/OnymDbContextModelSnapshot.cs" />
-        <option value="$PROJECT_DIR$/Onym/Data/OnymDbContext.cs" />
+        <option value="$PROJECT_DIR$/Onym/Migrations/20210421112753_Initial.Designer.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/User/SignUp.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Services/CustomUserManager.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/Initializer.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/Feed/Index.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Services/ConnectionConfig.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/Configuration.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/ConfigurationService.cs" />
+        <option value="$PROJECT_DIR$/Onym/Models/User.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/InitializerService.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/ConfigurationProviderService.cs" />
+        <option value="$PROJECT_DIR$/Onym/Program.cs" />
+        <option value="$PROJECT_DIR$/Onym/Services/ServiceProviderExtensions.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/_ViewImports.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_PublicationCard.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_UserBlock.cshtml" />
         <option value="$PROJECT_DIR$/Onym/Controllers/UserController.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_ScriptsPartial.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/bundleconfig.json" />
+        <option value="$PROJECT_DIR$/Onym/package.json" />
+        <option value="$PROJECT_DIR$/Onym/gulpfile.js" />
+        <option value="$PROJECT_DIR$/Onym/Content/css/app.css" />
+        <option value="$PROJECT_DIR$/Onym/Data/OnymDbContext.cs" />
+        <option value="$PROJECT_DIR$/Onym/Startup.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_StylesPartial.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Controllers/FeedController.cs" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Content/Less/common.less" />
+        <option value="$PROJECT_DIR$/Onym/Content/Less/app.less" />
+        <option value="$PROJECT_DIR$/Onym/Content/Less/header.less" />
       </list>
     </option>
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+    <layout place="tools.popupGulp">
+      <scroll-view-position x="0" y="0" />
+      <selected-paths>
+        <path>
+          <id value="$PROJECT_DIR$/Onym/gulpfile.js" />
+          <id value="less" />
+        </path>
+      </selected-paths>
+    </layout>
   </component>
   <component name="ProjectId" id="1rNqweQ1ujt4TLdGblm45T1iKEH" />
   <component name="ProjectViewState">
@@ -99,8 +134,13 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="RiderIisExpressOptionsPageId" />
+    <property name="javascript.nodejs.core.library.configured.version" value="5.3.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.41" />
+    <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/Onym/node_modules/gulp" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nuget/packages/node.js/5.3.0/node" />
+    <property name="nodejs_package_manager_path" value="C:\Users\admal\.nuget\packages\npm\3.5.2\node_modules\npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Onym">
@@ -134,6 +174,31 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="less" type="js.build_tools.gulp" temporary="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile>$PROJECT_DIR$/Onym/gulpfile.js</gulpfile>
+      <tasks>
+        <task>less</task>
+      </tasks>
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gulp.js.less" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -147,7 +212,9 @@
       <workItem from="1618827168290" duration="119000" />
       <workItem from="1618827331722" duration="9226000" />
       <workItem from="1618842013418" duration="14589000" />
-      <workItem from="1618949630593" duration="20169000" />
+      <workItem from="1618949630593" duration="21176000" />
+      <workItem from="1619002355827" duration="5331000" />
+      <workItem from="1619015182711" duration="11781000" />
     </task>
     <servers />
   </component>
@@ -160,42 +227,54 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="398" y="288" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618846904059">
+    <state x="824" y="354" key="#File_Watchers" timestamp="1619023223247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="398" y="288" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618846904059" />
+    <state x="824" y="354" key="#File_Watchers/0.0.1920.1040@0.0.1920.1040" timestamp="1619023223247" />
+    <state x="398" y="288" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619025383861">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="398" y="288" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619025383861" />
+    <state x="690" y="300" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1619022539264">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="300" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/0.0.1920.1040@0.0.1920.1040" timestamp="1619022539264" />
     <state x="718" y="380" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1" timestamp="1618967835830">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="718" y="380" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/0.0.1920.1040@0.0.1920.1040" timestamp="1618967835830" />
+    <state x="629" y="298" width="717" height="678" key="EditFileWatcherDialog" timestamp="1619025890756">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="629" y="298" width="717" height="678" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619025890756" />
     <state x="784" y="422" key="Github.CreateGistDialog" timestamp="1618969728078">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="784" y="422" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618969728078" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1618955102360">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1619027256616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618955102360" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1618955102360">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1619027256616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618955102360" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1618955102359">
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1619027256616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618955102359" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1618955102360">
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1619027256616">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618955102360" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size" timestamp="1618961994138">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1040@0.0.1920.1040" timestamp="1618961994138" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1618837114561">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1619025910317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618837114561" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619025910317" />
     <state x="772" y="403" width="376" height="341" key="com.intellij.database.actions.DdlActions$CommentOnObjectAction$1" timestamp="1618847034041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -204,10 +283,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="858" y="380" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.1920.1040@0.0.1920.1040" timestamp="1618847013883" />
-    <state x="834" y="407" width="316" height="244" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1618969096062">
+    <state x="834" y="407" width="316" height="244" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1619004474666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="834" y="407" width="316" height="244" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040@0.0.1920.1040" timestamp="1618969096062" />
+    <state x="834" y="407" width="316" height="244" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040@0.0.1920.1040" timestamp="1619004474666" />
     <state x="858" y="380" key="com.intellij.database.actions.DdlActions$ModifyObject$1" timestamp="1618847042742">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -220,17 +299,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="756" y="340" width="408" height="351" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618969474363" />
-    <state x="329" y="253" width="897" height="397" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1618969558592">
+    <state x="329" y="253" width="897" height="397" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1619004885516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="329" y="253" width="897" height="397" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618969558592" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1618843863927">
+    <state x="329" y="253" width="897" height="397" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619004885516" />
+    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1619026913993">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618843863927" />
+    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619026913993" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1619005699950">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619005699950" />
+    <state x="752" y="378" key="scopes" timestamp="1619025828897">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="752" y="378" key="scopes/0.0.1920.1040@0.0.1920.1040" timestamp="1619025828897" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1618845523734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618845523734" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

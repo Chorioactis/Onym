@@ -14,11 +14,16 @@ namespace Onym.Data
         IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
         where TUser : IdentityUser<int>
     {
+        public OnymDbContext()
+        {
+        }
+        
         public OnymDbContext(DbContextOptions<OnymDbContext<User>> options)
             : base(options)
         {
         }
-
+        
+        
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<CommentMedia> CommentMedia { get; set; }
         public virtual DbSet<CommentRatingTally> CommentRatingTallies { get; set; }
@@ -30,9 +35,18 @@ namespace Onym.Data
         public virtual DbSet<PublicationTag> PublicationTags { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public new virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserStatus> UserStatuses { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //TODO Изменить конфигурацию в контексте ДБ
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseNpgsql(
+                    "User Id=postgres; Password=59735651; Server=localhost; Port=5432; Database=onym_db; Integrated Security=true; Pooling=true;");
+        }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -230,7 +244,8 @@ namespace Onym.Data
 
                 b.Property<int>("RatingTotal")
                     .HasColumnType("integer")
-                    .HasColumnName("comment_rating_total");
+                    .HasColumnName("comment_rating_total")
+                    .HasDefaultValueSql("0");
 
                 b.Property<int>("Status")
                     .HasColumnType("integer")
@@ -356,7 +371,8 @@ namespace Onym.Data
 
                 b.Property<int>("RatingTotal")
                     .HasColumnType("integer")
-                    .HasColumnName("publication_rating_total");
+                    .HasColumnName("publication_rating_total")
+                    .HasDefaultValueSql("0");
 
                 b.Property<int>("Status")
                     .HasColumnType("integer")
@@ -535,10 +551,6 @@ namespace Onym.Data
                     .HasColumnType("text")
                     .HasColumnName("user_password_hash");
 
-                b.Property<int>("PasswordSalt")
-                    .HasColumnType("integer")
-                    .HasColumnName("user_password_salt");
-
                 b.Property<string>("PhoneNumber")
                     .HasColumnType("text")
                     .HasColumnName("user_phone_number");
@@ -554,7 +566,8 @@ namespace Onym.Data
 
                 b.Property<int>("RatingTotal")
                     .HasColumnType("integer")
-                    .HasColumnName("user_rating_total");
+                    .HasColumnName("user_rating_total")
+                    .HasDefaultValueSql("0");
 
                 b.Property<DateTime>("RegistrationDate")
                     .ValueGeneratedOnAdd()

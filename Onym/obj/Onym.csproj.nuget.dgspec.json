@@ -38,7 +38,15 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BuildBundlerMinifier": {
+              "target": "Package",
+              "version": "[3.2.449, )"
+            },
             "BundlerMinifier.Core": {
+              "target": "Package",
+              "version": "[3.2.449, )"
+            },
+            "BundlerMinifier.TagHelpers": {
               "target": "Package",
               "version": "[3.2.449, )"
             },
@@ -93,6 +101,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "Npm": {
+              "target": "Package",
+              "version": "[3.5.2, )"
             }
           },
           "imports": [
