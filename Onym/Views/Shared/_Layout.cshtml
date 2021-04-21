@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" theme-color="light" accent-color="green">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="theme-color">
     <title>@ViewBag.Title - Onym</title>
     @{
         await Html.RenderPartialAsync("_StylesPartial");
@@ -15,7 +14,7 @@
     <!-- HEADER -->
     <header class="header">
         <nav>
-            
+            <a asp-action="Index" asp-controller="Feed" class="navbar-brand font-weight-bold">ONYM</a>
         </nav>
     </header>
 

@@ -5,11 +5,11 @@ var gulp = require("gulp"),
     less = require("gulp-less");
 
 var paths = {
-    static: "./Content/",
+    content: "./Content/",
     webroot: "./wwwroot/"
 };
 gulp.task("less", function () {
     return gulp.src('Content/Less/*.less')
         .pipe(less())
-        .pipe(gulp.dest(paths.static + '/css'))
+        .pipe(gulp.dest(paths.content + '/css'))
 });
