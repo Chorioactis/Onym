@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\admal\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\admal\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_ONYM.-348482443.00" t="ExcludeRecursive" />
+    <e p="C:\Users\admal\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\admal\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="D:\Repos\ONYM" t="IncludeFlat">
+      <e p="ONYM" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="bundleconfig.json" t="Include" />
+        <e p="Controllers" t="Include">
+          <e p="FeedController.cs" t="Include" />
+          <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="OnymDbContext.cs" t="Include" />
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20210421014233_Initial.cs" t="Include" />
+          <e p="20210421014233_Initial.Designer.cs" t="Include" />
+          <e p="OnymDbContextModelSnapshot.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="Comment.cs" t="Include" />
+          <e p="CommentMedia.cs" t="Include" />
+          <e p="CommentRatingTally.cs" t="Include" />
+          <e p="Favorite.cs" t="Include" />
+          <e p="Media.cs" t="Include" />
+          <e p="Publication.cs" t="Include" />
+          <e p="PublicationMedia.cs" t="Include" />
+          <e p="PublicationRatingTally.cs" t="Include" />
+          <e p="PublicationTag.cs" t="Include" />
+          <e p="Status.cs" t="Include" />
+          <e p="Tag.cs" t="Include" />
+          <e p="User.cs" t="Include" />
+          <e p="UserStatus.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="net5.0" t="Include">
+              <e p="Onym.AssemblyInfo.cs" t="Include" />
+              <e p="Onym.RazorAssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Onym.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Services" t="Include">
+          <e p="IUserControlService.cs" t="Include" />
+          <e p="PasswordHandler.cs" t="Include" />
+          <e p="ServiceProviderExtensions.cs" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="ViewModels" t="Include">
+          <e p="ErrorViewModel.cs" t="Include" />
+          <e p="Feed" t="Include" />
+          <e p="User" t="Include">
+            <e p="SignUpViewModel.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Views" t="Include">
+          <e p="_ViewImports.cshtml" t="Include" />
+          <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Feed" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="_Layout.cshtml" t="Include" />
+          </e>
+        </e>
+        <e p="wwwroot" t="Include">
+          <e p="css" t="Include" />
+          <e p="js" t="Include" />
+          <e p="lib" t="Include" />
+        </e>
+      </e>
+      <e p="ONYM.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

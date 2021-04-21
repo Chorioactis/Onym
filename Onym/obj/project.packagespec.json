@@ -1,0 +1,107 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\Repos\\Onym\\Onym\\Onym.csproj",
+    "projectName": "Onym",
+    "projectPath": "D:\\Repos\\Onym\\Onym\\Onym.csproj",
+    "outputPath": "D:\\Repos\\Onym\\Onym\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net50"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp5.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp5.0": {
+      "dependencies": {
+        "BundlerMinifier.Core": {
+          "target": "Package",
+          "version": "[3.2.449, )"
+        },
+        "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[5.0.5, )"
+        },
+        "Microsoft.AspNetCore.Mvc.Core": {
+          "target": "Package",
+          "version": "[2.2.5, )"
+        },
+        "Microsoft.AspNetCore.ResponseCompression": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.AspNetCore.StaticFiles": {
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.EntityFrameworkCore": {
+          "target": "Package",
+          "version": "[5.0.5, )"
+        },
+        "Microsoft.EntityFrameworkCore.Design": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[5.0.5, )"
+        },
+        "Microsoft.EntityFrameworkCore.Proxies": {
+          "target": "Package",
+          "version": "[5.0.5, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools": {
+          "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[5.0.5, )"
+        },
+        "Microsoft.EntityFrameworkCore.Tools.DotNet": {
+          "target": "Package",
+          "version": "[2.0.3, )"
+        },
+        "Microsoft.Extensions.DependencyInjection": {
+          "target": "Package",
+          "version": "[5.0.1, )"
+        },
+        "Microsoft.Extensions.Logging": {
+          "target": "Package",
+          "version": "[5.0.0, )"
+        },
+        "Npgsql.EntityFrameworkCore.PostgreSQL": {
+          "target": "Package",
+          "version": "[5.0.5, )"
+        }
+      },
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true,
+      "frameworkReferences": {
+        "Microsoft.AspNetCore.App": {
+          "privateAssets": "none"
+        },
+        "Microsoft.NETCore.App": {
+          "privateAssets": "all"
+        }
+      },
+      "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+    }
+  }
+}
