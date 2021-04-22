@@ -15,9 +15,9 @@
       <list>
         <option value="JSON File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="package.json" />
         <option value="Less File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -46,12 +46,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Onym/Data/IdentityDbContext.cs" />
-        <option value="$PROJECT_DIR$/Onym/Data/DbContext.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/UserLogins.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/Role.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/UserRole.cs" />
-        <option value="$PROJECT_DIR$/Onym/Models/UserStatus.cs" />
         <option value="$PROJECT_DIR$/Onym/Models/CommentMedia.cs" />
         <option value="$PROJECT_DIR$/Onym/Models/CommentRatingTally.cs" />
         <option value="$PROJECT_DIR$/Onym/Models/Media.cs" />
@@ -84,19 +78,25 @@
         <option value="$PROJECT_DIR$/Onym/Views/Shared/_PublicationCard.cshtml" />
         <option value="$PROJECT_DIR$/Onym/Views/Shared/_UserBlock.cshtml" />
         <option value="$PROJECT_DIR$/Onym/Controllers/UserController.cs" />
-        <option value="$PROJECT_DIR$/Onym/Views/Shared/_ScriptsPartial.cshtml" />
         <option value="$PROJECT_DIR$/Onym/bundleconfig.json" />
         <option value="$PROJECT_DIR$/Onym/package.json" />
-        <option value="$PROJECT_DIR$/Onym/gulpfile.js" />
         <option value="$PROJECT_DIR$/Onym/Content/css/app.css" />
         <option value="$PROJECT_DIR$/Onym/Data/OnymDbContext.cs" />
         <option value="$PROJECT_DIR$/Onym/Startup.cs" />
-        <option value="$PROJECT_DIR$/Onym/Views/Shared/_StylesPartial.cshtml" />
         <option value="$PROJECT_DIR$/Onym/Controllers/FeedController.cs" />
-        <option value="$PROJECT_DIR$/Onym/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/wwwroot/css/site.bundle.css" />
+        <option value="$PROJECT_DIR$/Onym/Content/Less/library.less" />
         <option value="$PROJECT_DIR$/Onym/Content/Less/common.less" />
-        <option value="$PROJECT_DIR$/Onym/Content/Less/app.less" />
+        <option value="$PROJECT_DIR$/Onym/gulpfile.js" />
+        <option value="$PROJECT_DIR$/Onym/Content/Less/palette.less" />
+        <option value="$PROJECT_DIR$/Onym/Content/css/header.css" />
         <option value="$PROJECT_DIR$/Onym/Content/Less/header.less" />
+        <option value="$PROJECT_DIR$/Onym/wwwroot/manifest.json" />
+        <option value="$PROJECT_DIR$/Onym/Content/Less/app.less" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_ScriptsPartial.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_StylesPartial.cshtml" />
+        <option value="$PROJECT_DIR$/Onym/Content/js/preload.js" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_Layout.cshtml" />
       </list>
     </option>
   </component>
@@ -214,7 +214,8 @@
       <workItem from="1618842013418" duration="14589000" />
       <workItem from="1618949630593" duration="21176000" />
       <workItem from="1619002355827" duration="5331000" />
-      <workItem from="1619015182711" duration="11781000" />
+      <workItem from="1619015182711" duration="24382000" />
+      <workItem from="1619079733953" duration="13834000" />
     </task>
     <servers />
   </component>
@@ -251,22 +252,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="784" y="422" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618969728078" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1619027256616">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1619101122721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1619027256616">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619101122721" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1619101122721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1619027256616">
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619101122721" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1619101122721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1619027256616">
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619101122721" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1619101122721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619027256616" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619101122721" />
     <state x="552" y="252" key="Rider.ProjectTemplateDialog.Size" timestamp="1618961994138">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -303,14 +304,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="329" y="253" width="897" height="397" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619004885516" />
-    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1619026913993">
+    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup" timestamp="1619080575724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619026913993" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1619005699950">
+    <state x="826" y="386" width="250" height="278" key="jetbrains.javascript.buildTools.run-task-popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619080575724" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1619100025662">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619005699950" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619100025662" />
     <state x="752" y="378" key="scopes" timestamp="1619025828897">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

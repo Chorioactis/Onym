@@ -3,6 +3,7 @@ html[theme-color="light"] {
   --primary-text-color: #4E4E4E;
   --secondary-text-color: #F2F2F2;
   --article-text-color: #212121;
+  --disabled-text-color: #393D41;
   --caption-color: #757575;
   --section-background-color: #FFFFFF;
   --dark-section-background-color: #F9F9FB;
@@ -13,6 +14,7 @@ html[theme-color="dark"] {
   --primary-text-color: #A6A6A6;
   --secondary-text-color: #FFFFFFB3;
   --article-text-color: #BFBFBF;
+  --disabled-text-color: #7D7D7D;
   --caption-color: #7D7D7D;
   --section-background-color: #22272B;
   --dark-section-background-color: #1A1E21;

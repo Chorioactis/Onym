@@ -108,7 +108,6 @@
 
     <ItemGroup>
       <Folder Include="Content\css" />
-      <Folder Include="Content\js" />
       <Folder Include="ViewModels\Feed" />
       <Folder Include="wwwroot\css" />
       <Folder Include="wwwroot\js" />

@@ -14,14 +14,16 @@
         <e p="Content" t="Include">
           <e p="css" t="Include">
             <e p="app.css" t="Include" />
-            <e p="common.css" t="Include" />
             <e p="header.css" t="Include" />
+            <e p="palette.css" t="Include" />
           </e>
-          <e p="js" t="Include" />
+          <e p="js" t="Include">
+            <e p="preload.js" t="Include" />
+          </e>
           <e p="Less" t="Include">
             <e p="app.less" t="Include" />
-            <e p="common.less" t="Include" />
             <e p="header.less" t="Include" />
+            <e p="palette.less" t="Include" />
           </e>
         </e>
         <e p="Controllers" t="Include">
@@ -96,8 +98,68 @@
           </e>
           <e p="js" t="Include">
             <e p="site.bundle.js" t="Include" />
+            <e p="site.bundle.min.js" t="Include" />
           </e>
-          <e p="lib" t="Include" />
+          <e p="lib" t="Include">
+            <e p="bootstrap" t="Include">
+              <e p="css" t="Include">
+                <e p="bootstrap-grid.css" t="Include" />
+                <e p="bootstrap-grid.css.map" t="Include" />
+                <e p="bootstrap-grid.min.css" t="Include" />
+                <e p="bootstrap-grid.min.css.map" t="Include" />
+                <e p="bootstrap-grid.rtl.css" t="Include" />
+                <e p="bootstrap-grid.rtl.css.map" t="Include" />
+                <e p="bootstrap-grid.rtl.min.css" t="Include" />
+                <e p="bootstrap-grid.rtl.min.css.map" t="Include" />
+                <e p="bootstrap-reboot.css" t="Include" />
+                <e p="bootstrap-reboot.css.map" t="Include" />
+                <e p="bootstrap-reboot.min.css" t="Include" />
+                <e p="bootstrap-reboot.min.css.map" t="Include" />
+                <e p="bootstrap-reboot.rtl.css" t="Include" />
+                <e p="bootstrap-reboot.rtl.css.map" t="Include" />
+                <e p="bootstrap-reboot.rtl.min.css" t="Include" />
+                <e p="bootstrap-reboot.rtl.min.css.map" t="Include" />
+                <e p="bootstrap-utilities.css" t="Include" />
+                <e p="bootstrap-utilities.css.map" t="Include" />
+                <e p="bootstrap-utilities.min.css" t="Include" />
+                <e p="bootstrap-utilities.min.css.map" t="Include" />
+                <e p="bootstrap-utilities.rtl.css" t="Include" />
+                <e p="bootstrap-utilities.rtl.css.map" t="Include" />
+                <e p="bootstrap-utilities.rtl.min.css" t="Include" />
+                <e p="bootstrap-utilities.rtl.min.css.map" t="Include" />
+                <e p="bootstrap.css" t="Include" />
+                <e p="bootstrap.css.map" t="Include" />
+                <e p="bootstrap.min.css" t="Include" />
+                <e p="bootstrap.min.css.map" t="Include" />
+                <e p="bootstrap.rtl.css" t="Include" />
+                <e p="bootstrap.rtl.css.map" t="Include" />
+                <e p="bootstrap.rtl.min.css" t="Include" />
+                <e p="bootstrap.rtl.min.css.map" t="Include" />
+              </e>
+              <e p="js" t="Include">
+                <e p="bootstrap.bundle.js" t="Include" />
+                <e p="bootstrap.bundle.js.map" t="Include" />
+                <e p="bootstrap.bundle.min.js" t="Include" />
+                <e p="bootstrap.bundle.min.js.map" t="Include" />
+                <e p="bootstrap.esm.js" t="Include" />
+                <e p="bootstrap.esm.js.map" t="Include" />
+                <e p="bootstrap.esm.min.js" t="Include" />
+                <e p="bootstrap.esm.min.js.map" t="Include" />
+                <e p="bootstrap.js" t="Include" />
+                <e p="bootstrap.js.map" t="Include" />
+                <e p="bootstrap.min.js" t="Include" />
+                <e p="bootstrap.min.js.map" t="Include" />
+              </e>
+            </e>
+            <e p="jquery" t="Include">
+              <e p="dist" t="Include">
+                <e p="jquery.js" t="Include" />
+                <e p="jquery.min.js" t="Include" />
+                <e p="jquery.min.map" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+            </e>
+          </e>
           <e p="manifest.json" t="Include" />
           <e p="media" t="Include">
             <e p="user-avatar-placeholder.webp" t="Include" />

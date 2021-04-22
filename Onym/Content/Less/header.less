@@ -1,24 +1,54 @@
 ﻿@import (reference) "palette";
 
 .header{
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1020;
+position: -webkit-sticky;
+position: sticky;
+top: 0;
+z-index: 1020;
   .navbar{
-    background-color: var(--major-accent-color);
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    @media print{
-      display: none;
+  background-color: var(--major-accent-color) !important;
+  transition: background-color 200ms ease-out;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  height: 64px !important;      
+    .navbar-brand {
+      color: #FFFFFF;
+      &:hover, &:focus {
+        color: #FFFFFF;  
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+      }
+    }
+    .navbar-nav {
+      .nav-link {
+        color: var(--secondary-text-color) !important;
+          &:hover, &:focus {
+          color: #FFFFFF !important;
+        }
+          .disabled {
+          color: var(--disabled-text-color) !important;
+        }
+          .show >, .active {
+          color: #FFFFFF;
+        }
+      }
+    }
+    .navbar-toggler {
+      color: var(--secondary-text-color) !important;
+      border-color: var(--secondary-text-color) !important;
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
     }
   }
 }

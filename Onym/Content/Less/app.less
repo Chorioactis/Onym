@@ -5,8 +5,14 @@
   background-repeat: no-repeat;
   padding: 0;
   margin: 0;
+  .preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+  }
   body {
-    background-color: var(--background-color);
+    background-color: var(--background-color) !important;
+    transition: background-color 200ms ease-out;
     .app {
       display: flex;
       flex-direction: column;
