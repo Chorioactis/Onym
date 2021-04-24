@@ -57,8 +57,6 @@ namespace Onym
                     ctx.Context.Response.Headers.Add("Cache-Control", "public,max-age=2419200");
                 }
             });
-            
-            
             //Router
             app.UseRouting();
             //Authorization evaluate

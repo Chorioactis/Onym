@@ -1,7 +1,7 @@
 ﻿@positive-color: #49A669;
 @negative-color: #FD5D47;
-  /*-----DARK/LIGHT THEMES-----*/
-html[theme-color="light"] {
+/*-----DEFAULT THEME-----*/
+html{
   --primary-text-color: #4E4E4E;
   --secondary-text-color: #F2F2F2;
   --article-text-color: #212121;
@@ -11,7 +11,10 @@ html[theme-color="light"] {
   --dark-section-background-color: #F9F9FB;
   --background-color: #F4F4F4;
   --border-color: #393D41;
+  --major-accent-color: #49A669;
+  --minor-accent-color: #49A669;
 }
+/*-----DARK THEME-----*/
 html[theme-color="dark"] {
   --primary-text-color: #A6A6A6;
   --secondary-text-color: #FFFFFFB3;
@@ -23,11 +26,7 @@ html[theme-color="dark"] {
   --background-color: #1D2324;
   --border-color: #7D7D7D;
 }
-/*-----COLORED THEMES-----*/
-html[accent-color="green"] {
-  --major-accent-color: #49A669;
-  --minor-accent-color: #49A669;
-}
+/*-----ACCENTS-----*/
 html[accent-color="yellow"] {
   --major-accent-color: #FFB948;
   --minor-accent-color: #FFB948;

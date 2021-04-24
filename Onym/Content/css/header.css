@@ -6,7 +6,7 @@
 }
 .header .navbar {
   background-color: var(--major-accent-color) !important;
-  transition: background-color 200ms ease-out;
+  transition: 200ms ease-out;
   position: relative;
   display: flex;
   flex-wrap: wrap;

@@ -18,7 +18,10 @@
             <e p="palette.css" t="Include" />
           </e>
           <e p="js" t="Include">
+            <e p="constants.js" t="Include" />
             <e p="preload.js" t="Include" />
+            <e p="publication.js" t="Include" />
+            <e p="theme-switcher.js" t="Include" />
           </e>
           <e p="Less" t="Include">
             <e p="app.less" t="Include" />

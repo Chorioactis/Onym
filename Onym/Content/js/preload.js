@@ -1,3 +1,5 @@
-﻿$("body").ready(function() {
-    $("body").removeClass('preload');
+﻿// PRELOAD
+$("header").ready(function() {
+    $("header").removeClass('preload');
 });
+

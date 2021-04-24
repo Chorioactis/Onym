@@ -1,0 +1,5 @@
+﻿const Onym_theme = 'onym_theme'
+const Light_theme = 'light'
+const Dark_theme = 'dark'
+const Green_accent = 'green'
+const Yellow_accent = 'yellow'
