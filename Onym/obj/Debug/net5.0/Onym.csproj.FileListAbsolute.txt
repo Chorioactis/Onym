@@ -66,3 +66,8 @@ D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Random.cshtml.g.cs
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 D:\Repos\Onym\Onym\bin\Debug\net5.0\BundlerMinifier.TagHelpers.dll
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Onym.MvcApplicationPartsAssemblyInfo.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Favorite.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Hidden.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Liked.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Search.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\User\SignIn.cshtml.g.cs

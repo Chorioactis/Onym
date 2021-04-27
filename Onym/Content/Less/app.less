@@ -1,5 +1,5 @@
 ﻿@import (reference) "palette";
-
+/*-----COMMON-----*/
 * {
   box-sizing: border-box;
   background-repeat: no-repeat;
@@ -18,6 +18,68 @@
       flex-direction: column;
       min-height: 100vh;
     }
+  }
+  font-family: "Roboto Conde", "Roboto", "Arial", sans-serif;
+  
+}
+/*-----RESET-----*/
+button.active.focus,
+button.active:focus,
+button.focus,
+button:active.focus,
+button:active:focus,
+button:focus,
+input.active.focus,
+input.active:focus,
+input.focus,
+input:active.focus,
+input:active:focus,
+input:focus,
+textarea.active.focus,
+textarea.active:focus,
+textarea.focus,
+textarea:active.focus,
+textarea:active:focus,
+textarea:focus,
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: transparent none 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0)!important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--article-text-color);
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+/*-----SEPARATOR-----*/
+div.separator {
+  display: flex!important;
+  align-items: center!important;
+  text-align: center!important;
+  color: var(--border-color);
+  &::before,
+  &::after {
+    content: '' !important;
+    flex: 1!important;
+    border-bottom: var(--border-color);
+  }
+  &:not(:empty)::before {
+    margin-right: .25em!important;
+  }
+  &:not(:empty)::after {
+    margin-left: .25em!important;
   }
 }
 

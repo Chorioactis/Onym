@@ -1,4 +1,4 @@
-namespace Onym.Old.ViewModels
+namespace Onym.ViewModels
 {
     public class ErrorViewModel
     {

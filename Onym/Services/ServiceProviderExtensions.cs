@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace Onym.Services
+﻿namespace Onym.Services
 {
     public static class ServiceProviderExtensions
     {
+
     }
 }

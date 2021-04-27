@@ -108,7 +108,6 @@
 
     <ItemGroup>
       <Folder Include="Content\css" />
-      <Folder Include="ViewModels\Feed" />
       <Folder Include="wwwroot\css" />
       <Folder Include="wwwroot\js" />
       <Folder Include="wwwroot\lib" />
@@ -146,6 +145,24 @@
       <Content Update="appsettings.Development.json">
         <CopyToPublishDirectory>Never</CopyToPublishDirectory>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="ViewModels\Feed\FeedSortViewModel.cs">
+        <DependentUpon>FeedViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="ViewModels\Feed\FeedRateViewModel.cs">
+        <DependentUpon>FeedViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="ViewModels\Feed\FeedPageViewModel.cs">
+        <DependentUpon>FeedViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="ViewModels\Feed\FeedModerateViewModel.cs">
+        <DependentUpon>FeedViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="ViewModels\Feed\FeedFilterViewModel.cs">
+        <DependentUpon>FeedViewModel.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

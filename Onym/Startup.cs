@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Onym.Data;
 using Onym.Models;
-using Onym.Services;
 
 namespace Onym
 {
@@ -38,6 +37,7 @@ namespace Onym
             services.AddMvc();
 
             //Extension service
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)

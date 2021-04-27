@@ -12,25 +12,26 @@
     }
     <link rel="manifest" href="manifest.json">
     <script type="text/javascript">
-    window.document.getElementsByTagName("html")[0].setAttribute('theme-color', JSON.parse(window.localStorage.getItem('onym_theme'))['theme']);
-    window.document.getElementsByTagName("html")[0].setAttribute('accent-color', JSON.parse(window.localStorage.getItem('onym_theme'))['accent']);
+    document.getElementsByTagName("html")[0].setAttribute('theme-color', JSON.parse(window.localStorage.getItem('onym_theme'))['theme']);document.getElementsByTagName("html")[0].setAttribute('accent-color', JSON.parse(window.localStorage.getItem('onym_theme'))['accent']);
     </script>
 </head>
 <!-- APP BODY -->
 <body class="app">
 <!-- HEADER -->
-<header class="header preload">
+<header class="header">
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg" role="navigation">
-        <div class=" container-lg">
+        <div class="container-lg">
             <!-- NAVBAR-BRAND -->
             <a asp-action="Index" asp-controller="Feed" class="navbar-brand font-weight-bold">ONYM</a>
             <!-- NAVBAR-TOGGLER -->
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#header-navbar" aria-controls="navbar" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
             <!-- NAVBAR-CONTENT -->
-            <div class="collapse navbar-collapse" id="header-navbar">
+            <div class="collapse navbar-collapse" id="navbar">
                 <!-- LINKS -->
                 <ul class="navbar-nav">
                     <li>
@@ -43,16 +44,74 @@
                             <a asp-action="Index" asp-controller="Feed" class="nav-link">Популярное</a>
                         }
                     </li>
+                    <li>
+                        @if (ViewBag.Page == "Best")
+                        {
+                            <a asp-action="Best" asp-controller="Feed" class="nav-link active">Лучшее</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Best" asp-controller="Feed" class="nav-link">Лучшее</a>
+                        }
+                    </li>
+                    <li>
+                        @if (ViewBag.Page == "New")
+                        {
+                            <a asp-action="New" asp-controller="Feed" class="nav-link active">Новое</a>
+                        }
+                        else
+                        {
+                            <a asp-action="New" asp-controller="Feed" class="nav-link">Новое</a>
+                        }
+                    </li>
+                    <li>
+                        @if (ViewBag.Page == "Random")
+                        {
+                            <a asp-action="Random" asp-controller="Feed" class="nav-link active">Случайное</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Random" asp-controller="Feed" class="nav-link">Случайное</a>
+                        }
+                    </li>
                 </ul>
+            <div class="navbar-left d-none d-lg-flex">
+                <!-- SEARCH -->
+                <form asp-action="Search" asp-controller="Feed" class="search hidden navbar-left-item" autocomplete="off" method="get">
+                    <div class="input-group input-group-sm">
+                        <input class="search-input-field form-control" name="search" type="search" on placeholder="Поиск" value="" aria-describedby="search-button-addon">
+                        <button class="search-button btn btn-secondary material-icons" type="button" id="search-button-addon">search</button>
+                    </div>
+                </form>
+                <!-- AVATAR -->
+                @{
+                    if (ViewBag.UserAuthenticated == true)
+                    {
+                        <div class="d-none d-lg-block navbar-left-item">
+                            <a asp-controller="User" asp-action="Index" asp-route-login="@ViewBag.Login">
+                                <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" class="user-avatar" width="55px" height="55px" alt="" asp-append-version="true">
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-none d-lg-block navbar-left-item">
+                            <a asp-controller="User" asp-action="SignIn">
+                                <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" class="user-avatar" width="55px" height="55px" alt="" asp-append-version="true">
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
             </div>
         </div>
     </nav>
 </header>
 <!-- CONTENT-BLOCK -->
-<div>
+<div class="container-lg d-lg-flex mt-3 mb-3">
     <!-- SIDEBAR -->
     <aside>
-
+        
     </aside>
     <!-- MAIN -->
     <main>
@@ -63,6 +122,26 @@
 <footer>
 
 </footer>
+<!-- THEME SWITCHER -->
+<div class="theme-switcher hidden">
+    <div class="popover-menu">
+        <div class="accent-list">
+            <input type="checkbox" class="accent-list-item" id="change-accent-green">
+            <label class="material-icons green" for="change-accent-green"></label>
+            <input type="checkbox" class="accent-list-item" id="change-accent-yellow">
+            <label class="material-icons yellow" for="change-accent-yellow"></label>
+            <input type="checkbox" class="accent-list-item" id="change-accent-sky">
+            <label class="material-icons sky" for="change-accent-sky"></label>
+            <input type="checkbox" class="accent-list-item"id="change-accent-pastel">
+            <label class="material-icons pastel" for="change-accent-pastel"></label>
+        </div>
+        <div class="theme-switcher-check">
+            <p>Тёмная тема</p>
+            <input id="theme-switcher-check" type="checkbox" onchange="switchTheme()"/><label for="theme-switcher-check"></label>
+        </div>
+    </div>
+    <button class="popover-button material-icons">palette</button>
+</div>
 @{
     await Html.RenderPartialAsync("_ScriptsPartial");
 }

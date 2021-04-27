@@ -21,20 +21,27 @@ using Onym;
 #nullable disable
 #nullable restore
 #line 2 "D:\Repos\Onym\Onym\Views\_ViewImports.cshtml"
-using System.Diagnostics;
+using Onym.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "D:\Repos\Onym\Onym\Views\_ViewImports.cshtml"
+using Onym.Models;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\Repos\Onym\Onym\Views\_ViewImports.cshtml"
 using Microsoft.EntityFrameworkCore;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57218c316b6921e2cd61027a2387edc31a2d9471", @"/Views/Feed/Best.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1245d56ca21cf72ccc6992d5d3028c1fd5e8a22c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5941f49932b90af0fc4fdab67517a458ad5f9a0c", @"/Views/_ViewImports.cshtml")]
     public class Views_Feed_Best : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

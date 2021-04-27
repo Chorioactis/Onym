@@ -1,5 +1,5 @@
 ﻿@import (reference) "palette";
-
+/*-----HEADER-----*/
 .header{
 position: -webkit-sticky;
 position: sticky;
@@ -13,13 +13,10 @@ z-index: 1020;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  height: 64px !important;      
     .navbar-brand {
-      color: #FFFFFF;
+      color: var(--active-color) !important;
       &:hover, &:focus {
-        color: #FFFFFF;  
+        color: var(--active-color) !important; 
         display: -ms-flexbox;
         display: flex;
         -ms-flex-direction: column;
@@ -33,22 +30,147 @@ z-index: 1020;
       .nav-link {
         color: var(--secondary-text-color) !important;
           &:hover, &:focus {
-          color: #FFFFFF !important;
+          color: var(--active-color) !important;
         }
-          .disabled {
+          &.disabled {
           color: var(--disabled-text-color) !important;
         }
-          .show >, .active {
-          color: #FFFFFF;
+          &.active {
+          color: var(--active-color) !important;
         }
       }
     }
     .navbar-toggler {
-      color: var(--secondary-text-color) !important;
-      border-color: var(--secondary-text-color) !important;
-      .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      padding: 0;
+      background: none;
+      border: none;
+      &:active, &:focus {
+        outline: 0;
+      }
+      .icon-bar {
+        background-color: var(--active-color) !important;
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+        margin: 4px 0 4px 0;
+        transition: all 0.2s;
+        &:nth-of-type(1) {
+          transform: rotate(45deg) translate3d(20%,200%,0);
+        }
+        &:nth-of-type(2) {
+          transform: rotate(45deg);
+          opacity: 0;
+        }
+        &:nth-of-type(3) {
+          transform: rotate(-45deg) translate3d(20%,-200%,0);
+        }
+      }
+      &.collapsed {
+        .icon-bar {
+          &:nth-of-type(1) {
+            transform: rotate(0);
+          }
+          &:nth-of-type(2) {
+            transform: rotate(0);
+            opacity: 1;
+          }
+          &:nth-of-type(3) {
+            transform: rotate(0);
+          }
+        }
+      }
+    }
+    .navbar-collapse{
+      .navbar-left {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 200%;
+        .navbar-left-item {
+          padding-right: 16px;
+
+          &:last-child {
+            padding-right: 0;
+          }
+        }
+        .search {
+          .search-button {
+            transition: 200ms ease;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            font-size: 1.3rem;
+            color: var(--article-text-color);
+            background-color: var(--section-background-color);
+            padding: 0;
+            border: 0;
+
+            &:hover {
+              transition: 200ms ease;
+              color: var(--minor-accent-color);
+            }
+          }
+
+          .search-input-field {
+            transition: 200ms ease;
+            transition-delay: 200ms;
+            transform: scaleX(1);
+            transform-origin: right;
+            color: var(--article-text-color);
+            background-color: var(--section-background-color);
+            border: 0;
+
+            &.active, &.focus {
+              color: var(--article-text-color);
+              background-color: var(--section-background-color);
+            }
+
+            &::-ms-clear {
+              display: none !important;
+            }
+
+            &::-webkit-search-cancel-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          }
+
+          &.hidden {
+            .search-button {
+              transition: 200ms ease;
+              transition-delay: 200ms;
+              border-radius: 50% !important;
+              height: 40px;
+              width: 40px;
+              color: var(--secondary-text-color);
+              background-color: var(--minor-accent-color);
+
+              &:hover {
+                transition: color 200ms ease;
+                color: var(--minor-accent-color);
+                background-color: var(--section-background-color)
+              }
+            }
+
+            .search-input-field {
+              transition: 200ms ease;
+              transform: scaleX(0);
+              transform-origin: right;
+              padding: 0;
+              width: 1px;
+            }
+          }
+        }
+        .user-avatar {
+          vertical-align: middle;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
       }
     }
   }
 }
+

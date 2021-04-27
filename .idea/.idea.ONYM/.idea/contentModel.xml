@@ -16,17 +16,19 @@
             <e p="app.css" t="Include" />
             <e p="header.css" t="Include" />
             <e p="palette.css" t="Include" />
+            <e p="theme-switcher.css" t="Include" />
           </e>
           <e p="js" t="Include">
             <e p="constants.js" t="Include" />
-            <e p="preload.js" t="Include" />
             <e p="publication.js" t="Include" />
+            <e p="search.js" t="Include" />
             <e p="theme-switcher.js" t="Include" />
           </e>
           <e p="Less" t="Include">
             <e p="app.less" t="Include" />
             <e p="header.less" t="Include" />
             <e p="palette.less" t="Include" />
+            <e p="theme-switcher.less" t="Include" />
           </e>
         </e>
         <e p="Controllers" t="Include">
@@ -34,9 +36,17 @@
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="Data" t="Include">
+          <e p="Enums" t="Include">
+            <e p="SortState.cs" t="Include" />
+          </e>
           <e p="OnymDbContext.cs" t="Include" />
         </e>
         <e p="gulpfile.js" t="Include" />
+        <e p="Migrations" t="Include">
+          <e p="20210426174736_initial.cs" t="Include" />
+          <e p="20210426174736_initial.Designer.cs" t="Include" />
+          <e p="OnymDbContextModelSnapshot.cs" t="Include" />
+        </e>
         <e p="Models" t="Include">
           <e p="Comment.cs" t="Include" />
           <e p="CommentMedia.cs" t="Include" />
@@ -71,7 +81,14 @@
         <e p="Startup.cs" t="Include" />
         <e p="ViewModels" t="Include">
           <e p="ErrorViewModel.cs" t="Include" />
-          <e p="Feed" t="Include" />
+          <e p="Feed" t="Include">
+            <e p="FeedFilterViewModel.cs" t="Include" />
+            <e p="FeedModerateViewModel.cs" t="Include" />
+            <e p="FeedPageViewModel.cs" t="Include" />
+            <e p="FeedRateViewModel.cs" t="Include" />
+            <e p="FeedSortViewModel.cs" t="Include" />
+            <e p="FeedViewModel.cs" t="Include" />
+          </e>
           <e p="User" t="Include">
             <e p="SignUpViewModel.cs" t="Include" />
           </e>
@@ -81,9 +98,13 @@
           <e p="_ViewStart.cshtml" t="Include" />
           <e p="Feed" t="Include">
             <e p="Best.cshtml" t="Include" />
+            <e p="Favorite.cshtml" t="Include" />
+            <e p="Hidden.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="Liked.cshtml" t="Include" />
             <e p="New.cshtml" t="Include" />
             <e p="Random.cshtml" t="Include" />
+            <e p="Search.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_Layout.cshtml" t="Include" />
@@ -92,12 +113,24 @@
           </e>
           <e p="User" t="Include">
             <e p="Index.cshtml" t="Include" />
+            <e p="SignIn.cshtml" t="Include" />
           </e>
         </e>
         <e p="wwwroot" t="Include">
           <e p="css" t="Include">
             <e p="site.bundle.css" t="Include" />
             <e p="site.bundle.min.css" t="Include" />
+          </e>
+          <e p="fonts" t="Include">
+            <e p="iconfont" t="Include">
+              <e p="material-icons.css" t="Include" />
+              <e p="MaterialIcons-Regular.eot" t="Include" />
+              <e p="MaterialIcons-Regular.ijmap" t="Include" />
+              <e p="MaterialIcons-Regular.svg" t="Include" />
+              <e p="MaterialIcons-Regular.ttf" t="Include" />
+              <e p="MaterialIcons-Regular.woff" t="Include" />
+              <e p="MaterialIcons-Regular.woff2" t="Include" />
+            </e>
           </e>
           <e p="js" t="Include">
             <e p="site.bundle.js" t="Include" />

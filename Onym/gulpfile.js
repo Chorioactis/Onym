@@ -9,7 +9,7 @@ var paths = {
     webroot: "./wwwroot/"
 };
 gulp.task("less", function () {
-    return gulp.src('Content/Less/*.less')
+    return gulp.src('Content/less/*.less')
         .pipe(less())
         .pipe(gulp.dest(paths.content + '/css'))
 });
