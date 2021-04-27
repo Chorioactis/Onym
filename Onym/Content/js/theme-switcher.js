@@ -98,13 +98,15 @@ function accentSwitcherLoad()
             break;
     }
 }
+themeSwitcherLoad();
+accentSwitcherLoad();
 Document.onvisibilitychange = function() {
-    setThemeSettings(getThemeSetting('theme'),getThemeSetting('accent'));
     themeSwitcherLoad();
     accentSwitcherLoad();
+    setThemeSettings(getThemeSetting('theme'),getThemeSetting('accent'));
 };
 // THEME SWITCHER LISTENERS
-themeCheckbox.addEventListener('onchange', e => {
+themeCheckbox.addEventListener('change', e => {
     switchTheme();
 });
 popoverButton.addEventListener('mouseenter', e => {

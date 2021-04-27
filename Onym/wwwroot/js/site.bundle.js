@@ -199,7 +199,7 @@ Document.onvisibilitychange = function() {
     accentSwitcherLoad();
 };
 // THEME SWITCHER LISTENERS
-themeCheckbox.addEventListener('onchange', e => {
+themeCheckbox.addEventListener('change', e => {
     switchTheme();
 });
 popoverButton.addEventListener('mouseenter', e => {

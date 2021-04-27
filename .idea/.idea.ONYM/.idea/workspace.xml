@@ -111,10 +111,10 @@
         <option value="$PROJECT_DIR$/Onym/Content/less/palette.less" />
         <option value="$PROJECT_DIR$/Onym/Content/less/theme-switcher.less" />
         <option value="$PROJECT_DIR$/Onym/Content/less/header.less" />
-        <option value="$PROJECT_DIR$/Onym/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/Onym/Content/js/constants.js" />
         <option value="$PROJECT_DIR$/Onym/Content/js/search.js" />
         <option value="$PROJECT_DIR$/Onym/wwwroot/js/site.bundle.js" />
+        <option value="$PROJECT_DIR$/Onym/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/Onym/Content/js/theme-switcher.js" />
       </list>
     </option>
@@ -156,7 +156,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="5.3.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.14.41" />
+    <property name="javascript.nodejs.core.library.typings.version" value="15.0.1" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/Onym/node_modules/gulp" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="nodejs_interpreter_path" value="$USER_HOME$/.nuget/packages/node.js/5.3.0/node" />
@@ -245,6 +245,7 @@
       <workItem from="1619196061471" duration="10452000" />
       <workItem from="1619250977024" duration="41234000" />
       <workItem from="1619424426706" duration="81391000" />
+      <workItem from="1619553253741" duration="661000" />
     </task>
     <servers />
   </component>
@@ -263,6 +264,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
