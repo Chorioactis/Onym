@@ -1,0 +1,22 @@
+﻿@model Onym.ViewModels.User.SignUpViewModel
+@{
+    ViewBag.Title = "Регистрация";
+    ViewBag.Page = "SignUp";
+}
+<form asp-action="SignUp" asp-controller="User" asp-anti-forgery="true" class="form-group ml-3 mr-3">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-center lh-condensed row">
+            <h6>Регистрация</h6>
+            <input type="text" asp-for="UserName" class="form-control mt-2"/>
+            <span asp-validation-for="UserName" class="d-block mr-auto text-danger"></span>
+            <input type="text" asp-for="Email" class="form-control mt-3"/>
+            <span asp-validation-for="Email" class="d-block mr-auto text-danger"></span>
+            <input type="password" asp-for="Password" class="form-control mt-3"/>
+            <span asp-validation-for="Password" class="d-block mr-auto text-danger"></span>
+            <input type="password" asp-for="ConfirmPassword" class="form-control mt-3"/>
+            <span asp-validation-for="ConfirmPassword" class="d-block mr-auto text-danger"></span>
+            <button  type="submit" name="signUp" value="signUp" class="btn btn-success d-flex justify-content-center w-100 mt-3 accent-bg-color">Создать Аккаунт</button>
+            <a asp-action="SignIn" asp-controller="User" class="user-sign-in-up-link mt-2">Войти</a>
+        </li>
+    </ul>
+</form>

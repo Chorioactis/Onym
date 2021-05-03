@@ -30,7 +30,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <!-- NAVBAR-CONTENT -->
+            <!-- NAVBAR-MAIN-MENU -->
             <div class="collapse navbar-collapse" id="navbar">
                 <!-- LINKS -->
                 <ul class="navbar-nav">
@@ -75,43 +75,51 @@
                         }
                     </li>
                 </ul>
-            <div class="navbar-left d-none d-lg-flex">
+            <!-- NAVBAR-RIGHT-MENU -->
+            <div class="navbar-right d-none d-lg-flex">
                 <!-- SEARCH -->
-                <form asp-action="Search" asp-controller="Feed" class="search hidden navbar-left-item" autocomplete="off" method="get">
+                <form asp-action="Search" asp-controller="Feed" class="search hidden navbar-right-item" autocomplete="off" method="get">
                     <div class="input-group input-group-sm">
                         <input class="search-input-field form-control" name="search" type="search" on placeholder="Поиск" value="" aria-describedby="search-button-addon">
                         <button class="search-button btn btn-secondary material-icons" type="button" id="search-button-addon">search</button>
                     </div>
                 </form>
                 <!-- AVATAR -->
+                <div class="d-none d-lg-block navbar-right-item">
                 @{
-                    if (ViewBag.UserAuthenticated == true)
+                    if (SignInManager.IsSignedIn(User))
                     {
-                        <div class="d-none d-lg-block navbar-left-item">
-                            <a asp-controller="User" asp-action="Index" asp-route-login="@ViewBag.Login">
-                                <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" class="user-avatar" width="55px" height="55px" alt="" asp-append-version="true">
-                            </a>
-                        </div>
+                        <a asp-action="Index" asp-controller="User" asp-route-login="@ViewBag.Login" class="user-avatar">
+                            <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" alt="Аватар пользователя" asp-append-version="true">
+                        </a>
                     }
                     else
                     {
-                        <div class="d-none d-lg-block navbar-left-item">
-                            <a asp-controller="User" asp-action="SignIn">
-                                <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" class="user-avatar" width="55px" height="55px" alt="" asp-append-version="true">
-                            </a>
-                        </div>
+                        <a asp-action="SignIn" asp-controller="User" class="user-avatar">
+                            <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar"  alt="Аватар пользователя" asp-append-version="true">
+                        </a>
                     }
                 }
+                </div>
             </div>
             </div>
         </div>
     </nav>
 </header>
 <!-- CONTENT-BLOCK -->
-<div class="container-lg d-lg-flex mt-3 mb-3">
+<div class="container-lg">
     <!-- SIDEBAR -->
-    <aside>
-        
+    <aside class="sidebar">
+        @{
+            await Html.RenderPartialAsync("_UserBlock");
+            /*if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+            {
+            await Html.RenderPartialAsync("_Moderation");
+            }*/
+            /*await Html.RenderPartialAsync("_CommOfTheDay");
+            await Html.RenderPartialAsync("_Advertising");
+            await Html.RenderPartialAsync("_TopTags");*/
+        }
     </aside>
     <!-- MAIN -->
     <main>
@@ -132,7 +140,7 @@
             <label class="material-icons yellow" for="change-accent-yellow"></label>
             <input type="checkbox" class="accent-list-item" id="change-accent-sky">
             <label class="material-icons sky" for="change-accent-sky"></label>
-            <input type="checkbox" class="accent-list-item"id="change-accent-pastel">
+            <input type="checkbox" class="accent-list-item" id="change-accent-pastel">
             <label class="material-icons pastel" for="change-accent-pastel"></label>
         </div>
         <div class="theme-switcher-check">

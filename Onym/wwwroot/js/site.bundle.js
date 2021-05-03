@@ -177,7 +177,7 @@ function hideThemeSwitcher()
 }
 function themeSwitcherLoad()
 {
-    if(getThemeSetting('theme') === Dark_theme){themeCheckbox.checked = true;}
+    themeCheckbox.checked = getThemeSetting('theme') === Dark_theme;
 }
 function accentSwitcherLoad()
 {
@@ -193,10 +193,12 @@ function accentSwitcherLoad()
             break;
     }
 }
+themeSwitcherLoad();
+accentSwitcherLoad();
 Document.onvisibilitychange = function() {
-    setThemeSettings(getThemeSetting('theme'),getThemeSetting('accent'));
     themeSwitcherLoad();
     accentSwitcherLoad();
+    setThemeSettings(getThemeSetting('theme'),getThemeSetting('accent'));
 };
 // THEME SWITCHER LISTENERS
 themeCheckbox.addEventListener('change', e => {

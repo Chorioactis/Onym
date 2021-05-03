@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Onym.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,22 +84,22 @@ namespace Onym.Migrations
                     normalized_user_name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     user_email = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     normalized_user_email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    user_email_confirmed = table.Column<bool>(type: "boolean", nullable: false),
+                    user_email_confirmed = table.Column<bool>(type: "boolean", nullable: false, defaultValueSql: "false"),
                     user_password_hash = table.Column<string>(type: "text", nullable: false),
                     user_security_stamp = table.Column<string>(type: "text", nullable: true),
                     user_concurrency_stamp = table.Column<string>(type: "text", nullable: true),
                     user_phone_number = table.Column<string>(type: "text", nullable: true),
-                    user_phone_number_confirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    user_two_factors_enabled = table.Column<bool>(type: "boolean", nullable: false),
+                    user_phone_number_confirmed = table.Column<bool>(type: "boolean", nullable: false, defaultValueSql: "false"),
+                    user_two_factors_enabled = table.Column<bool>(type: "boolean", nullable: false, defaultValueSql: "false"),
                     user_lockout_end = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
-                    user_lockout_enabled = table.Column<bool>(type: "boolean", nullable: false),
+                    user_lockout_enabled = table.Column<bool>(type: "boolean", nullable: false, defaultValueSql: "false"),
                     user_access_failed_tally = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_users", x => x.user_id);
                     table.ForeignKey(
-                        name: "profile_picture",
+                        name: "FK_profile_picture",
                         column: x => x.user_profile_picture,
                         principalSchema: "public",
                         principalTable: "media",
@@ -121,7 +121,7 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_role_claims", x => x.role_id);
                     table.ForeignKey(
-                        name: "FK_role_claims_roles_role_id",
+                        name: "FK_role_id",
                         column: x => x.role_id,
                         principalSchema: "public",
                         principalTable: "roles",
@@ -147,14 +147,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_publications", x => x.publication_id);
                     table.ForeignKey(
-                        name: "publication author",
+                        name: "FK_publication author",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
                         principalColumn: "user_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "publication_status",
+                        name: "FK_publication_status",
                         column: x => x.publication_status,
                         principalSchema: "public",
                         principalTable: "statuses",
@@ -177,7 +177,7 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_user_claims", x => x.user_claim_id);
                     table.ForeignKey(
-                        name: "FK_user_claims_users_user_id",
+                        name: "FK_user_claims",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -199,7 +199,7 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_user_logins", x => new { x.login_provider, x.provider_key });
                     table.ForeignKey(
-                        name: "FK_user_logins_users_user_id",
+                        name: "FK_user_logins",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -219,14 +219,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_user_roles", x => new { x.user_id, x.role_id });
                     table.ForeignKey(
-                        name: "FK_user_roles_roles_role_id",
+                        name: "FK_role_id",
                         column: x => x.role_id,
                         principalSchema: "public",
                         principalTable: "roles",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_user_roles_users_user_id",
+                        name: "FK_user_roles",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -247,18 +247,18 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_user_statuses", x => new { x.user_id, x.role_id });
                     table.ForeignKey(
-                        name: "FK_user_statuses_users_user_id",
-                        column: x => x.user_id,
-                        principalSchema: "public",
-                        principalTable: "users",
-                        principalColumn: "user_id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "status-user",
+                        name: "FK_status-user",
                         column: x => x.role_id,
                         principalSchema: "public",
                         principalTable: "statuses",
                         principalColumn: "status_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_user-statuses",
+                        column: x => x.user_id,
+                        principalSchema: "public",
+                        principalTable: "users",
+                        principalColumn: "user_id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -276,7 +276,7 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_user_tokens", x => new { x.user_id, x.login_provider, x.user_token_name });
                     table.ForeignKey(
-                        name: "FK_user_tokens_users_user_id",
+                        name: "FK_user_tokens",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -303,28 +303,28 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_comments", x => x.comment_id);
                     table.ForeignKey(
-                        name: "comment_author",
+                        name: "FK_comment_author",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
                         principalColumn: "user_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "comment_status",
+                        name: "FK_comment_status",
                         column: x => x.comment_status,
                         principalSchema: "public",
                         principalTable: "statuses",
                         principalColumn: "status_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "comment-publication",
+                        name: "FK_comment-publication",
                         column: x => x.publication_id,
                         principalSchema: "public",
                         principalTable: "publications",
                         principalColumn: "publication_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "parental_comment",
+                        name: "FK_parental_comment",
                         column: x => x.parental_comment_id,
                         principalSchema: "public",
                         principalTable: "comments",
@@ -344,14 +344,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_favorite", x => new { x.user_id, x.publication_id });
                     table.ForeignKey(
-                        name: "publications-users_favorite",
+                        name: "FK_publications-users_favorite",
                         column: x => x.publication_id,
                         principalSchema: "public",
                         principalTable: "publications",
                         principalColumn: "publication_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "users-publication_favorite",
+                        name: "FK_users-publication_favorite",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -371,14 +371,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_publication_media", x => new { x.publication_id, x.media_id });
                     table.ForeignKey(
-                        name: "media-publication",
+                        name: "FK_media-publication",
                         column: x => x.media_id,
                         principalSchema: "public",
                         principalTable: "media",
                         principalColumn: "media_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "publication-media",
+                        name: "FK_publication-media",
                         column: x => x.publication_id,
                         principalSchema: "public",
                         principalTable: "publications",
@@ -399,14 +399,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_publication_rating_tally", x => new { x.user_id, x.publication_id });
                     table.ForeignKey(
-                        name: "publications-users_rating",
+                        name: "FK_publications-users_rating",
                         column: x => x.publication_id,
                         principalSchema: "public",
                         principalTable: "publications",
                         principalColumn: "publication_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "users-publications_rating",
+                        name: "FK_users-publications_rating",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -426,14 +426,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_publication_tags", x => new { x.tag_id, x.publication_id });
                     table.ForeignKey(
-                        name: "publication-tag",
+                        name: "FK_publication-tag",
                         column: x => x.publication_id,
                         principalSchema: "public",
                         principalTable: "publications",
                         principalColumn: "publication_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "tag-publication",
+                        name: "FK_tag-publication",
                         column: x => x.tag_id,
                         principalSchema: "public",
                         principalTable: "tags",
@@ -453,14 +453,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_comment_media", x => new { x.comment_id, x.media_id });
                     table.ForeignKey(
-                        name: "comment-media",
+                        name: "FK_comment-media",
                         column: x => x.comment_id,
                         principalSchema: "public",
                         principalTable: "comments",
                         principalColumn: "comment_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "media-comment",
+                        name: "FK_media-comment",
                         column: x => x.media_id,
                         principalSchema: "public",
                         principalTable: "media",
@@ -481,14 +481,14 @@ namespace Onym.Migrations
                 {
                     table.PrimaryKey("PK_comment_rating_tally", x => new { x.user_id, x.comment_id });
                     table.ForeignKey(
-                        name: "comment-users_rating",
+                        name: "FK_comment-users_rating",
                         column: x => x.comment_id,
                         principalSchema: "public",
                         principalTable: "comments",
                         principalColumn: "comment_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "users-comment_rating",
+                        name: "FK_users-comment_rating",
                         column: x => x.user_id,
                         principalSchema: "public",
                         principalTable: "users",
@@ -563,17 +563,17 @@ namespace Onym.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_publication_status",
-                schema: "public",
-                table: "publications",
-                column: "publication_status");
-
-            migrationBuilder.CreateIndex(
-                name: "publication_name",
+                name: "IX_publication_name",
                 schema: "public",
                 table: "publications",
                 column: "publication_name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_publication_status",
+                schema: "public",
+                table: "publications",
+                column: "publication_status");
 
             migrationBuilder.CreateIndex(
                 name: "IX_role_id",
@@ -589,7 +589,7 @@ namespace Onym.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "tag_name",
+                name: "IX_tag_name",
                 schema: "public",
                 table: "tags",
                 column: "tag_name",
@@ -620,37 +620,37 @@ namespace Onym.Migrations
                 column: "role_id");
 
             migrationBuilder.CreateIndex(
-                name: "EmailIndex",
+                name: "IX_user_email",
                 schema: "public",
                 table: "users",
                 column: "normalized_user_email");
 
             migrationBuilder.CreateIndex(
-                name: "IX_user_profile_picture",
-                schema: "public",
-                table: "users",
-                column: "user_profile_picture");
-
-            migrationBuilder.CreateIndex(
-                name: "user_email",
+                name: "IX_user_email1",
                 schema: "public",
                 table: "users",
                 column: "user_email",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "user_name",
+                name: "IX_user_name",
+                schema: "public",
+                table: "users",
+                column: "normalized_user_name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_name1",
                 schema: "public",
                 table: "users",
                 column: "user_name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "UserNameIndex",
+                name: "IX_user_profile_picture",
                 schema: "public",
                 table: "users",
-                column: "normalized_user_name",
-                unique: true);
+                column: "user_profile_picture");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

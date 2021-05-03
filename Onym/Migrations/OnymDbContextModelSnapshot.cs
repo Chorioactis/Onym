@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Onym.Data;
 using Onym.Models;
@@ -348,10 +349,10 @@ namespace Onym.Migrations
 
                     b.HasIndex(new[] { "UserId" }, "IX_publication_author");
 
-                    b.HasIndex(new[] { "Status" }, "IX_publication_status");
-
-                    b.HasIndex(new[] { "Name" }, "publication_name")
+                    b.HasIndex(new[] { "Name" }, "IX_publication_name")
                         .IsUnique();
+
+                    b.HasIndex(new[] { "Status" }, "IX_publication_status");
 
                     b.ToTable("publications");
                 });
@@ -453,7 +454,7 @@ namespace Onym.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "Name" }, "tag_name")
+                    b.HasIndex(new[] { "Name" }, "IX_tag_name")
                         .IsUnique();
 
                     b.ToTable("tags");
@@ -483,12 +484,16 @@ namespace Onym.Migrations
                         .HasColumnName("user_email");
 
                     b.Property<bool>("EmailConfirmed")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
-                        .HasColumnName("user_email_confirmed");
+                        .HasColumnName("user_email_confirmed")
+                        .HasDefaultValueSql("false");
 
                     b.Property<bool>("LockoutEnabled")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
-                        .HasColumnName("user_lockout_enabled");
+                        .HasColumnName("user_lockout_enabled")
+                        .HasDefaultValueSql("false");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("timestamp with time zone")
@@ -514,8 +519,10 @@ namespace Onym.Migrations
                         .HasColumnName("user_phone_number");
 
                     b.Property<bool>("PhoneNumberConfirmed")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
-                        .HasColumnName("user_phone_number_confirmed");
+                        .HasColumnName("user_phone_number_confirmed")
+                        .HasDefaultValueSql("false");
 
                     b.Property<int>("ProfilePicture")
                         .HasColumnType("integer")
@@ -540,8 +547,10 @@ namespace Onym.Migrations
                         .HasColumnName("user_security_stamp");
 
                     b.Property<bool>("TwoFactorEnabled")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
-                        .HasColumnName("user_two_factors_enabled");
+                        .HasColumnName("user_two_factors_enabled")
+                        .HasDefaultValueSql("false");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -552,19 +561,22 @@ namespace Onym.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
+                        .HasDatabaseName("IX_user_email");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
+                        .HasDatabaseName("IX_user_name");
 
-                    b.HasIndex(new[] { "ProfilePicture" }, "IX_user_profile_picture");
+                    b.HasIndex("ProfilePicture")
+                        .HasDatabaseName("IX_user_profile_picture");
 
-                    b.HasIndex(new[] { "Email" }, "user_email")
-                        .IsUnique();
+                    b.HasIndex(new[] { "Email" }, "IX_user_email")
+                        .IsUnique()
+                        .HasDatabaseName("IX_user_email1");
 
-                    b.HasIndex(new[] { "UserName" }, "user_name")
-                        .IsUnique();
+                    b.HasIndex(new[] { "UserName" }, "IX_user_name")
+                        .IsUnique()
+                        .HasDatabaseName("IX_user_name1");
 
                     b.ToTable("users");
                 });
@@ -594,6 +606,7 @@ namespace Onym.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
+                        .HasConstraintName("FK_role_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -603,6 +616,7 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.User", null)
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
+                        .HasConstraintName("FK_user_claims")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -612,6 +626,7 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.User", null)
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
+                        .HasConstraintName("FK_user_logins")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -621,12 +636,14 @@ namespace Onym.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<int>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
+                        .HasConstraintName("FK_role_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", null)
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
+                        .HasConstraintName("FK_user_roles")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -636,6 +653,7 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.User", null)
                         .WithMany("Tokens")
                         .HasForeignKey("UserId")
+                        .HasConstraintName("FK_user_tokens")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -645,26 +663,26 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Comment", "ParentalComment")
                         .WithMany("InverseParentalComment")
                         .HasForeignKey("ParentalCommentId")
-                        .HasConstraintName("parental_comment");
+                        .HasConstraintName("FK_parental_comment");
 
                     b.HasOne("Onym.Models.Publication", "Publication")
                         .WithMany("Comments")
                         .HasForeignKey("PublicationId")
-                        .HasConstraintName("comment-publication")
+                        .HasConstraintName("FK_comment-publication")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.Status", "CommentStatusNavigation")
                         .WithMany("Comments")
                         .HasForeignKey("Status")
-                        .HasConstraintName("comment_status")
+                        .HasConstraintName("FK_comment_status")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("comment_author")
+                        .HasConstraintName("FK_comment_author")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -682,14 +700,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Comment", "Comment")
                         .WithMany("CommentMedia")
                         .HasForeignKey("CommentId")
-                        .HasConstraintName("comment-media")
+                        .HasConstraintName("FK_comment-media")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.Media", "Media")
                         .WithMany("CommentMedia")
                         .HasForeignKey("MediaId")
-                        .HasConstraintName("media-comment")
+                        .HasConstraintName("FK_media-comment")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -703,14 +721,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Comment", "Comment")
                         .WithMany("CommentRatingTallies")
                         .HasForeignKey("CommentId")
-                        .HasConstraintName("comment-users_rating")
+                        .HasConstraintName("FK_comment-users_rating")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", "User")
                         .WithMany("CommentRatingTallies")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("users-comment_rating")
+                        .HasConstraintName("FK_users-comment_rating")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -724,14 +742,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Publication", "Publication")
                         .WithMany("Favorites")
                         .HasForeignKey("PublicationId")
-                        .HasConstraintName("publications-users_favorite")
+                        .HasConstraintName("FK_publications-users_favorite")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", "User")
                         .WithMany("Favorites")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("users-publication_favorite")
+                        .HasConstraintName("FK_users-publication_favorite")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -745,14 +763,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Status", "PublicationStatusNavigation")
                         .WithMany("Publications")
                         .HasForeignKey("Status")
-                        .HasConstraintName("publication_status")
+                        .HasConstraintName("FK_publication_status")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", "User")
                         .WithMany("Publications")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("publication author")
+                        .HasConstraintName("FK_publication author")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -766,14 +784,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Media", "Media")
                         .WithMany("PublicationMedia")
                         .HasForeignKey("MediaId")
-                        .HasConstraintName("media-publication")
+                        .HasConstraintName("FK_media-publication")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.Publication", "Publication")
                         .WithMany("PublicationMedia")
                         .HasForeignKey("PublicationId")
-                        .HasConstraintName("publication-media")
+                        .HasConstraintName("FK_publication-media")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -787,14 +805,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Publication", "Publication")
                         .WithMany("PublicationRatingTallies")
                         .HasForeignKey("PublicationId")
-                        .HasConstraintName("publications-users_rating")
+                        .HasConstraintName("FK_publications-users_rating")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", "User")
                         .WithMany("PublicationRatingTallies")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("users-publications_rating")
+                        .HasConstraintName("FK_users-publications_rating")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -808,14 +826,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Publication", "Publication")
                         .WithMany("PublicationTags")
                         .HasForeignKey("PublicationId")
-                        .HasConstraintName("publication-tag")
+                        .HasConstraintName("FK_publication-tag")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.Tag", "Tag")
                         .WithMany("PublicationTags")
                         .HasForeignKey("TagId")
-                        .HasConstraintName("tag-publication")
+                        .HasConstraintName("FK_tag-publication")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -829,7 +847,7 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Media", "UserProfilePictureNavigation")
                         .WithMany("Users")
                         .HasForeignKey("ProfilePicture")
-                        .HasConstraintName("profile_picture")
+                        .HasConstraintName("FK_profile_picture")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -841,13 +859,14 @@ namespace Onym.Migrations
                     b.HasOne("Onym.Models.Status", "Status")
                         .WithMany("UserStatuses")
                         .HasForeignKey("StatusId")
-                        .HasConstraintName("status-user")
+                        .HasConstraintName("FK_status-user")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Onym.Models.User", "User")
                         .WithMany("UserStatuses")
                         .HasForeignKey("UserId")
+                        .HasConstraintName("FK_user-statuses")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

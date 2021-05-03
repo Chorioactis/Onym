@@ -7,10 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Reflection;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 
-[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.RelatedAssemblyAttribute("Onym.Views")]
+[assembly: RelatedAssembly("Onym.Views")]
 
 // Создано классом WriteCodeFragment MSBuild.
 

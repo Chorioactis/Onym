@@ -82,7 +82,7 @@ function hideThemeSwitcher()
 }
 function themeSwitcherLoad()
 {
-    if(getThemeSetting('theme') === Dark_theme){themeCheckbox.checked = true;}
+    themeCheckbox.checked = getThemeSetting('theme') === Dark_theme;
 }
 function accentSwitcherLoad()
 {

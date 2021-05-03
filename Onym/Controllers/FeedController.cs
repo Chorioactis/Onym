@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Onym.Data;
 using Onym.Models;
@@ -10,16 +10,16 @@ namespace Onym.Controllers
 {
     public class FeedController : Controller
     {
-        private static OnymDbContext<User>? _db;
-        
-        //CLASS CONSTRUCTOR
-        public FeedController(OnymDbContext<User> context)
+        private readonly UserManager<User> _userManager;  
+        private readonly SignInManager<User> _signInManager;  
+        private readonly OnymDbContext<User> _db;
+        public FeedController(UserManager<User> userManager, SignInManager<User> signInManager, OnymDbContext<User> db)
         {
-            _db = context;
-        }
+            _db = db;
+            _userManager = userManager;  
+            _signInManager = signInManager;  
+        }  
 
-        [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View();

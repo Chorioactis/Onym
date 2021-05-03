@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -34,8 +35,41 @@ namespace Onym
                 .AddEntityFrameworkStores<OnymDbContext<User>>()
                 .AddDefaultTokenProviders();
             //Model-View-Controller
-            services.AddMvc();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
+            //Identity configuration
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(0);
+                options.Lockout.MaxFailedAccessAttempts = 0;
+                options.Lockout.AllowedForNewUsers = false;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._";
+                options.User.RequireUniqueEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+            
             //Extension service
             
         }
@@ -71,6 +105,7 @@ namespace Onym
                 endpoints.MapControllerRoute(
                     "profile",
                     "{controller=User}/{action=Index}/{'@' + login?}");
+                endpoints.MapRazorPages();
             });
         }
     }

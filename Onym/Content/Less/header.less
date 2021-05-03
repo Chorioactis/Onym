@@ -1,12 +1,11 @@
 ﻿@import (reference) "palette";
 /*-----HEADER-----*/
 .header{
-position: -webkit-sticky;
 position: sticky;
 top: 0;
 z-index: 1020;
   .navbar{
-  background-color: var(--major-accent-color) !important;
+  background-color: var(--major-accent-color);
   transition: 200ms ease-out;
   position: relative;
   display: flex;
@@ -14,29 +13,29 @@ z-index: 1020;
   align-items: center;
   justify-content: space-between;
     .navbar-brand {
-      color: var(--active-color) !important;
+      color: var(--active-color);
       &:hover, &:focus {
-        color: var(--active-color) !important; 
+        color: var(--active-color); 
         display: -ms-flexbox;
         display: flex;
         -ms-flex-direction: column;
         flex-direction: column;
-        padding-left: 0;
+        padding-right: 0;
         margin-bottom: 0;
         list-style: none;
       }
     }
     .navbar-nav {
       .nav-link {
-        color: var(--secondary-text-color) !important;
+        color: var(--secondary-text-color);
           &:hover, &:focus {
-          color: var(--active-color) !important;
+          color: var(--active-color);
         }
           &.disabled {
-          color: var(--disabled-text-color) !important;
+          color: var(--disabled-text-color);
         }
           &.active {
-          color: var(--active-color) !important;
+          color: var(--active-color);
         }
       }
     }
@@ -48,7 +47,7 @@ z-index: 1020;
         outline: 0;
       }
       .icon-bar {
-        background-color: var(--active-color) !important;
+        background-color: var(--active-color);
         display: block;
         width: 22px;
         height: 2px;
@@ -82,12 +81,12 @@ z-index: 1020;
       }
     }
     .navbar-collapse{
-      .navbar-left {
+      .navbar-right {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         width: 200%;
-        .navbar-left-item {
+        .navbar-right-item {
           padding-right: 16px;
 
           &:last-child {
@@ -161,13 +160,6 @@ z-index: 1020;
               width: 1px;
             }
           }
-        }
-        .user-avatar {
-          vertical-align: middle;
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          object-fit: cover;
         }
       }
     }

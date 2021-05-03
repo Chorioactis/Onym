@@ -1,0 +1,78 @@
+/*-----SIDEBAR-----*/
+.sidebar {
+  position: relative;
+  width: 20%;
+  margin: 0;
+}
+.sidebar .sidebar-block {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+.sidebar .sidebar-block .sidebar-block-item {
+  background-color: var(--section-background-color);
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link {
+  cursor: pointer;
+  color: var(--primary-text-color);
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link:last-child {
+  margin-bottom: 0;
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link:before {
+  left: 0;
+  width: 2px;
+  height: 24px;
+  transition: opacity 200ms ease-out;
+  content: '';
+  background-color: var(--minor-accent-color);
+  opacity: 0;
+  position: absolute;
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link:hover {
+  color: var(--minor-accent-color);
+  text-decoration: none;
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link:hover:before {
+  transition: opacity 200ms ease-out;
+  opacity: 1;
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link.active {
+  color: var(--minor-accent-color);
+}
+.sidebar .sidebar-block .sidebar-block-item .sidebar-link.active:before {
+  transition: opacity 200ms ease-out;
+  opacity: 1;
+}
+.sidebar .sidebar-block .sidebar-block-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+.sidebar .sidebar-block .sidebar-block-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+.sidebar .sidebar-block .sidebar-block-item:only-child {
+  border-radius: 4px;
+}
+.sidebar .sidebar-block .sidebar-block-item.header {
+  background-color: var(--dark-section-background-color);
+  flex-direction: row;
+  z-index: 0;
+}
+.sidebar .sidebar-block .sidebar-block-item .user-section {
+  flex-direction: column;
+  margin: auto 0 auto 12px;
+}
+@media (max-width: 991px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+  }
+}
