@@ -40,5 +40,17 @@ namespace Onym.Controllers
         {
             return View();
         }
+        public async Task<ViewResult> Rated()
+        {
+            return View();
+        }
+        public async Task<ViewResult> Favorite()
+        {
+            return View();
+        }
+        public async Task<ViewResult> UserComments()
+        {
+            return View();
+        }
     }
 }

@@ -209,14 +209,14 @@ popoverButton.addEventListener('mouseenter', e => {
     showThemeSwitcher();
 });
 popoverButton.addEventListener('mouseleave', e => {
-    timerId = setTimeout(hideThemeSwitcher, 2000)
+    timerId = setTimeout(hideThemeSwitcher, 1000)
 });
 popoverMenu.addEventListener('mouseenter', e => {
     clearTimeout(timerId);
 });
 popoverMenu.addEventListener('mouseleave', e => {
     clearTimeout(timerId);
-    timerId = setTimeout(hideThemeSwitcher, 2000)
+    timerId = setTimeout(hideThemeSwitcher, 1000)
 });
 
 accentCheckboxes.addEventListener('mouseenter', e => {

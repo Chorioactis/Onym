@@ -1,5 +1,17 @@
 ﻿@{
-    
+    var db = new OnymDbContext<User>();
+    var users = db.Users.Include(u => u.UserProfilePictureNavigation);
+    //ReSharper disable once PossibleNullReferenceException
+    ViewBag.Authenticated = User.Identity.IsAuthenticated;
+    if (ViewBag.Authenticated)
+    {
+        var user = UserManager.FindByNameAsync(User.Identity.Name);
+        ViewBag.Login = user.Result.UserName;
+        ViewBag.Avatar = user.Result.UserProfilePictureNavigation.FileLink;
+        ViewBag.Rating = user.Result.RatingTotal;
+        ViewBag.Comments = user.Result.Comments.Count();
+        ViewBag.Publications = user.Result.Publications.Count();
+    }
 }
 <!DOCTYPE html>
 <html lang="ru">
@@ -81,13 +93,13 @@
                 <form asp-action="Search" asp-controller="Feed" class="search hidden navbar-right-item" autocomplete="off" method="get">
                     <div class="input-group input-group-sm">
                         <input class="search-input-field form-control" name="search" type="search" on placeholder="Поиск" value="" aria-describedby="search-button-addon">
-                        <button class="search-button btn btn-secondary material-icons" type="button" id="search-button-addon">search</button>
+                        <button class="search-button material-icons" type="button" id="search-button-addon">search</button>
                     </div>
                 </form>
                 <!-- AVATAR -->
                 <div class="d-none d-lg-block navbar-right-item">
                 @{
-                    if (SignInManager.IsSignedIn(User))
+                    if (ViewBag.Authenticated)
                     {
                         <a asp-action="Index" asp-controller="User" asp-route-login="@ViewBag.Login" class="user-avatar">
                             <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" alt="Аватар пользователя" asp-append-version="true">
@@ -107,22 +119,23 @@
     </nav>
 </header>
 <!-- CONTENT-BLOCK -->
-<div class="container-lg">
+<div class="container-lg d-lg-flex">
     <!-- SIDEBAR -->
     <aside class="sidebar">
         @{
-            await Html.RenderPartialAsync("_UserBlock");
-            /*if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+            await Html.RenderPartialAsync("_UserSideBlock");
+            if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
             {
-            await Html.RenderPartialAsync("_Moderation");
-            }*/
+            await Html.RenderPartialAsync("_AdminSideBlock");
+            }
             /*await Html.RenderPartialAsync("_CommOfTheDay");
             await Html.RenderPartialAsync("_Advertising");
             await Html.RenderPartialAsync("_TopTags");*/
+            await Html.RenderPartialAsync("_OtherSideBlock");
         }
     </aside>
     <!-- MAIN -->
-    <main>
+    <main class="main">
         @RenderBody()
     </main>
 </div>

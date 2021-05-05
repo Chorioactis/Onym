@@ -1,0 +1,12 @@
+﻿@model string
+@{
+    ViewBag.Title = "CreateRole";
+    ViewBag.Page = "RoleManage";
+}
+<form asp-action="CreateRole" asp-controller="Admin" method="post">
+    <div class="form-group">
+        <label for="roleName">Новая роль</label>
+        <input name="roleName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>

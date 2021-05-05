@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Onym.Models;
 
@@ -17,7 +20,7 @@ namespace Onym.Data
         public OnymDbContext()
         {
         }
-        
+
         public OnymDbContext(DbContextOptions<OnymDbContext<User>> options)
             : base(options)
         {
@@ -40,11 +43,13 @@ namespace Onym.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //TODO Изменить конфигурацию в контексте ДБ
+            var configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.SetBasePath(Directory.GetCurrentDirectory());
+            configurationBuilder.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
             optionsBuilder
                 .UseLazyLoadingProxies()
-                .UseNpgsql(
-                    "User Id=postgres; Password=59735651; Server=localhost; Port=5432; Database=onym_db; Integrated Security=true; Pooling=true;");
+                .UseNpgsql(configurationBuilder.Build().GetConnectionString("OnymDb"));
         }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)

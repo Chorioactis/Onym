@@ -1,0 +1,19 @@
+﻿@model List<IdentityRole<int>>
+@{
+    ViewBag.Title = "RoleList";
+    ViewBag.Page = "RoleManage";
+}
+<h2>Список ролей</h2>
+<table class="table">
+    @foreach (var role in Model)
+    {
+        <tr>
+            <td>@role.Id</td>
+            <td>@role.Name</td>
+            <td>@role.NormalizedName</td>
+            <td>@role.ConcurrencyStamp</td>
+        </tr>
+    }
+</table>
+<a asp-action="CreateRole" asp-controller="Admin" >Добавить роль</a>
+<a asp-action="UserList" asp-controller="Admin">Список пользователей</a>

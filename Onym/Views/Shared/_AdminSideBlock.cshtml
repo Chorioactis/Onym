@@ -1,0 +1,25 @@
+﻿<!-- OTHER -->  
+<div class="sidebar-section">
+    <div class="sidebar-section-item section-header">
+        <div class="section-title">Админ панель</div>
+    </div>
+    <div class="separator"></div>
+    <ul class="sidebar-section-item">
+        @if (ViewBag.Page == "UserManage")
+        {
+            <li class="sidebar-li"><a asp-action="UserList" asp-controller="Admin" class="sidebar-link active">Пользователи</a></li>
+        }
+        else
+        {
+            <li class="sidebar-li"><a asp-action="UserList" asp-controller="Admin" class="sidebar-link">Пользователи</a></li>
+        }
+        @if (ViewBag.Page == "RoleManage")
+        {
+            <li class="sidebar-li"><a asp-action="RoleList" asp-controller="Admin" class="sidebar-link active">Роли</a></li>
+        }
+        else
+        {
+            <li class="sidebar-li"><a asp-action="RoleList" asp-controller="Admin" class="sidebar-link">Роли</a></li>
+        }
+    </ul>
+</div>

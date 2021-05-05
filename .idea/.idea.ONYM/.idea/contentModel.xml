@@ -15,6 +15,7 @@
           <e p="css" t="Include">
             <e p="app.css" t="Include" />
             <e p="header.css" t="Include" />
+            <e p="main.css" t="Include" />
             <e p="palette.css" t="Include" />
             <e p="sidebar.css" t="Include" />
             <e p="theme-switcher.css" t="Include" />
@@ -28,12 +29,14 @@
           <e p="Less" t="Include">
             <e p="app.less" t="Include" />
             <e p="header.less" t="Include" />
+            <e p="main.less" t="Include" />
             <e p="palette.less" t="Include" />
             <e p="sidebar.less" t="Include" />
             <e p="theme-switcher.less" t="Include" />
           </e>
         </e>
         <e p="Controllers" t="Include">
+          <e p="AdminController.cs" t="Include" />
           <e p="FeedController.cs" t="Include" />
           <e p="OtherController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
@@ -43,6 +46,8 @@
             <e p="SortState.cs" t="Include" />
           </e>
           <e p="OnymDbContext.cs" t="Include" />
+          <e p="RoleInitializer.cs" t="Include" />
+          <e p="UserInitializer.cs" t="Include" />
         </e>
         <e p="gulpfile.js" t="Include" />
         <e p="Migrations" t="Include">
@@ -82,7 +87,11 @@
           <e p="ServiceProviderExtensions.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
+        <e p="TODO.txt" t="Include" />
         <e p="ViewModels" t="Include">
+          <e p="Admin" t="Include">
+            <e p="RoleManageViewModel.cs" t="Include" />
+          </e>
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Feed" t="Include">
             <e p="FeedFilterViewModel.cs" t="Include" />
@@ -101,21 +110,36 @@
         <e p="Views" t="Include">
           <e p="_ViewImports.cshtml" t="Include" />
           <e p="_ViewStart.cshtml" t="Include" />
+          <e p="Admin" t="Include">
+            <e p="Role" t="Include">
+              <e p="CreateRole.cshtml" t="Include" />
+              <e p="EditRole.cshtml" t="Include" />
+              <e p="RoleList.cshtml" t="Include" />
+            </e>
+            <e p="User" t="Include">
+              <e p="EditUserRoles.cshtml" t="Include" />
+              <e p="UserList.cshtml" t="Include" />
+            </e>
+          </e>
           <e p="Feed" t="Include">
             <e p="Best.cshtml" t="Include" />
             <e p="Favorite.cshtml" t="Include" />
             <e p="Hidden.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
-            <e p="Liked.cshtml" t="Include" />
             <e p="New.cshtml" t="Include" />
             <e p="Random.cshtml" t="Include" />
+            <e p="Rated.cshtml" t="Include" />
             <e p="Search.cshtml" t="Include" />
+            <e p="UserComments.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
+            <e p="_AdminSideBlock.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_oauthLinks.cshtml" t="Include" />
+            <e p="_OtherSideBlock.cshtml" t="Include" />
             <e p="_ScriptsPartial.cshtml" t="Include" />
             <e p="_StylesPartial.cshtml" t="Include" />
-            <e p="_UserBlock.cshtml" t="Include" />
+            <e p="_UserSideBlock.cshtml" t="Include" />
           </e>
           <e p="User" t="Include">
             <e p="Index.cshtml" t="Include" />
@@ -201,6 +225,22 @@
                 <e p="jquery.min.map" t="Include" />
               </e>
               <e p="LICENSE.txt" t="Include" />
+              <e p="plagins" t="Include">
+                <e p="jquery-validation" t="Include">
+                  <e p="dist" t="Include">
+                    <e p="additional-methods.js" t="Include" />
+                    <e p="additional-methods.min.js" t="Include" />
+                    <e p="jquery.validate.js" t="Include" />
+                    <e p="jquery.validate.min.js" t="Include" />
+                  </e>
+                  <e p="LICENSE.md" t="Include" />
+                </e>
+                <e p="jquery-validation-unobtrusive" t="Include">
+                  <e p="jquery.validate.unobtrusive.js" t="Include" />
+                  <e p="jquery.validate.unobtrusive.min.js" t="Include" />
+                  <e p="LICENSE.txt" t="Include" />
+                </e>
+              </e>
             </e>
           </e>
           <e p="manifest.json" t="Include" />
