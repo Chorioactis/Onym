@@ -13,11 +13,15 @@
         <e p="bundleconfig.json" t="Include" />
         <e p="Content" t="Include">
           <e p="css" t="Include">
+            <e p="accordion.css" t="Include" />
             <e p="app.css" t="Include" />
+            <e p="form.css" t="Include" />
             <e p="header.css" t="Include" />
+            <e p="main-menu.css" t="Include" />
             <e p="main.css" t="Include" />
             <e p="palette.css" t="Include" />
             <e p="sidebar.css" t="Include" />
+            <e p="sign-in-up.css" t="Include" />
             <e p="theme-switcher.css" t="Include" />
           </e>
           <e p="js" t="Include">
@@ -27,11 +31,15 @@
             <e p="theme-switcher.js" t="Include" />
           </e>
           <e p="Less" t="Include">
+            <e p="accordion.less" t="Include" />
             <e p="app.less" t="Include" />
+            <e p="form.less" t="Include" />
             <e p="header.less" t="Include" />
+            <e p="main-menu.less" t="Include" />
             <e p="main.less" t="Include" />
             <e p="palette.less" t="Include" />
             <e p="sidebar.less" t="Include" />
+            <e p="sign-in-up.less" t="Include" />
             <e p="theme-switcher.less" t="Include" />
           </e>
         </e>
@@ -45,14 +53,18 @@
           <e p="Enums" t="Include">
             <e p="SortState.cs" t="Include" />
           </e>
+          <e p="Initializer.cs" t="Include" />
+          <e p="ModelStateHelpers.cs" t="Include" />
+          <e p="ModelStateTransfer.cs" t="Include" />
+          <e p="ModelStateTransferValue.cs" t="Include" />
           <e p="OnymDbContext.cs" t="Include" />
           <e p="RoleInitializer.cs" t="Include" />
           <e p="UserInitializer.cs" t="Include" />
         </e>
         <e p="gulpfile.js" t="Include" />
         <e p="Migrations" t="Include">
-          <e p="20210503173509_Initial.cs" t="Include" />
-          <e p="20210503173509_Initial.Designer.cs" t="Include" />
+          <e p="20210509001142_initial.cs" t="Include" />
+          <e p="20210509001142_initial.Designer.cs" t="Include" />
           <e p="OnymDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -84,6 +96,7 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Services" t="Include">
+          <e p="EmailService.cs" t="Include" />
           <e p="ServiceProviderExtensions.cs" t="Include" />
         </e>
         <e p="Startup.cs" t="Include" />
@@ -102,7 +115,10 @@
             <e p="FeedViewModel.cs" t="Include" />
           </e>
           <e p="User" t="Include">
+            <e p="EmailSettingsViewModel.cs" t="Include" />
             <e p="IndexViewModel.cs" t="Include" />
+            <e p="PasswordSettingsViewModel.cs" t="Include" />
+            <e p="SettingsViewModel.cs" t="Include" />
             <e p="SignInViewModel.cs" t="Include" />
             <e p="SignUpViewModel.cs" t="Include" />
           </e>
@@ -123,26 +139,29 @@
           </e>
           <e p="Feed" t="Include">
             <e p="Best.cshtml" t="Include" />
+            <e p="Comments.cshtml" t="Include" />
             <e p="Favorite.cshtml" t="Include" />
-            <e p="Hidden.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="New.cshtml" t="Include" />
             <e p="Random.cshtml" t="Include" />
             <e p="Rated.cshtml" t="Include" />
             <e p="Search.cshtml" t="Include" />
-            <e p="UserComments.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
-            <e p="_AdminSideBlock.cshtml" t="Include" />
+            <e p="_Error.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_MainMenuPanelFeed.cshtml" t="Include" />
+            <e p="_MainMenuPanelUser.cshtml" t="Include" />
             <e p="_oauthLinks.cshtml" t="Include" />
-            <e p="_OtherSideBlock.cshtml" t="Include" />
             <e p="_ScriptsPartial.cshtml" t="Include" />
+            <e p="_SideBlockAdmin.cshtml" t="Include" />
+            <e p="_SideBlockOther.cshtml" t="Include" />
+            <e p="_SideBlockUser.cshtml" t="Include" />
             <e p="_StylesPartial.cshtml" t="Include" />
-            <e p="_UserSideBlock.cshtml" t="Include" />
           </e>
           <e p="User" t="Include">
             <e p="Index.cshtml" t="Include" />
+            <e p="Settings.cshtml" t="Include" />
             <e p="SignIn.cshtml" t="Include" />
             <e p="SignUp.cshtml" t="Include" />
           </e>
@@ -174,34 +193,10 @@
                 <e p="bootstrap-grid.css.map" t="Include" />
                 <e p="bootstrap-grid.min.css" t="Include" />
                 <e p="bootstrap-grid.min.css.map" t="Include" />
-                <e p="bootstrap-grid.rtl.css" t="Include" />
-                <e p="bootstrap-grid.rtl.css.map" t="Include" />
-                <e p="bootstrap-grid.rtl.min.css" t="Include" />
-                <e p="bootstrap-grid.rtl.min.css.map" t="Include" />
-                <e p="bootstrap-reboot.css" t="Include" />
-                <e p="bootstrap-reboot.css.map" t="Include" />
-                <e p="bootstrap-reboot.min.css" t="Include" />
-                <e p="bootstrap-reboot.min.css.map" t="Include" />
-                <e p="bootstrap-reboot.rtl.css" t="Include" />
-                <e p="bootstrap-reboot.rtl.css.map" t="Include" />
-                <e p="bootstrap-reboot.rtl.min.css" t="Include" />
-                <e p="bootstrap-reboot.rtl.min.css.map" t="Include" />
-                <e p="bootstrap-utilities.css" t="Include" />
-                <e p="bootstrap-utilities.css.map" t="Include" />
-                <e p="bootstrap-utilities.min.css" t="Include" />
-                <e p="bootstrap-utilities.min.css.map" t="Include" />
-                <e p="bootstrap-utilities.rtl.css" t="Include" />
-                <e p="bootstrap-utilities.rtl.css.map" t="Include" />
-                <e p="bootstrap-utilities.rtl.min.css" t="Include" />
-                <e p="bootstrap-utilities.rtl.min.css.map" t="Include" />
                 <e p="bootstrap.css" t="Include" />
                 <e p="bootstrap.css.map" t="Include" />
                 <e p="bootstrap.min.css" t="Include" />
                 <e p="bootstrap.min.css.map" t="Include" />
-                <e p="bootstrap.rtl.css" t="Include" />
-                <e p="bootstrap.rtl.css.map" t="Include" />
-                <e p="bootstrap.rtl.min.css" t="Include" />
-                <e p="bootstrap.rtl.min.css.map" t="Include" />
               </e>
               <e p="js" t="Include">
                 <e p="bootstrap.bundle.js" t="Include" />

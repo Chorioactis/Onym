@@ -1,8 +1,21 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using Onym.Models
+@inject UserManager<User> UserManager
+@{
     Layout = "_Layout";
     ViewBag.PagePrevious = "Показать предыдущие посты";
     ViewBag.PageNext = "Загрузить ещё постов";
+    ViewBag.DefaultUserName = "Гость";
     ViewBag.DefaultAvatar = "/media/user-avatar-placeholder.webp";
-    ViewBag.Login = "Гость";
-    ViewBag.Avatar =  ViewBag.DefaultAvatar;
+    ViewBag.Authenticated = User.Identity?.IsAuthenticated;
+    if (ViewBag.Authenticated)
+    {
+        var user = UserManager.FindByNameAsync(User.Identity?.Name).Result;
+        ViewBag.User = user;
+        ViewBag.UserId = user.Id;
+        ViewBag.UserName = user.UserName;
+        ViewBag.Avatar = user.UserProfilePictureNavigation.FileLink;
+        ViewBag.Rating = user.RatingTotal;
+        ViewBag.CommentsCount = user.Comments.Count();
+    }
 }

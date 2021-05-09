@@ -1,4 +1,7 @@
 ﻿@{
-    ViewBag.Title = "@" + ViewBag.SoughtUserProfile;
-    ViewBag.Page = "User";
+    ViewBag.Title = "@" + ViewBag.SoughtUserName;
+    ViewBag.Page = "UserProfile";
+}
+@{
+    await Html.RenderPartialAsync("_MainMenuPanelUser");
 }

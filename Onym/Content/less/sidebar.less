@@ -34,18 +34,23 @@
             font-weight: bold;
             margin: 0 6px 0 0;
             cursor: default;
+            color: var(--primary-text-color);
           }
           .counter-label {
             font-size: 14px;
             line-height: 14px;
             margin: 0 0 0 0;
             cursor: default;
+            color: var(--primary-text-color);
             &.link {
-              transition: 200ms ease-out;
               cursor: pointer;
               color: var(--primary-text-color);
               text-decoration: none;
               &:hover {
+                color: var(--minor-accent-color);
+                text-decoration: none;
+              }
+              &.active {
                 color: var(--minor-accent-color);
                 text-decoration: none;
               }
@@ -73,7 +78,6 @@
         line-height: 16px;
         cursor: default;
         color: var(--primary-text-color);
-        transition: 200ms ease-out;
       }
       .sidebar-li {
         margin-bottom: 16px;
@@ -84,7 +88,6 @@
       .sidebar-link {
         font-size: 14px;
         line-height: 14px;
-        transition: 200ms ease-out;
         cursor: pointer;
         color: var(--primary-text-color);
         margin-bottom: 16px;
@@ -97,7 +100,7 @@
           width: 2px;
           margin: -3px 0 0 0;
           height: 20px;
-          transition: opacity 200ms ease-out;
+          transition: opacity 200ms ease-in-out;
           content: '';
           background-color: var(--minor-accent-color);
           opacity: 0;
@@ -107,14 +110,14 @@
           color: var(--minor-accent-color);
           text-decoration: none;
           &:before {
-            transition: opacity 200ms ease-out;
+            transition: opacity 200ms ease-in-out;
             opacity: 1;
           }
         }
         &.active {
           color: var(--minor-accent-color);
           &:before {
-            transition: opacity 200ms ease-out;
+            transition: opacity 200ms ease-in-out;
             opacity: 1;
           }
         }
@@ -129,7 +132,6 @@
     display: block;
     font-size: 14px;
     line-height: 14px;
-    transition: 200ms ease-out;
     color: var(--primary-text-color);
     text-decoration: none;
     border: none;

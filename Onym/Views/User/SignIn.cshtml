@@ -4,17 +4,17 @@
     ViewBag.Page = "SignIn";
 }
 <div class="main-section sign-in-up">
-    <form asp-action="SignIn" asp-controller="User" asp-anti-forgery="true" class="main-section-item sign-in-up-form">
+    <form asp-action="SignIn" asp-anti-forgery="true" asp-controller="User" autocomplete="off" class="main-section-item sign-in-up-form">
         <div class="sign-in-up-form-header">
             <div class="form-header">Вход</div>
             <span>/</span>
             <a asp-action="SignUp" asp-controller="User" class="sign-in-up-switcher">Регистрация</a>
         </div>
-        <input type="text" asp-for="UserName" autocomplete="current-username" class="form-input-text"/>
+        <input asp-for="UserName" class="form-input-text"/>
         <span asp-validation-for="UserName" class=""></span>
-        <input type="password" asp-for="Password" autocomplete="current-password" class="form-input-text"/>
+        <input asp-for="Password" class="form-input-text"/>
         <span asp-validation-for="Password" class=""></span>
-        <button type="submit" name="signUp" value="signUp" class="sign-in-up-confirm">Войти</button>
+        <button type="submit" class="form-confirm">Войти</button>
         <div class="sign-in-helper">
             <div class="remember-me">
                 <input asp-for="RememberMe" id="rememberMe" type="checkbox"/>

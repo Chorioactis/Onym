@@ -4,21 +4,21 @@
     ViewBag.Page = "SignUp";
 }
 <div class="main-section sign-in-up">
-    <form asp-action="SignUp" asp-controller="User" asp-anti-forgery="true" class="main-section-item sign-in-up-form">
+    <form asp-action="SignUp" asp-anti-forgery="true" asp-controller="User" autocomplete="off" class="main-section-item sign-in-up-form">
         <div class="sign-in-up-form-header">
-            <a asp-action="SignIn" asp-controller="User" class="sign-in-up-switcher">Авторизация</a>
+            <a asp-action="SignIn" asp-controller="User" class="sign-in-up-switcher">Вход</a>
             <span>/</span>
             <div class="form-header">Регистрация</div>
         </div>
-        <input type="text" asp-for="UserName" autocomplete="new-username" class="form-input-text"/>
+        <input asp-for="UserName" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
         <span asp-validation-for="UserName" class=""></span>
-        <input type="text" asp-for="Email" autocomplete="new-email" class="form-input-text"/>
+        <input asp-for="Email" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
         <span asp-validation-for="Email" class=""></span>
-        <input type="password" asp-for="Password" autocomplete="new-password" class="form-input-text"/>
-        <span asp-validation-for="Password" class=""></span>
-        <input type="password" asp-for="ConfirmPassword" autocomplete="new-password" class="form-input-text"/>
+        <input asp-for="Password" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
+        <span asp-validation-for="Password"></span>
+        <input asp-for="ConfirmPassword" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
         <span asp-validation-for="ConfirmPassword" class=""></span>
-        <button type="submit" name="signUp" value="signUp" class="sign-in-up-confirm">Создать аккаунт</button>
+        <button class="form-confirm" type="submit">Создать аккаунт</button>
     </form>
     <div class="separator">или</div>
     <div class="main-section-item oauth">

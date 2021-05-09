@@ -38,20 +38,25 @@
   font-weight: bold;
   margin: 0 6px 0 0;
   cursor: default;
+  color: var(--primary-text-color);
 }
 .sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label {
   font-size: 14px;
   line-height: 14px;
   margin: 0 0 0 0;
   cursor: default;
+  color: var(--primary-text-color);
 }
 .sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label.link {
-  transition: 200ms ease-out;
   cursor: pointer;
   color: var(--primary-text-color);
   text-decoration: none;
 }
 .sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label.link:hover {
+  color: var(--minor-accent-color);
+  text-decoration: none;
+}
+.sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label.link.active {
   color: var(--minor-accent-color);
   text-decoration: none;
 }
@@ -75,7 +80,6 @@
   line-height: 16px;
   cursor: default;
   color: var(--primary-text-color);
-  transition: 200ms ease-out;
 }
 .sidebar .sidebar-section .sidebar-section-item .sidebar-li {
   margin-bottom: 16px;
@@ -86,7 +90,6 @@
 .sidebar .sidebar-section .sidebar-section-item .sidebar-link {
   font-size: 14px;
   line-height: 14px;
-  transition: 200ms ease-out;
   cursor: pointer;
   color: var(--primary-text-color);
   margin-bottom: 16px;
@@ -100,7 +103,7 @@
   width: 2px;
   margin: -3px 0 0 0;
   height: 20px;
-  transition: opacity 200ms ease-out;
+  transition: opacity 200ms ease-in-out;
   content: '';
   background-color: var(--minor-accent-color);
   opacity: 0;
@@ -111,14 +114,14 @@
   text-decoration: none;
 }
 .sidebar .sidebar-section .sidebar-section-item .sidebar-link:hover:before {
-  transition: opacity 200ms ease-out;
+  transition: opacity 200ms ease-in-out;
   opacity: 1;
 }
 .sidebar .sidebar-section .sidebar-section-item .sidebar-link.active {
   color: var(--minor-accent-color);
 }
 .sidebar .sidebar-section .sidebar-section-item .sidebar-link.active:before {
-  transition: opacity 200ms ease-out;
+  transition: opacity 200ms ease-in-out;
   opacity: 1;
 }
 .sidebar .sidebar-section .sidebar-section-item .user-section {
@@ -129,7 +132,6 @@
   display: block;
   font-size: 14px;
   line-height: 14px;
-  transition: 200ms ease-out;
   color: var(--primary-text-color);
   text-decoration: none;
   border: none;

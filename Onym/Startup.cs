@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using Onym.Data;
 using Onym.Models;
+using Onym.Services;
 
 namespace Onym
 {
@@ -77,7 +78,7 @@ namespace Onym
             });;
             
             //Extension service
-            
+            services.AddEmailService();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
@@ -111,8 +112,11 @@ namespace Onym
                     "feed",
                     "{controller=Feed}/{action=Index}");
                 endpoints.MapControllerRoute(
-                    "profile",
-                    "{controller=User}/{action=Index}/{'@' + login?}");
+                    "userProfile",
+                    "{controller=User}/{action=Index}/{'@' + userName?}");
+                endpoints.MapControllerRoute(
+                    name: "userSettings",
+                    pattern: "{controller=User}/{action=Settings}");
                 endpoints.MapRazorPages();
             });
         }

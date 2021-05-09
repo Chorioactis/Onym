@@ -4,20 +4,15 @@
   background-repeat: no-repeat;
   padding: 0;
   margin: 0;
+  transition: 200ms ease-in-out;
   font-size: 16px;
   line-height: 16px;
   font-family: "Roboto Conde", "Roboto", "Arial", sans-serif;
 }
-* .preload * {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-}
 * body {
   background-color: var(--background-color) !important;
-  transition: 200ms ease-out;
 }
-* body .app {
+* .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -64,11 +59,15 @@ div.separator {
   width: 100%;
   cursor: default;
 }
+div.separator.semi {
+  padding: 0 12px;
+}
 div.separator::before,
 div.separator::after {
   content: '';
   flex: 1;
   border-bottom: 1px solid var(--border-color);
+  transition: 200ms ease-in-out;
 }
 div.separator:not(:empty) {
   margin: -6px 0 -6px 0 !important;
@@ -97,37 +96,9 @@ div.separator:not(:empty):after {
   font-size: 16px;
   line-height: 16px;
   margin: 0 0 2px 0;
-  transition: 200ms ease-out;
   color: var(--primary-text-color);
   text-decoration: none;
 }
 .user-nick:hover {
   color: var(--minor-accent-color);
-}
-/*-----FORM-----*/
-.form-header {
-  color: var(--caption-color);
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
-  margin: 0 auto;
-}
-.form-input-text {
-  background-color: var(--dark-section-background-color);
-  color: var(--article-text-color);
-  border: 1px solid var(--border-color);
-  font-size: 16px;
-  line-height: 32px;
-  border-radius: 4px;
-  padding: 2px 8px 0 8px;
-  margin: 12px 0 0 0;
-  transition: 100ms ease-out;
-}
-.form-input-text.input-validation-error {
-  border-color: var(--negative-color);
-  transition: border 100ms ease-out;
-}
-.form-input-text.valid {
-  border: 1px solid var(--border-color);
-  transition: border 100ms ease-out;
 }

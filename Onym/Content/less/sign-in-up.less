@@ -1,0 +1,184 @@
+﻿@import (reference) "palette";
+/*-----SIGN-IN-UP-----*/
+.sign-in-up {
+  flex-direction: row !important;
+
+  .sign-in-up-form {
+    width: 90%;
+    flex-direction: column;
+
+    .sign-in-helper {
+      margin: 12px 0 0 0;
+      display: flex;
+
+      .forgot-password {
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: normal;
+        color: var(--primary-text-color);
+        text-decoration: none;
+        margin: 0 0 0 auto;
+
+        &:hover {
+          cursor: pointer;
+          color: var(--minor-accent-color);
+        }
+      }
+
+      .remember-me {
+        flex-direction: row;
+        display: flex;
+
+        input {
+          position: relative;
+          width: 20px;
+          height: 20px;
+          border: 1px solid var(--border-color);
+          border-radius: 4px;
+          appearance: none;
+          outline: 0;
+          cursor: pointer;
+
+          &::before {
+            position: absolute;
+            content: '';
+            display: block;
+            top: 0;
+            left: 5px;
+            width: 8px;
+            height: 14px;
+            border-style: solid;
+            border-color: var(--active-color);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            transition: opacity 200ms ease-in-out;
+            opacity: 0;
+          }
+
+          &:checked {
+            color: var(--active-color);
+            border-color: var(--minor-accent-color);
+            background: var(--minor-accent-color);
+
+            &::before {
+              transition: opacity 200ms ease-in-out;
+              opacity: 1;
+            }
+
+            ~ label::before {
+              clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+          }
+        }
+
+        label {
+          cursor: pointer;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: normal;
+          color: var(--primary-text-color);
+          text-decoration: none;
+          margin: 0 0 0 12px;
+
+          &:hover {
+            cursor: pointer;
+            color: var(--minor-accent-color);
+          }
+        }
+      }
+    }
+
+    .sign-in-up-form-header {
+      color: var(--caption-color);
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 16px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      .sign-in-up-switcher {
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 16px;
+        font-weight: normal;
+        color: var(--primary-text-color);
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+          color: var(--minor-accent-color);
+        }
+      }
+    }
+  }
+
+  .oauth {
+    background-color: var(--dark-section-background-color);
+    border-left: 1px solid var(--border-color);
+    width: 10%;
+    align-items: center;
+    flex-direction: column;
+
+    .social-icon {
+      line-height: 0;
+      text-align: center;
+      height: 40px;
+      width: 40px;
+      margin: 0 0 12px 0;
+      display: block;
+      position: relative;
+      border-radius: 2px;
+      background-color: var(--shadow-color);
+
+      &.vk:hover {
+        background-color: var(--social-vk)
+      }
+
+      &.google:hover {
+        background-color: var(--social-google)
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .separator {
+    visibility: hidden;
+    width: 0;
+  }
+}
+@media (max-width: 991px) {
+.sign-in-up {
+  flex-direction: column !important;
+
+  .sign-in-up-form {
+    width: 100%;
+  }
+
+  .oauth {
+    background-color: var(--section-background-color);
+    border: none;
+    width: 100%;
+    justify-content: center;
+    flex-direction: row !important;
+
+    .social-icon {
+      margin: 0 12px 0 0;
+      border-radius: 2px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .separator {
+    visibility: visible;
+    width: 100%;
+    z-index: 0;
+  }
+}
+}

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Onym.Data;
 using Onym.Models;
-using Onym.ViewModels.Role;
+using Onym.ViewModels.Admin;
 
 namespace Onym.Controllers
 {
@@ -16,11 +16,15 @@ namespace Onym.Controllers
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly OnymDbContext<User> _db;
-        public AdminController(UserManager<User> userManager, RoleManager<IdentityRole<int>> roleManager, OnymDbContext<User> db)
+        
+
+        public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole<int>> roleManager, OnymDbContext<User> db)
         {
             _db = db;
+            _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
             
@@ -28,7 +32,7 @@ namespace Onym.Controllers
         /*----- ROLES MANAGER -----*/
         /* ROLE LIST */
         [HttpGet, Authorize(Roles = "Moderator")]
-        [Route("role/role_list")]
+        [Route("roles")]
         public IActionResult RoleList()
         {
             return View("Role/RoleList",_roleManager.Roles.ToList());
@@ -36,14 +40,14 @@ namespace Onym.Controllers
         
         /* CREATE ROLE */
         [HttpGet, Authorize(Roles = "Admin")]
-        [Route("role/create_role")]
+        [Route("roles/create_role")]
         public IActionResult CreateRole()
         {
             return View("Role/CreateRole");
         }
 
         [HttpPost, Authorize(Roles = "Admin"), ValidateAntiForgeryToken]
-        [Route("role/create_role")]
+        [Route("roles/create_role")]
         public async Task<IActionResult> CreateRole(string roleName)
         {
             if (string.IsNullOrEmpty(roleName)) return View(roleName);
@@ -55,7 +59,7 @@ namespace Onym.Controllers
         
         /* DELETE ROLE */
         [HttpPost, Authorize(Roles = "Admin"), ValidateAntiForgeryToken]
-        [Route("role/delete_role")]
+        [Route("roles/delete_role")]
         public async Task<IActionResult> DeleteRole(string roleId)
         {
             var role = await _roleManager.FindByIdAsync(roleId);
@@ -65,14 +69,14 @@ namespace Onym.Controllers
         
         /* EDIT ROLE */
         [HttpGet, Authorize(Roles = "Admin")]
-        [Route("role/edit_role")]
+        [Route("roles/edit_role")]
         public async Task<IActionResult> EditRole(string roleId)
         {
             return View("Role/EditRole");
         }
         
         [HttpPost, Authorize(Roles = "Admin"), ValidateAntiForgeryToken]
-        [Route("role/edit_role")]
+        [Route("roles/edit_role")]
         public async Task<IActionResult> EditRole(string roleId, string roleName)
         {
             return View("Role/EditRole");
@@ -80,7 +84,7 @@ namespace Onym.Controllers
         
         /* EDIT USER ROLES */
         [HttpGet, Authorize(Roles = "Admin")]
-        [Route("role/edit_user_roles")]
+        [Route("roles/edit_user_roles")]
         public async Task<IActionResult> EditUserRoles(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -99,7 +103,7 @@ namespace Onym.Controllers
         }
         
         [HttpPost, Authorize(Roles = "Admin"), ValidateAntiForgeryToken]
-        [Route("role/edit_user_roles")]
+        [Route("roles/edit_user_roles")]
         public async Task<IActionResult> EditUserRoles(string userId, List<string> roles)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -110,6 +114,7 @@ namespace Onym.Controllers
  
             await _userManager.AddToRolesAsync(user, addedRoles);
             await _userManager.RemoveFromRolesAsync(user, removedRoles);
+            await _signInManager.RefreshSignInAsync(user);
 
             return RedirectToAction("UserList","Admin");
         }
@@ -117,7 +122,7 @@ namespace Onym.Controllers
         /*------ USER MANAGER -----*/
         /* USER LIST */
         [HttpGet, Authorize]
-        [Route("user/user_list")]
+        [Route("users")]
         public IActionResult UserList()
         {
             return View("User/UserList",_userManager.Users.ToList());;

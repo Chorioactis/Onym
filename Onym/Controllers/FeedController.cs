@@ -48,7 +48,7 @@ namespace Onym.Controllers
         {
             return View();
         }
-        public async Task<ViewResult> UserComments()
+        public async Task<ViewResult> Comments()
         {
             return View();
         }

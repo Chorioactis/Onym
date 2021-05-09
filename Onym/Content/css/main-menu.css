@@ -1,0 +1,38 @@
+/*-----MAIN-MENU-----*/
+.main-menu-panel {
+  flex-direction: row !important;
+  padding: 0 12px 0 12px !important;
+  margin: 0;
+  background-color: var(--dark-section-background-color);
+}
+.main-menu-panel .main-menu-panel-li {
+  margin: 0 24px 0 0;
+}
+.main-menu-panel .main-menu-panel-li:last-child {
+  margin: 0;
+}
+.main-menu-panel .main-menu-panel-li:only-child {
+  margin: 0;
+}
+.main-menu-panel .main-menu-panel-li.settings {
+  margin: 0 0 0 auto;
+}
+.main-menu-panel .main-menu-panel-link {
+  color: var(--primary-text-color);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 48px;
+}
+.main-menu-panel .main-menu-panel-link.settings-button {
+  font-size: 24px;
+}
+.main-menu-panel .main-menu-panel-link.active {
+  color: var(--minor-accent-color);
+}
+.main-menu-panel .main-menu-panel-link:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--minor-accent-color);
+}

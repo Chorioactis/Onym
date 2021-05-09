@@ -6,7 +6,6 @@ top: 0;
 z-index: 1020;
   .navbar{
   background-color: var(--major-accent-color);
-  transition: 200ms ease-out;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +52,6 @@ z-index: 1020;
         height: 2px;
         border-radius: 1px;
         margin: 4px 0 4px 0;
-        transition: all 0.2s;
         &:nth-of-type(1) {
           transform: rotate(45deg) translate3d(20%,200%,0);
         }
@@ -95,8 +93,7 @@ z-index: 1020;
         }
         .search {
           .search-button {
-            transition: 200ms ease;
-            border-radius: 50%;
+            border-radius: 0 50% 50% 0;
             height: 40px;
             width: 40px;
             font-size: 1.3rem;
@@ -106,14 +103,13 @@ z-index: 1020;
             border: 0;
 
             &:hover {
-              transition: 200ms ease;
               color: var(--minor-accent-color);
             }
           }
 
           .search-input-field {
-            transition: 200ms ease;
-            transition-delay: 200ms;
+            transition-delay: 200ms !important;
+            transition: 200ms ease-in-out;
             transform: scaleX(1);
             transform-origin: right;
             color: var(--article-text-color);
@@ -121,6 +117,8 @@ z-index: 1020;
             border: 0;
 
             &.active, &.focus {
+              transition-delay: 200ms;
+              transition: 200ms ease-in-out;
               color: var(--article-text-color);
               background-color: var(--section-background-color);
             }
@@ -137,8 +135,7 @@ z-index: 1020;
 
           &.hidden {
             .search-button {
-              transition: 200ms ease;
-              transition-delay: 200ms;
+              transition-delay: 400ms;
               border-radius: 50% !important;
               height: 40px;
               width: 40px;
@@ -146,14 +143,12 @@ z-index: 1020;
               background-color: var(--minor-accent-color);
 
               &:hover {
-                transition: color 200ms ease;
                 color: var(--minor-accent-color);
                 background-color: var(--section-background-color)
               }
             }
 
             .search-input-field {
-              transition: 200ms ease;
               transform: scaleX(0);
               transform-origin: right;
               padding: 0;

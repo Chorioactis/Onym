@@ -1,0 +1,110 @@
+/*-----FORM-----*/
+.form-header {
+  color: var(--caption-color);
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0 auto;
+}
+.form-confirm {
+  background-color: var(--major-accent-color);
+  color: var(--secondary-text-color);
+  border-radius: 4px;
+  border: none;
+  height: 36px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+.form-confirm:hover {
+  background-color: var(--minor-accent-color);
+  color: var(--active-color);
+}
+.form-confirm.small {
+  width: auto;
+  background-color: transparent;
+  text-decoration: underline;
+  height: 16px;
+  color: var(--caption-color);
+  font-size: 16px;
+  line-height: 16px;
+}
+.form-confirm.small:hover {
+  color: var(--minor-accent-color);
+}
+.form-input-text {
+  background-color: var(--dark-section-background-color);
+  color: var(--article-text-color);
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  line-height: 32px;
+  border-radius: 4px;
+  padding: 2px 8px 0 8px;
+  margin: 12px 0 0 0;
+}
+.form-input-text:first-child {
+  margin: 0;
+}
+.form-input-text.input-validation-error {
+  border-color: var(--negative-color);
+}
+.form-input-text.valid {
+  border-color: var(--border-color);
+}
+.email-status {
+  display: flex;
+  flex-direction: row;
+}
+.email-status span {
+  margin: 0 6px 0 0;
+}
+.email-status span:last-of-type {
+  margin: 0;
+}
+.email-status span:only-of-type {
+  margin: 0 6px 0 0;
+}
+.email-status span.confirmed {
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--positive-color);
+}
+.email-status span.not-confirmed {
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--caption-color);
+}
+.email-status button {
+  margin: 0;
+}
+span.settings-saved-message {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 12px 0 0 0;
+  color: var(--positive-color);
+}
+span.field-validation-valid {
+  margin: 0;
+  color: var(--negative-color);
+  opacity: 0 !important;
+  font-size: 14px;
+  line-height: 14px;
+}
+span.field-validation-valid span {
+  opacity: 0 !important;
+  font-size: 14px;
+  line-height: 14px;
+}
+span.field-validation-error {
+  margin: 12px 0 0 0;
+  color: var(--negative-color);
+  opacity: 1 !important;
+  font-size: 14px;
+  line-height: 14px;
+}
+span.field-validation-error span {
+  opacity: 1 !important;
+  font-size: 14px;
+  line-height: 14px;
+}

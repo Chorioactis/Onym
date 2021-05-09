@@ -1,0 +1,99 @@
+﻿@using Onym.ViewModels.User
+@model Onym.ViewModels.User.SettingsViewModel
+@{
+    ViewBag.Title = "Настройки";
+    ViewBag.Page = "UserSettings";
+    if (Model.PasswordSettingsViewModel.FormShown){ViewBag.PassShown = "show";ViewBag.PassCollapsed = "";}
+    else{ViewBag.PassShown = "";ViewBag.PassCollapsed = "collapsed";}
+    if (Model.EmailSettingsViewModel!.FormShown){ViewBag.EmailShown = "show";ViewBag.EmailCollapsed = "";}
+    else{ViewBag.EmailShown = "";ViewBag.EmailCollapsed = "collapsed";}
+}
+@{
+    await Html.RenderPartialAsync("_MainMenuPanelUser");
+}
+<!-- SETTINGS -->
+<div class="main-section">
+    <div class="main-section-item section-header">
+        Безопасность
+    </div>
+    <div class="separator"></div>
+    <div class="accordion-section" id="safetySettings">
+        <!-- PASSWORD SETTINGS -->
+        <div class="accordion-item">
+            <button class="accordion-toggler accordion-item-header @ViewBag.PassCollapsed" type="button" data-bs-toggle="collapse" data-bs-target="#changePassword" aria-expanded="false" aria-controls="changePassword">
+                <div class="accordion-toggler-name">Сменить пароль</div>
+                <div class="accordion-toggler-description">Меняйте пароль время от времени</div>
+                <span class="material-icons accordion-toggler-icon">expand_more</span>
+            </button>
+            <div id="changePassword" class="accordion-collapse collapse @ViewBag.PassShown" data-bs-parent="#safetySettings">
+                <div class="accordion-item-body">
+                    <form asp-action="ChangePassword" asp-anti-forgery="true" asp-controller="User" autocomplete="off" class="main-section-item" method="post">
+                        <input asp-for="PasswordSettingsViewModel.CurrentPassword" value="@Model.PasswordSettingsViewModel.CurrentPassword" class="form-input-text"/>
+                        <span asp-validation-for="PasswordSettingsViewModel.CurrentPassword" class=""></span>
+                        <input asp-for="PasswordSettingsViewModel.NewPassword" class="form-input-text"/>
+                        <span asp-validation-for="PasswordSettingsViewModel.NewPassword" class=""></span>
+                        <input asp-for="PasswordSettingsViewModel.ConfirmNewPassword" class="form-input-text"/>
+                        <span asp-validation-for="PasswordSettingsViewModel.ConfirmNewPassword" class=""></span>
+                        @{
+                            if (Model.PasswordSettingsViewModel.PasswordChanged)
+                            {
+                                <span class="settings-saved-message">Пароль успешно изменён.</span>
+                            }
+                        }
+                        <button type="submit" class="form-confirm">Сменить пароль</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <!-- EMAIL SETTINGS -->
+        <div class="accordion-item">
+            <button class="accordion-toggler accordion-item-header @ViewBag.EmailCollapsed" type="button" data-bs-toggle="collapse" data-bs-target="#changeEmail" aria-expanded="false" aria-controls="changePassword">
+                <div class="accordion-toggler-name">Настройки почты</div>
+                <div class="accordion-toggler-description">@ViewBag.User.Email</div>
+                <span class="material-icons accordion-toggler-icon">expand_more</span>
+            </button>
+            <div id="changeEmail" class="accordion-collapse collapse @ViewBag.EmailShown" data-bs-parent="#safetySettings">
+                <div class="accordion-item-body">
+                    <form asp-action="ChangeEmail" asp-controller="User" class="main-section-item" method="post">
+                        <input asp-for="EmailSettingsViewModel.CurrentPassword" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text" value="@Model.EmailSettingsViewModel.CurrentPassword"/>
+                        <span asp-validation-for="EmailSettingsViewModel.CurrentPassword" class=""></span>
+                        <input asp-for="EmailSettingsViewModel.NewEmail" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text" value="@Model.EmailSettingsViewModel.NewEmail"/>
+                        <span asp-validation-for="EmailSettingsViewModel.NewEmail" class=""></span>
+                        @{
+                            if (Model.EmailSettingsViewModel.EmailChanged)
+                            {
+                                <span class="settings-saved-message">Почта успешно изменена.</span>
+                            }
+                        }
+                        <button type="submit" class="form-confirm">Сменить почту</button>
+                    </form>
+                    <div class="separator semi"></div>
+                    <form asp-action="ConfirmEmail" asp-controller="User" method="post" asp-anti-forgery="true" class="main-section-item">
+                        <div class="email-status">
+                        @{
+                            if (@ViewBag.User.EmailConfirmed)
+                            {
+                                <span class="confirmed" >Ваша почта подтверждена.</span>
+                            }
+                            else
+                            {
+                                if(Model.EmailSettingsViewModel!.EmailSended)
+                                {
+                                    <span class="not-confirmed" >Проверьте указанную почту, если письмо не пришло, проверьте спам или</span>
+                                    <button type="submit" class="form-confirm small">попробуйте ещё раз.</button>
+                                }
+                                else
+                                {
+                                    <span class="not-confirmed" >Ваша почта не подтверждена,</span>
+                                    <button type="submit" class="form-confirm small">подтвердите почту.</button>
+                                }
+                            }
+                        }
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

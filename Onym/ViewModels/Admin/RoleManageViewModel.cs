@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
-namespace Onym.ViewModels.Role
+namespace Onym.ViewModels.Admin
 {
     public class RoleManageViewModel
     {

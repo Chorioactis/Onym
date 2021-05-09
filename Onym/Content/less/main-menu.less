@@ -1,0 +1,44 @@
+﻿@import (reference) "palette";
+/*-----MAIN-MENU-----*/
+.main-menu-panel {
+  flex-direction: row !important;
+  padding: 0 12px 0 12px !important;
+  margin: 0;
+  background-color: var(--dark-section-background-color);
+
+  .main-menu-panel-li {
+    margin: 0 24px 0 0;
+    &:last-child {
+      margin: 0
+    }
+    &:only-child {
+      margin: 0;
+    }
+    &.settings {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  .main-menu-panel-link {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 48px;
+
+    &.settings-button {
+      font-size: 24px;
+    }
+
+    &.active {
+      color: var(--minor-accent-color);
+    }
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--minor-accent-color);
+    }
+  }
+}

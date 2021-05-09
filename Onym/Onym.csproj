@@ -111,6 +111,7 @@
 
     <ItemGroup>
       <Folder Include="Content\css" />
+      <Folder Include="Migrations" />
       <Folder Include="wwwroot\css" />
       <Folder Include="wwwroot\js" />
       <Folder Include="wwwroot\lib" />
@@ -121,6 +122,7 @@
       <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
       <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
       <PackageReference Include="BundlerMinifier.TagHelpers" Version="3.2.449" />
+      <PackageReference Include="MailKit" Version="2.11.1" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.5" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.5" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
@@ -169,6 +171,21 @@
       </Compile>
       <Compile Update="ViewModels\Feed\FeedFilterViewModel.cs">
         <DependentUpon>FeedViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="ViewModels\User\PasswordSettingsViewModel.cs">
+        <DependentUpon>SettingsViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Services\EmailService.cs">
+        <DependentUpon>ServiceProviderExtensions.cs</DependentUpon>
+      </Compile>
+      <Compile Update="ViewModels\User\EmailSettingsViewModel.cs">
+        <DependentUpon>SettingsViewModel.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Data\ModelStateHelpers.cs">
+        <DependentUpon>ModelStateTransfer.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Data\ModelStateTransferValue.cs">
+        <DependentUpon>ModelStateTransfer.cs</DependentUpon>
       </Compile>
     </ItemGroup>
 

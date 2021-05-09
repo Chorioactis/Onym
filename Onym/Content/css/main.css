@@ -27,206 +27,24 @@
 .main .main-section .main-section-item:only-child {
   border-radius: 3px;
 }
-.main .main-section.section-footer {
+.main .main-section .main-section-item.section-header {
   background-color: var(--dark-section-background-color);
   flex-direction: row;
-}
-.main .main-section.sign-in-up {
-  flex-direction: row;
-}
-.main .main-section.sign-in-up .sign-in-up-form {
-  width: 90%;
-  flex-direction: column;
-}
-.main .main-section.sign-in-up .sign-in-up-form span.field-validation-valid {
-  margin: 0;
-  transition: 100ms ease-out;
-  color: var(--negative-color);
-  opacity: 0!important;
-}
-.main .main-section.sign-in-up .sign-in-up-form span.field-validation-error {
-  margin: 12px 0 0 0;
-  transition: 100ms ease-out;
-  color: var(--negative-color);
-  opacity: 1 !important;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper {
-  margin: 12px 0 0 0;
-  display: flex;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .forgot-password {
-  transition: 200ms ease;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: normal;
   color: var(--primary-text-color);
-  text-decoration: none;
-  margin: 0 0 0 auto;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .forgot-password:hover {
-  transition: 200ms ease;
-  cursor: pointer;
-  color: var(--minor-accent-color);
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me {
-  flex-direction: row;
-  display: flex;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me input {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  appearance: none;
-  outline: 0;
-  cursor: pointer;
-  transition: background 200ms ease;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me input::before {
-  position: absolute;
-  content: '';
-  display: block;
-  top: 0;
-  left: 5px;
-  width: 8px;
-  height: 14px;
-  border-style: solid;
-  border-color: var(--active-color);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  opacity: 0;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me input:checked {
-  color: var(--active-color);
-  border-color: var(--minor-accent-color);
-  background: var(--minor-accent-color);
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me input:checked::before {
-  opacity: 1;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me input:checked ~ label::before {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me label {
-  transition: 200ms ease;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: normal;
-  color: var(--primary-text-color);
-  text-decoration: none;
-  margin: 0 0 0 12px;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-helper .remember-me label:hover {
-  transition: 200ms ease;
-  cursor: pointer;
-  color: var(--minor-accent-color);
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-up-form-header {
-  color: var(--caption-color);
   font-weight: bold;
   font-size: 16px;
   line-height: 16px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
 }
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-up-confirm {
-  transition: 200ms ease;
-  background-color: var(--major-accent-color);
-  color: var(--secondary-text-color);
-  border-radius: 4px;
-  border: none;
-  height: 36px;
-  width: 100%;
-  font-size: 16px;
-  padding: 0;
-  margin: 12px 0 0 0;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-up-confirm:hover {
-  transition: 200ms ease;
-  background-color: var(--minor-accent-color);
-  color: var(--active-color);
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-up-switcher {
-  transition: 200ms ease;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: normal;
-  color: var(--primary-text-color);
-  text-decoration: none;
-}
-.main .main-section.sign-in-up .sign-in-up-form .sign-in-up-switcher:hover {
-  transition: 200ms ease;
-  text-decoration: underline;
-  cursor: pointer;
-  color: var(--minor-accent-color);
-}
-.main .main-section.sign-in-up .oauth {
+.main .main-section .main-section-item.section-footer {
   background-color: var(--dark-section-background-color);
-  border-left: 1px solid var(--border-color);
-  width: 10%;
-  align-items: center;
-  flex-direction: column;
-}
-.main .main-section.sign-in-up .oauth .social-icon {
-  transition: 200ms ease;
-  line-height: 0;
-  text-align: center;
-  height: 40px;
-  width: 40px;
-  margin: 0 0 12px 0;
-  display: block;
-  position: relative;
-  border-radius: 2px;
-  background-color: var(--shadow-color);
-}
-.main .main-section.sign-in-up .oauth .social-icon.vk:hover {
-  transition: 200ms ease;
-  background-color: var(--social-vk);
-}
-.main .main-section.sign-in-up .oauth .social-icon.google:hover {
-  transition: 200ms ease;
-  background-color: var(--social-google);
-}
-.main .main-section.sign-in-up .oauth .social-icon:last-child {
-  margin: 0;
-}
-.main .main-section.sign-in-up .separator {
-  visibility: hidden;
-  width: 0;
+  flex-direction: row;
 }
 @media (max-width: 991px) {
   .main {
     position: relative;
     width: 100%;
   }
-  .main .main-section.sign-in-up {
-    flex-direction: column;
-  }
-  .main .main-section.sign-in-up .sign-in-up-form {
-    width: 100%;
-  }
-  .main .main-section.sign-in-up .oauth {
-    background-color: var(--section-background-color);
-    border: none;
-    width: 100%;
-    justify-content: center;
-    flex-direction: row;
-  }
-  .main .main-section.sign-in-up .oauth .social-icon {
-    margin: 0 12px 0 0;
-    border-radius: 2px;
-  }
-  .main .main-section.sign-in-up .oauth .social-icon:last-child {
-    margin: 0;
-  }
-  .main .main-section.sign-in-up .separator {
-    visibility: visible;
-    width: 100%;
-    z-index: 0;
+  .main .main-section .main-section-item {
+    padding: 12px;
   }
 }

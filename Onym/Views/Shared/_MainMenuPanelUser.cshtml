@@ -1,0 +1,34 @@
+﻿<!-- MAIN MENU PANEL -->
+<div class="main-section">
+    <ul class="main-section-item main-menu-panel">
+        @{
+            if (ViewBag.Page == "UserProfile")
+            {
+                <li class="main-menu-panel-li"><a asp-action="Index" asp-controller="User" asp-route-userName="@ViewBag.SoughtUserName" class="main-menu-panel-link active">Профиль</a></li>
+            }
+            else
+            {
+                <li class="main-menu-panel-li"><a asp-action="Index" asp-controller="User" asp-route-userName="@ViewBag.SoughtUserName" class="main-menu-panel-link">Профиль</a></li>
+            }
+            if (ViewBag.Page == "UserPublications")
+            {
+                <li class="main-menu-panel-li"><a class="main-menu-panel-link active">Публикации</a></li>
+            }
+            else
+            {
+                <li class="main-menu-panel-li"><a class="main-menu-panel-link">Публикации</a></li>
+            }
+            if (ViewBag.UserName == ViewBag.SoughtUserName)
+            {
+                if (ViewBag.Page == "UserSettings")
+                {
+                    <li class="main-menu-panel-li settings"><a asp-action="Settings" asp-controller="User" class="main-menu-panel-link settings-button active material-icons">settings</a></li>
+                }
+                else
+                {
+                    <li class="main-menu-panel-li settings"><a asp-action="Settings" asp-controller="User" class="main-menu-panel-link settings-button material-icons">settings</a></li>
+                } 
+            }
+        }
+    </ul>
+</div>

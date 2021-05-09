@@ -1,16 +1,8 @@
 ﻿@{
-    var db = new OnymDbContext<User>();
-    var users = db.Users.Include(u => u.UserProfilePictureNavigation);
-    //ReSharper disable once PossibleNullReferenceException
-    ViewBag.Authenticated = User.Identity.IsAuthenticated;
-    if (ViewBag.Authenticated)
+    if (!ViewBag.Authenticated)
     {
-        var user = UserManager.FindByNameAsync(User.Identity.Name);
-        ViewBag.Login = user.Result.UserName;
-        ViewBag.Avatar = user.Result.UserProfilePictureNavigation.FileLink;
-        ViewBag.Rating = user.Result.RatingTotal;
-        ViewBag.Comments = user.Result.Comments.Count();
-        ViewBag.Publications = user.Result.Publications.Count();
+        ViewBag.UserName = ViewBag.DefaultUserName;
+        ViewBag.Avatar =  ViewBag.DefaultAvatar;
     }
 }
 <!DOCTYPE html>
@@ -101,7 +93,7 @@
                 @{
                     if (ViewBag.Authenticated)
                     {
-                        <a asp-action="Index" asp-controller="User" asp-route-login="@ViewBag.Login" class="user-avatar">
+                        <a asp-action="Index" asp-controller="User" asp-route-login="@ViewBag.UserName" class="user-avatar">
                             <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" alt="Аватар пользователя" asp-append-version="true">
                         </a>
                     }
@@ -123,15 +115,15 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
         @{
-            await Html.RenderPartialAsync("_UserSideBlock");
+            await Html.RenderPartialAsync("_SideBlockUser");
             if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
             {
-            await Html.RenderPartialAsync("_AdminSideBlock");
+            await Html.RenderPartialAsync("_SideBlockAdmin");
             }
             /*await Html.RenderPartialAsync("_CommOfTheDay");
             await Html.RenderPartialAsync("_Advertising");
             await Html.RenderPartialAsync("_TopTags");*/
-            await Html.RenderPartialAsync("_OtherSideBlock");
+            await Html.RenderPartialAsync("_SideBlockOther");
         }
     </aside>
     <!-- MAIN -->

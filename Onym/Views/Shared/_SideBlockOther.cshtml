@@ -1,0 +1,25 @@
+﻿<!-- OTHER -->  
+<div class="sidebar-section">
+    <div class="sidebar-section-item section-header">
+        <div class="section-title">Дополнительно</div>
+    </div>
+    <div class="separator"></div>
+    <ul class="sidebar-section-item">
+        @if (ViewBag.Page == "Rules")
+        {
+            <li class="sidebar-li"><a class="sidebar-link active">Правила</a></li>
+        }
+        else
+        {
+            <li class="sidebar-li"><a asp-action="Rules" asp-controller="Other" class="sidebar-link">Правила</a></li>
+        }
+        @if (ViewBag.Page == "Support")
+        {
+            <li class="sidebar-li"><a class="sidebar-link active">Поддержка</a></li>
+        }
+        else
+        {
+            <li class="sidebar-li"><a asp-action="Support" asp-controller="Other" class="sidebar-link">Поддержка</a></li>
+        }
+    </ul>
+</div>
