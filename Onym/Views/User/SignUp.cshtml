@@ -14,9 +14,9 @@
         <span asp-validation-for="UserName" class=""></span>
         <input asp-for="Email" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
         <span asp-validation-for="Email" class=""></span>
-        <input asp-for="Password" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
+        <input asp-for="Password" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text password"/>
         <span asp-validation-for="Password"></span>
-        <input asp-for="ConfirmPassword" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
+        <input asp-for="ConfirmPassword" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text password"/>
         <span asp-validation-for="ConfirmPassword" class=""></span>
         <button class="form-confirm" type="submit">Создать аккаунт</button>
     </form>

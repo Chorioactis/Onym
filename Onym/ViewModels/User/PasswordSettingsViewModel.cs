@@ -22,7 +22,6 @@ namespace Onym.ViewModels.User
         [Required(ErrorMessage = "Подтвердите новый пароль.")]
         [Compare("NewPassword", ErrorMessage = "Пароли не совпадают.")]
         public string ConfirmNewPassword { get; set; }
-
         public bool PasswordChanged = false;
         public bool FormShown = false;
     }

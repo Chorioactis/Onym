@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "w/pnUlPLj6qObiYFZ8cR1lppK2P7b8fbdLG9zCPYhxeQsPZ71uAGwj71ZENDPo9BD8Zxzl4ewFih0tvf21Uvow==",
+  "dgSpecHash": "cXvWHbmpl1v9yO9P7mpNctL7SSicnemvnrGxOWiGzlQqLGMpcevFk2CRdeEUu7/MtX8sSrPFHyWWL6BDADOH3g==",
   "success": true,
   "projectFilePath": "D:\\Repos\\Onym\\Onym\\Onym.csproj",
   "expectedPackageFiles": [
@@ -185,7 +185,8 @@
     "C:\\Users\\admal\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\admal\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\admal\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\admal\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\admal\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\admal\\.nuget\\packages\\unidecodesharpcore\\2.0.1\\unidecodesharpcore.2.0.1.nupkg.sha512"
   ],
   "logs": []
 }

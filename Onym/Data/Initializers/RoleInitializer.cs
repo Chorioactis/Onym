@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Onym.Models;
 
-namespace Onym.Data
+namespace Onym.Data.Initializers
 {
     public class RoleInitializer
     {

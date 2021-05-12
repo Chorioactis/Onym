@@ -40,8 +40,58 @@
   font-size: 16px;
   line-height: 32px;
   border-radius: 4px;
-  padding: 2px 8px 0 8px;
+  padding: 0 8px;
   margin: 12px 0 0 0;
+  &.password {
+    padding:2px 8px 0 8px;
+  }
+  &.tag-input {
+    padding: 0;
+    input {
+      background-color: transparent;
+      color: var(--article-text-color);
+      border: none;
+      width: 100%;
+      padding: 0 8px;
+      font-size: 16px;
+      line-height: 32px;
+    }
+    span {
+      font-size: 16px;
+      line-height: 32px;
+    }
+  }
+  &:first-child {
+    margin: 0;
+  }
+  &.input-validation-error {
+    border-color: var(--negative-color);
+  }
+  &.valid {
+    border-color: var(--border-color);
+  }
+}
+.form-input-textarea {
+  background-color: var(--dark-section-background-color);
+  color: var(--article-text-color);
+  border: 1px solid var(--border-color) !important;
+  font-size: 16px;
+  line-height: 32px;
+  border-radius: 4px !important;
+  padding: 8px !important;
+  margin: 12px 0 0 0;
+  min-height: 240px;
+  outline: none !important;
+  box-shadow: none !important;
+  &:before {
+    color: var(--caption-color) !important;
+    content: attr(data-mce-placeholder);
+    position: absolute;
+    margin: 0 0 0 8px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 16px;
+  }
   &:first-child {
     margin: 0;
   }

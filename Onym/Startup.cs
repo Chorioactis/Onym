@@ -1,15 +1,11 @@
 using System;
-using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using Onym.Data;
 using Onym.Models;
 using Onym.Services;
@@ -58,7 +54,11 @@ namespace Onym
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                 options.User.RequireUniqueEmail = true;
             });
-
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                // enables immediate logout, after updating the user's stat.
+                options.ValidationInterval = TimeSpan.Zero;   
+            });
             services.ConfigureApplicationCookie(options =>
             {
                 //Cookie settings
@@ -75,8 +75,8 @@ namespace Onym
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
                 options.Cookie.HttpOnly = true;
-            });;
-            
+            });
+
             //Extension service
             services.AddEmailService();
         }

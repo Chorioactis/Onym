@@ -83,7 +83,7 @@ namespace Onym.Controllers
         }
         
         /* EDIT USER ROLES */
-        [HttpGet, Authorize(Roles = "Admin")]
+        [HttpGet, Authorize(Roles = "Moderator")]
         [Route("roles/edit_user_roles")]
         public async Task<IActionResult> EditUserRoles(string userId)
         {
@@ -102,7 +102,7 @@ namespace Onym.Controllers
             return View("User/EditUserRoles",model);
         }
         
-        [HttpPost, Authorize(Roles = "Admin"), ValidateAntiForgeryToken]
+        [HttpPost, Authorize(Roles = "Moderator"), ValidateAntiForgeryToken]
         [Route("roles/edit_user_roles")]
         public async Task<IActionResult> EditUserRoles(string userId, List<string> roles)
         {
@@ -114,7 +114,7 @@ namespace Onym.Controllers
  
             await _userManager.AddToRolesAsync(user, addedRoles);
             await _userManager.RemoveFromRolesAsync(user, removedRoles);
-            await _signInManager.RefreshSignInAsync(user);
+            await _userManager.UpdateSecurityStampAsync(user);
 
             return RedirectToAction("UserList","Admin");
         }

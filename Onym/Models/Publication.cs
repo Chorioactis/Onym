@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
-
 namespace Onym.Models
 {
     public class Publication
@@ -19,7 +17,8 @@ namespace Onym.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; }
-        public string Content { get; set; }
+        public string? Content { get; set; }
+        public string UrlSlug { get; set; }
         public DateTime CreationDate { get; set; }
         public int RatingTotal { get; set; }
         public int Status { get; set; }

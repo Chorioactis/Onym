@@ -1,7 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@using Onym.Data
 @using Onym.Models
-@inject UserManager<User> UserManager
 @{
+    var db = new OnymDbContext<User>();
     Layout = "_Layout";
     ViewBag.PagePrevious = "Показать предыдущие посты";
     ViewBag.PageNext = "Загрузить ещё постов";
@@ -10,7 +12,7 @@
     ViewBag.Authenticated = User.Identity?.IsAuthenticated;
     if (ViewBag.Authenticated)
     {
-        var user = UserManager.FindByNameAsync(User.Identity?.Name).Result;
+        var user = db.Users.FirstOrDefaultAsync(u=> u.UserName == User.Identity.Name).Result;
         ViewBag.User = user;
         ViewBag.UserId = user.Id;
         ViewBag.UserName = user.UserName;

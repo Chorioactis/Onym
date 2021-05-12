@@ -12,7 +12,7 @@
         </div>
         <input asp-for="UserName" class="form-input-text"/>
         <span asp-validation-for="UserName" class=""></span>
-        <input asp-for="Password" class="form-input-text"/>
+        <input asp-for="Password" class="form-input-text password"/>
         <span asp-validation-for="Password" class=""></span>
         <button type="submit" class="form-confirm">Войти</button>
         <div class="sign-in-helper">
@@ -20,7 +20,7 @@
                 <input asp-for="RememberMe" id="rememberMe" type="checkbox"/>
                 <label asp-for="RememberMe" for="rememberMe"></label>
             </div>
-            <a asp-action="" asp-controller="User" class="forgot-password">Забыли пароль?</a>
+            <a asp-action="ForgotPassword" asp-controller="User" class="forgot-password">Забыли пароль?</a>
         </div>
     </form>
     <div class="separator">или</div>

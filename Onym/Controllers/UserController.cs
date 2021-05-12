@@ -19,13 +19,15 @@ namespace Onym.Controllers
     public class UserController : Controller
     {
         private readonly UserManager<User> _userManager;  
-        private readonly SignInManager<User> _signInManager;  
+        private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly OnymDbContext<User> _db;
         private readonly EmailService _emailService;
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, OnymDbContext<User> db, EmailService emailService)
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole<int>> roleManager, OnymDbContext<User> db, EmailService emailService)
         {
             _db = db;
             _emailService = emailService;
+            _roleManager = roleManager;
             _userManager = userManager;  
             _signInManager = signInManager;  
         }  
@@ -105,9 +107,10 @@ namespace Onym.Controllers
                     var result = await _userManager.CreateAsync(user, model.Password);
                     if (!result.Succeeded)
                     {
-                        await _userManager.AddToRoleAsync(user, "User");
+                        ModelState.AddModelError("UserName", "Что-то пошло не так, попробуйте снова");
                         return View(model);
                     }
+                    await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.PasswordSignInAsync(model.UserName, model.Password, true, false);
                     
                     return RedirectToAction("Index", "Feed");
@@ -135,10 +138,10 @@ namespace Onym.Controllers
         [HttpGet, Authorize]
         [ImportModelState]
         [Route("settings")]
-        public IActionResult Settings(SettingsViewModel? model)
+        public IActionResult Settings()
         {
             ViewBag.SoughtUserName = User.Identity!.Name!;
-            ModelState.Count.ToString();
+            SettingsViewModel model;
             if (TempData["model"] == null)
             {
                 model = new SettingsViewModel
@@ -184,6 +187,77 @@ namespace Onym.Controllers
             return RedirectToAction("Settings", "User");
         }
 
+        /* FORGOT PASSWORD */
+        [HttpGet, AllowAnonymous]
+        [Route("forgot_password")]
+        public IActionResult ForgotPassword()
+        {
+            var model = new ForgotPasswordViewModel();
+            return View(model);
+            
+        }
+        
+        [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
+        [Route("forgot_password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null || !await _userManager.IsEmailConfirmedAsync(user))
+            {
+                model.EmailSended = true;
+                return View(model);
+            }
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var callbackUrl = Url.Action("ResetPassword", "User", new { userId = user.Id, token = token }, protocol: HttpContext.Request.Scheme);
+            EmailService emailService = new EmailService();
+            await emailService.SendEmailAsync(model.Email, "Подтвердите сброс пароля.",
+                $"Для сброса пароля пройдите по <a href='{callbackUrl}'>ссылке</a>.");
+            model.EmailSended = true;
+            return View(model);
+        }
+        
+        /* RESET PASSWORD */
+        [HttpGet, AllowAnonymous]
+        [Route("reset_password")]
+        public IActionResult ResetPassword(string? userId, string? token)
+        {
+            if(token == null)
+            {
+                return View("_Error");
+            }
+            var model = new ResetPasswordViewModel()
+            {
+                UserId = userId,
+                Token = token
+            };
+            return View(model);
+        }
+ 
+        [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
+        [Route("reset_password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null)
+            {
+                model.Error = true;
+                return View(model);
+            }
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+            if (!result.Succeeded)
+            {
+                model.Error = true;
+                return View(model);
+            }
+            model.PasswordChanged = true;
+            return View(model);
+        }
+        
         /* CHANGE EMAIL */
         [HttpPost, Authorize, ValidateAntiForgeryToken]
         [ExportModelState]
@@ -208,7 +282,7 @@ namespace Onym.Controllers
             }
             user.Email = model.EmailSettingsViewModel.NewEmail;
             user.EmailConfirmed = false;
-            await _userManager.UpdateAsync(user);
+            await _userManager.UpdateAsync(user);    
             await _userManager.UpdateNormalizedEmailAsync(user);
             model.EmailSettingsViewModel!.EmailChanged = true;
             model.EmailSettingsViewModel!.FormShown = true;
@@ -219,12 +293,12 @@ namespace Onym.Controllers
         /* EMAIL CONFIRM */
         [HttpGet, AllowAnonymous]
         [Route("settings/email_confirm")]
-        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        public async Task<IActionResult> ConfirmEmail(string? userId, string? token)
         {
-            if (userId == null || code == null) return View("_Error");
+            if (userId == null || token == null) return View("_Error");
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) return View("_Error");
-            var result = await _userManager.ConfirmEmailAsync(user, code);
+            var result = await _userManager.ConfirmEmailAsync(user, token);
             if(result.Succeeded) return RedirectToAction("Index", "Feed");
             return View("_Error");
         }
@@ -237,11 +311,11 @@ namespace Onym.Controllers
             model.PasswordSettingsViewModel = new PasswordSettingsViewModel();
             model.EmailSettingsViewModel = new EmailSettingsViewModel();
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
-            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = Url.Action(    
                 "ConfirmEmail",
                 "User",
-                new { userId = user.Id, code = code },
+                new { userId = user.Id, token = token },
                 protocol: HttpContext.Request.Scheme);
             await _emailService.SendEmailAsync(user.Email, "Подтвердите вашу почту.",
                 $"Подтвердите вашу электронную почту, перейдя по <a href='{callbackUrl}'>ссылке</a>.");

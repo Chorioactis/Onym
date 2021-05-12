@@ -188,3 +188,8 @@ D:\Repos\Onym\Onym\bin\Debug\net5.0\MailKit.dll
 D:\Repos\Onym\Onym\bin\Debug\net5.0\MimeKit.dll
 D:\Repos\Onym\Onym\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_Error.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\User\ForgotPassword.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\User\ResetPassword.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\AddPost.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_TinyMCE.cshtml.g.cs
+D:\Repos\Onym\Onym\bin\Debug\net5.0\UnidecodeSharpCore.dll

@@ -5,6 +5,7 @@
     <e p="C:\Users\admal\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_ONYM.-348482443.00" t="ExcludeRecursive" />
     <e p="C:\Users\admal\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
     <e p="C:\Users\admal\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\admal\AppData\Roaming\JetBrains\Rider2020.2\javascript\extLibs\http_cdn.tiny.cloud_1_0whn45accxwc58bwqq1f0syy9nlulcohla6j26t05lbimrlm_tinymce_5_tinymce.js" t="IncludeRecursive" />
     <e p="D:\Repos\ONYM" t="IncludeFlat">
       <e p="ONYM" t="IncludeRecursive">
         <e p="appsettings.Development.json" t="Include" />
@@ -23,6 +24,7 @@
             <e p="sidebar.css" t="Include" />
             <e p="sign-in-up.css" t="Include" />
             <e p="theme-switcher.css" t="Include" />
+            <e p="tinyMCE.css" t="Include" />
           </e>
           <e p="js" t="Include">
             <e p="constants.js" t="Include" />
@@ -41,6 +43,7 @@
             <e p="sidebar.less" t="Include" />
             <e p="sign-in-up.less" t="Include" />
             <e p="theme-switcher.less" t="Include" />
+            <e p="tinyMCE.less" t="Include" />
           </e>
         </e>
         <e p="Controllers" t="Include">
@@ -53,18 +56,22 @@
           <e p="Enums" t="Include">
             <e p="SortState.cs" t="Include" />
           </e>
-          <e p="Initializer.cs" t="Include" />
+          <e p="Initializers" t="Include">
+            <e p="MediaInitializer.cs" t="Include" />
+            <e p="RoleInitializer.cs" t="Include" />
+            <e p="StatusInitializer.cs" t="Include" />
+            <e p="UserInitializer.cs" t="Include" />
+          </e>
           <e p="ModelStateHelpers.cs" t="Include" />
           <e p="ModelStateTransfer.cs" t="Include" />
           <e p="ModelStateTransferValue.cs" t="Include" />
           <e p="OnymDbContext.cs" t="Include" />
-          <e p="RoleInitializer.cs" t="Include" />
-          <e p="UserInitializer.cs" t="Include" />
+          <e p="TextTransform.cs" t="Include" />
         </e>
         <e p="gulpfile.js" t="Include" />
         <e p="Migrations" t="Include">
-          <e p="20210509001142_initial.cs" t="Include" />
-          <e p="20210509001142_initial.Designer.cs" t="Include" />
+          <e p="20210512215636_initial.cs" t="Include" />
+          <e p="20210512215636_initial.Designer.cs" t="Include" />
           <e p="OnymDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -107,6 +114,7 @@
           </e>
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Feed" t="Include">
+            <e p="AddPostViewModel.cs" t="Include" />
             <e p="FeedFilterViewModel.cs" t="Include" />
             <e p="FeedModerateViewModel.cs" t="Include" />
             <e p="FeedPageViewModel.cs" t="Include" />
@@ -116,8 +124,10 @@
           </e>
           <e p="User" t="Include">
             <e p="EmailSettingsViewModel.cs" t="Include" />
+            <e p="ForgotPasswordViewModel.cs" t="Include" />
             <e p="IndexViewModel.cs" t="Include" />
             <e p="PasswordSettingsViewModel.cs" t="Include" />
+            <e p="ResetPasswordViewModel.cs" t="Include" />
             <e p="SettingsViewModel.cs" t="Include" />
             <e p="SignInViewModel.cs" t="Include" />
             <e p="SignUpViewModel.cs" t="Include" />
@@ -138,6 +148,7 @@
             </e>
           </e>
           <e p="Feed" t="Include">
+            <e p="AddPost.cshtml" t="Include" />
             <e p="Best.cshtml" t="Include" />
             <e p="Comments.cshtml" t="Include" />
             <e p="Favorite.cshtml" t="Include" />
@@ -158,9 +169,12 @@
             <e p="_SideBlockOther.cshtml" t="Include" />
             <e p="_SideBlockUser.cshtml" t="Include" />
             <e p="_StylesPartial.cshtml" t="Include" />
+            <e p="_TinyMCE.cshtml" t="Include" />
           </e>
           <e p="User" t="Include">
+            <e p="ForgotPassword.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="ResetPassword.cshtml" t="Include" />
             <e p="Settings.cshtml" t="Include" />
             <e p="SignIn.cshtml" t="Include" />
             <e p="SignUp.cshtml" t="Include" />
@@ -240,6 +254,14 @@
           </e>
           <e p="manifest.json" t="Include" />
           <e p="media" t="Include">
+            <e p="post_img" t="Include">
+              <e p="2021" t="Include">
+                <e p="5" t="Include">
+                  <e p="testovaya-zapis-4389706211565684971.png" t="Include" />
+                  <e p="testovaya-zapis-438970621398744253.png" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="user-avatar-placeholder.webp" t="Include" />
           </e>
         </e>

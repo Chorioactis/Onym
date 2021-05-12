@@ -121,6 +121,10 @@
             "Npm": {
               "target": "Package",
               "version": "[3.5.2, )"
+            },
+            "UnidecodeSharpCore": {
+              "target": "Package",
+              "version": "[2.0.1, )"
             }
           },
           "imports": [

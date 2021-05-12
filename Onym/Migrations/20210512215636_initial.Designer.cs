@@ -11,7 +11,7 @@ using Onym.Models;
 namespace Onym.Migrations
 {
     [DbContext(typeof(OnymDbContext<User>))]
-    [Migration("20210509001142_initial")]
+    [Migration("20210512215636_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -186,14 +186,13 @@ namespace Onym.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn);
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)")
                         .HasColumnName("comment_content");
 
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp(2) without time zone")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("comment_creation_date")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
@@ -315,14 +314,12 @@ namespace Onym.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn);
 
                     b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(3000)
-                        .HasColumnType("character varying(3000)")
+                        .HasColumnType("varchar")
                         .HasColumnName("publication_content");
 
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp(2) without time zone")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("publication_creation_date")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
@@ -343,6 +340,12 @@ namespace Onym.Migrations
                         .HasColumnName("publication_status")
                         .HasDefaultValueSql("1");
 
+                    b.Property<string>("UrlSlug")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("publication_url_slug");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer")
                         .HasColumnName("user_id");
@@ -351,10 +354,10 @@ namespace Onym.Migrations
 
                     b.HasIndex(new[] { "UserId" }, "IX_publication_author");
 
-                    b.HasIndex(new[] { "Name" }, "IX_publication_name")
-                        .IsUnique();
-
                     b.HasIndex(new[] { "Status" }, "IX_publication_status");
+
+                    b.HasIndex(new[] { "UrlSlug" }, "IX_publication_url_slug")
+                        .IsUnique();
 
                     b.ToTable("publications");
                 });
@@ -540,7 +543,7 @@ namespace Onym.Migrations
                     b.Property<DateTime>("RegistrationDate")
                         .ValueGeneratedOnAdd()
                         .HasPrecision(2)
-                        .HasColumnType("timestamp(2) without time zone")
+                        .HasColumnType("timestamp(2) with time zone")
                         .HasColumnName("user_registration_date")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
@@ -591,14 +594,14 @@ namespace Onym.Migrations
 
                     b.Property<int>("StatusId")
                         .HasColumnType("integer")
-                        .HasColumnName("role_id");
+                        .HasColumnName("status_id");
 
                     b.Property<DateTime>("ExpirationTime")
-                        .HasColumnType("timestamp(2) without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("UserId", "StatusId");
 
-                    b.HasIndex(new[] { "StatusId" }, "IX_user_statuses_role_id");
+                    b.HasIndex(new[] { "StatusId" }, "IX_user_statuses");
 
                     b.ToTable("user_statuses");
                 });

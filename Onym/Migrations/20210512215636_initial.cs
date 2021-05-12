@@ -78,7 +78,7 @@ namespace Onym.Migrations
                     user_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     user_profile_picture = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "1"),
-                    user_registration_date = table.Column<DateTime>(type: "timestamp(2) without time zone", precision: 2, nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    user_registration_date = table.Column<DateTime>(type: "timestamp(2) with time zone", precision: 2, nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     user_rating_total = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "0"),
                     user_name = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     normalized_user_name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -138,8 +138,9 @@ namespace Onym.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn),
                     user_id = table.Column<int>(type: "integer", nullable: false),
                     publication_name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    publication_content = table.Column<string>(type: "character varying(3000)", maxLength: 3000, nullable: false),
-                    publication_creation_date = table.Column<DateTime>(type: "timestamp(2) without time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    publication_content = table.Column<string>(type: "varchar", nullable: true),
+                    publication_url_slug = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    publication_creation_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     publication_rating_total = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "0"),
                     publication_status = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "1")
                 },
@@ -240,15 +241,15 @@ namespace Onym.Migrations
                 columns: table => new
                 {
                     user_id = table.Column<int>(type: "integer", nullable: false),
-                    role_id = table.Column<int>(type: "integer", nullable: false),
-                    ExpirationTime = table.Column<DateTime>(type: "timestamp(2) without time zone", nullable: false)
+                    status_id = table.Column<int>(type: "integer", nullable: false),
+                    ExpirationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_statuses", x => new { x.user_id, x.role_id });
+                    table.PrimaryKey("PK_user_statuses", x => new { x.user_id, x.status_id });
                     table.ForeignKey(
                         name: "FK_status-user",
-                        column: x => x.role_id,
+                        column: x => x.status_id,
                         principalSchema: "public",
                         principalTable: "statuses",
                         principalColumn: "status_id",
@@ -294,8 +295,8 @@ namespace Onym.Migrations
                     parental_comment_id = table.Column<int>(type: "integer", nullable: true),
                     user_id = table.Column<int>(type: "integer", nullable: false),
                     publication_id = table.Column<int>(type: "integer", nullable: false),
-                    comment_content = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    comment_creation_date = table.Column<DateTime>(type: "timestamp(2) without time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    comment_content = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    comment_creation_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     comment_rating_total = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "0"),
                     comment_status = table.Column<int>(type: "integer", nullable: false, defaultValueSql: "1")
                 },
@@ -563,17 +564,17 @@ namespace Onym.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_publication_name",
-                schema: "public",
-                table: "publications",
-                column: "publication_name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_publication_status",
                 schema: "public",
                 table: "publications",
                 column: "publication_status");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_publication_url_slug",
+                schema: "public",
+                table: "publications",
+                column: "publication_url_slug",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_role_id",
@@ -614,10 +615,10 @@ namespace Onym.Migrations
                 column: "role_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_user_statuses_role_id",
+                name: "IX_user_statuses",
                 schema: "public",
                 table: "user_statuses",
-                column: "role_id");
+                column: "status_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_user_email",

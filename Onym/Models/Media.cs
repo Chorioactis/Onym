@@ -6,13 +6,6 @@ namespace Onym.Models
 {
     public class Media
     {
-        public Media()
-        {
-            CommentMedia = new HashSet<CommentMedia>();
-            PublicationMedia = new HashSet<PublicationMedia>();
-            Users = new HashSet<User>();
-        }
-
         public int Id { get; set; }
         public string FileLink { get; set; }
 

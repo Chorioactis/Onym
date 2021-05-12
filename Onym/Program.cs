@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Onym.Data;
+using Onym.Data.Initializers;
 using Onym.Models;
 
 namespace Onym
@@ -20,6 +21,9 @@ namespace Onym
                 var services = scope.ServiceProvider;
                 var userManager = services.GetRequiredService<UserManager<User>>();
                 var rolesManager = services.GetRequiredService<RoleManager<IdentityRole<int>>>();
+                var db = new OnymDbContext<User>();
+                await MediaInitializer.InitializeAsync(db);
+                await StatusInitializer.InitializeAsync(db);
                 await RoleInitializer.InitializeAsync(rolesManager);
                 await UserInitializer.InitializeAsync(userManager, rolesManager);
             }

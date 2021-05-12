@@ -28,11 +28,11 @@
             <div id="changePassword" class="accordion-collapse collapse @ViewBag.PassShown" data-bs-parent="#safetySettings">
                 <div class="accordion-item-body">
                     <form asp-action="ChangePassword" asp-anti-forgery="true" asp-controller="User" autocomplete="off" class="main-section-item" method="post">
-                        <input asp-for="PasswordSettingsViewModel.CurrentPassword" value="@Model.PasswordSettingsViewModel.CurrentPassword" class="form-input-text"/>
+                        <input asp-for="PasswordSettingsViewModel.CurrentPassword" value="@Model.PasswordSettingsViewModel.CurrentPassword" class="form-input-text password"/>
                         <span asp-validation-for="PasswordSettingsViewModel.CurrentPassword" class=""></span>
-                        <input asp-for="PasswordSettingsViewModel.NewPassword" class="form-input-text"/>
+                        <input asp-for="PasswordSettingsViewModel.NewPassword" class="form-input-text password"/>
                         <span asp-validation-for="PasswordSettingsViewModel.NewPassword" class=""></span>
-                        <input asp-for="PasswordSettingsViewModel.ConfirmNewPassword" class="form-input-text"/>
+                        <input asp-for="PasswordSettingsViewModel.ConfirmNewPassword" class="form-input-text password"/>
                         <span asp-validation-for="PasswordSettingsViewModel.ConfirmNewPassword" class=""></span>
                         @{
                             if (Model.PasswordSettingsViewModel.PasswordChanged)
@@ -40,7 +40,7 @@
                                 <span class="settings-saved-message">Пароль успешно изменён.</span>
                             }
                         }
-                        <button type="submit" class="form-confirm">Сменить пароль</button>
+                        <button type="submit" class="form-confirm">Изменить пароль</button>
                     </form>
                 </div>
             </div>
@@ -56,7 +56,7 @@
             <div id="changeEmail" class="accordion-collapse collapse @ViewBag.EmailShown" data-bs-parent="#safetySettings">
                 <div class="accordion-item-body">
                     <form asp-action="ChangeEmail" asp-controller="User" class="main-section-item" method="post">
-                        <input asp-for="EmailSettingsViewModel.CurrentPassword" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text" value="@Model.EmailSettingsViewModel.CurrentPassword"/>
+                        <input asp-for="EmailSettingsViewModel.CurrentPassword" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text password" value="@Model.EmailSettingsViewModel.CurrentPassword"/>
                         <span asp-validation-for="EmailSettingsViewModel.CurrentPassword" class=""></span>
                         <input asp-for="EmailSettingsViewModel.NewEmail" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text" value="@Model.EmailSettingsViewModel.NewEmail"/>
                         <span asp-validation-for="EmailSettingsViewModel.NewEmail" class=""></span>
@@ -66,7 +66,7 @@
                                 <span class="settings-saved-message">Почта успешно изменена.</span>
                             }
                         }
-                        <button type="submit" class="form-confirm">Сменить почту</button>
+                        <button type="submit" class="form-confirm">Изменить почту</button>
                     </form>
                     <div class="separator semi"></div>
                     <form asp-action="ConfirmEmail" asp-controller="User" method="post" asp-anti-forgery="true" class="main-section-item">
