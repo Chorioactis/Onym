@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 using Onym.Data;
 using Onym.Models;
 using Onym.ViewModels.Admin;
+using Onym.ViewModels.Feed;
 
 namespace Onym.Controllers
 {
@@ -20,7 +22,6 @@ namespace Onym.Controllers
         private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly OnymDbContext<User> _db;
         
-
         public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole<int>> roleManager, OnymDbContext<User> db)
         {
             _db = db;
@@ -29,6 +30,7 @@ namespace Onym.Controllers
             _roleManager = roleManager;
             
         }
+        
         /*----- ROLES MANAGER -----*/
         /* ROLE LIST */
         [HttpGet, Authorize(Roles = "Moderator")]
@@ -125,7 +127,38 @@ namespace Onym.Controllers
         [Route("users")]
         public IActionResult UserList()
         {
-            return View("User/UserList",_userManager.Users.ToList());;
+            return View("User/UserList",_userManager.Users.ToList());
+        }
+        
+        /*------ PUBLICATION MANAGER ------*/
+        [Authorize]
+        public async Task<Action?> PublicationHide(FeedModerateViewModel viewModel)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity?.Name);
+            if (user == null || !User.IsInRole("Moderator")) return null;
+            // HidePost
+            {
+                if (!viewModel.PublicationHide.HasValue) return null;
+                {
+                    var publication =
+                        await _db.Publications.FirstOrDefaultAsync(p => p.Id == (int) viewModel.PublicationHide);
+                    // Check status and show post if already hidden
+                    if (publication.PublicationStatusNavigation.Name == "Hidden")
+                    {
+                        publication.Status = _db.Statuses.FirstOrDefaultAsync(status => status.Name == "Default").Result.Id;
+                        _db.Publications.Update(publication);
+                        await _db.SaveChangesAsync();
+                    }
+                    // Hide post
+                    else
+                    {
+                        publication.Status = _db.Statuses.FirstOrDefaultAsync(status => status.Name == "Hidden").Result.Id;
+                        _db.Publications.Update(publication);
+                        await _db.SaveChangesAsync();
+                    }
+                }
+                return null;
+            }
         }
     }
 }

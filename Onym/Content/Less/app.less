@@ -8,11 +8,14 @@
   transition: 200ms ease-in-out;
   body {
     background-color: var(--background-color) !important;
+    background-image: var(--background-image);
+    background-repeat: repeat;
   }
   .app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    min-width: 320px;
   }
   font-size: 16px;
   line-height: 16px;
@@ -79,29 +82,35 @@ div.separator {
     }
   }
 }
-/*-----USER-AVATAR-----*/
-.user-avatar {
-  border-radius: 50%;
-  img {
-    vertical-align: middle;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-}
-/*-----USER-NICK-----*/
-.user-nick {
-  display: block;
+/*-----COUNTER-----*/
+.counter {
+  font-size: 24px;
+  line-height: 24px;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
-  margin: 0 0 2px 0;
+  margin: 0 6px 0 0;
+  cursor: default;
   color: var(--primary-text-color);
-  text-decoration: none;
-  &:hover {
-    color: var(--minor-accent-color);
+}
+.counter-label {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0 0 0 0;
+  cursor: default;
+  color: var(--primary-text-color);
+
+  &.link {
+    cursor: pointer;
+    color: var(--primary-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--minor-accent-color);
+      text-decoration: none;
+    }
+
+    &.active {
+      color: var(--minor-accent-color);
+      text-decoration: none;
+    }
   }
 }
-
-

@@ -1,9 +1,8 @@
-﻿@using Onym.ViewModels.User
-@model Onym.ViewModels.User.SettingsViewModel
+﻿@model Onym.ViewModels.User.SettingsViewModel
 @{
     ViewBag.Title = "Настройки";
     ViewBag.Page = "UserSettings";
-    if (Model.PasswordSettingsViewModel.FormShown){ViewBag.PassShown = "show";ViewBag.PassCollapsed = "";}
+    if (Model.PasswordSettingsViewModel!.FormShown){ViewBag.PassShown = "show";ViewBag.PassCollapsed = "";}
     else{ViewBag.PassShown = "";ViewBag.PassCollapsed = "collapsed";}
     if (Model.EmailSettingsViewModel!.FormShown){ViewBag.EmailShown = "show";ViewBag.EmailCollapsed = "";}
     else{ViewBag.EmailShown = "";ViewBag.EmailCollapsed = "collapsed";}

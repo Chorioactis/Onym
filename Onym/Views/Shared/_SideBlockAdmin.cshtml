@@ -22,4 +22,15 @@
             <li class="sidebar-li"><a asp-action="RoleList" asp-controller="Admin" class="sidebar-link">Роли</a></li>
         }
     </ul>
+    <div class="separator">Посты</div>
+    <ul class="sidebar-section-item">
+        @if (ViewBag.Page == "HiddenPublications")
+        {
+            <li class="sidebar-li"><a asp-action="Hidden" asp-controller="Feed" class="sidebar-link active">Скрытые посты</a></li>
+        }
+        else
+        {
+            <li class="sidebar-li"><a asp-action="Hidden" asp-controller="Feed" class="sidebar-link">Скрытые посты</a></li>
+        }
+    </ul>
 </div>

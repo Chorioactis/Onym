@@ -24,29 +24,17 @@
                     <div class="counter">@ViewBag.Rating</div>
                     <div class="counter-label">Рейтинг</div>
                 </div>
-                <div>
-                    <div class="counter">@ViewBag.CommentsCount</div>
-                    @if (ViewBag.Page == "MyComments")
-                    {
-                        <a asp-action="Comments" asp-controller="Feed" class="counter-label link active">Комментарии</a>
-                    }
-                    else
-                    {
-                        <a asp-action="Comments" asp-controller="Feed" class="counter-label link">Комментарии</a>
-                    }
-                    
-                </div>
             </div>
             <div class="separator"></div>
             <!-- LINKS -->
             <ul class="sidebar-section-item">
                 @if (ViewBag.Page == "Rated")
                 {
-                    <li class="sidebar-li"><a asp-action="Rated" asp-controller="Feed" class="sidebar-link active">Понравившиеся</a></li>
+                    <li class="sidebar-li"><a asp-action="Rated" asp-controller="Feed" class="sidebar-link active">Оценённое</a></li>
                 }
                 else
                 {
-                    <li class="sidebar-li"><a asp-action="Rated" asp-controller="Feed" class="sidebar-link">Понравившиеся</a></li>
+                    <li class="sidebar-li"><a asp-action="Rated" asp-controller="Feed" class="sidebar-link">Оценённое</a></li>
                 }
                 @if (ViewBag.Page == "Favorite")
                 {
@@ -55,6 +43,14 @@
                 else
                 {
                     <li class="sidebar-li"><a asp-action="Favorite" asp-controller="Feed" class="sidebar-link">Избранное</a></li>
+                }
+                @if (ViewBag.Page == "Comments")
+                {
+                    <li class="sidebar-li"><a asp-action="Comments" asp-controller="Feed" class="sidebar-link active">Комментарии</a></li>
+                }
+                else
+                {
+                    <li class="sidebar-li"><a asp-action="Comments" asp-controller="Feed" class="sidebar-link">Комментарии</a></li>
                 }
             </ul>
         }

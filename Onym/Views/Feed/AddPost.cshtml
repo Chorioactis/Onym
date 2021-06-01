@@ -1,34 +1,36 @@
 ﻿@model Onym.ViewModels.Feed.AddPostViewModel
 @{
-    ViewBag.Title = "Добавить публикацию";
+    ViewBag.Title = "Добавить пост";
     ViewBag.Page = "AddPost";
 }
 <div class="main-section">
 	<form asp-action="AddPost" asp-controller="Feed" method="post" enctype="multipart/form-data">
 		<div class="main-section-item">
-			<div class="form-header">Добавление публикации</div>
+			<div class="form-header">Добавление поста</div>
 			<input asp-for="Name" readonly onfocus="this.removeAttribute('readonly');" class="form-input-text"/>
 			<span asp-validation-for="Name" class=""></span>
+			<div id="Content" class="form-input-textarea publication-content">@Html.Raw(Model.Content)</div>
 			@{
-				await Html.RenderPartialAsync("_TinyMCE");
-			}
+                await Html.RenderPartialAsync("_TinyMCE");
+            }
 			<input asp-for="Tags" class="form-input-text"/>
 			<span asp-validation-for="Tags" class=""></span>
 		</div>
 		<div class="separator"></div>
 		<div class="main-section-item add-post-media">
-			<input type="file" asp-for="Uploads" multiple accept="image/*"/><br>
+			<input type="file" asp-for="Uploads" multiple accept="image/*"/>
+			<span asp-validation-for="Uploads" class=""></span>
 		</div>
 		<div class="separator"></div>
 		<div class="main-section-item">
-			<button type="submit" class="form-confirm">Добавить публикацию</button>
-		</div>
-		@{
-            if (Model.PostCreated)
-            {
-	            <span class="settings-saved-message">Публикация размещена на сайте, можете найти её по <a href="@Model.UrlSlug">ссылке</a></span>
+			<button type="submit" class="form-confirm" style="margin: 0">Добавить пост</button>
+			@{
+                if (Model.PostCreated)
+                {
+                    <span class="post-added-message">Пост опубликован, вы можете найти его по <a class="link" asp-action="Publication" asp-controller="Feed" asp-route-urlSlug="@Model.UrlSlug">ссылке</a>.</span>
+                }
             }
-        }
+		</div>
 	</form>
 </div>
 

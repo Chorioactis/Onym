@@ -1,4 +1,5 @@
 ﻿// CONSTANTS
+const Publication_link = 'https://localhost:5001/story/'
 const Onym_theme = 'onym_theme'
 const Light_theme = 'light'
 const Dark_theme = 'dark'

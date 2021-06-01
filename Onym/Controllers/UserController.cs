@@ -1,15 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Onym.Data;
 using Onym.Models;
 using Onym.Services;
-using Onym.ViewModels.Feed;
 using Onym.ViewModels.User;
 
 #nullable enable
@@ -37,8 +35,14 @@ namespace Onym.Controllers
         [Route("@{userName}")]
         public IActionResult Index(string userName)
         {
-            ViewBag.SoughtUserName = userName;
-            return View();
+            var soughtUser = _db.Users.FirstOrDefaultAsync(u => u.UserName == userName).Result;
+            if (soughtUser == null) return View("_Error");
+            ViewBag.SoughtUserName = soughtUser.UserName;
+            var model = new IndexViewModel();
+            {
+                model.User = soughtUser;
+            }
+            return View("Profile",model);
         }
         
         /* SIGN-IN */
@@ -55,7 +59,7 @@ namespace Onym.Controllers
 
         [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
         [Route("sign_in")]
-        public async Task<IActionResult> SignIn(SignInViewModel model, string? searchString, string? returnUrl)
+        public async Task<IActionResult> SignIn(SignInViewModel model, string? returnUrl)
         {
             if (!ModelState.IsValid) return View(model);
             var user = await _userManager.FindByNameAsync(model.UserName);
@@ -142,7 +146,7 @@ namespace Onym.Controllers
         {
             ViewBag.SoughtUserName = User.Identity!.Name!;
             SettingsViewModel model;
-            if (TempData["model"] == null)
+            if (TempData["SettingsViewModel"] == null)
             {
                 model = new SettingsViewModel
                 {
@@ -152,7 +156,7 @@ namespace Onym.Controllers
             }
             else
             {
-                model = JsonConvert.DeserializeObject<SettingsViewModel>((string) TempData["model"]);
+                model = JsonConvert.DeserializeObject<SettingsViewModel>((string) TempData["SettingsViewModel"]);
             }
             return View(model);
         }
@@ -165,11 +169,11 @@ namespace Onym.Controllers
         {
             model.EmailSettingsViewModel = new EmailSettingsViewModel();
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
-            if (await _userManager.CheckPasswordAsync(user, model.PasswordSettingsViewModel.NewPassword))
+            if (await _userManager.CheckPasswordAsync(user, model.PasswordSettingsViewModel!.NewPassword))
             {
                 model.PasswordSettingsViewModel!.FormShown = true;
                 ModelState.AddModelError("PasswordSettingsViewModel.NewPassword", "Новый пароль должен отличаться от текущего.");
-                TempData["model"] = JsonConvert.SerializeObject(model);
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
                 return RedirectToAction("Settings", "User");
             }
             var result = await _userManager.ChangePasswordAsync(user, model.PasswordSettingsViewModel.CurrentPassword, model.PasswordSettingsViewModel.NewPassword);
@@ -177,13 +181,13 @@ namespace Onym.Controllers
             {
                 model.PasswordSettingsViewModel!.FormShown = true;
                 ModelState.AddModelError("PasswordSettingsViewModel.CurrentPassword", "Неверный пароль.");
-                TempData["model"] = JsonConvert.SerializeObject(model);
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
                 return RedirectToAction("Settings", "User");
             }
             model.PasswordSettingsViewModel!.CurrentPassword = null;
             model.PasswordSettingsViewModel!.PasswordChanged = true;
             model.PasswordSettingsViewModel!.FormShown = true;
-            TempData["model"] = JsonConvert.SerializeObject(model);
+            TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
             return RedirectToAction("Settings", "User");
         }
 
@@ -240,6 +244,7 @@ namespace Onym.Controllers
         {
             if (!ModelState.IsValid)
             {
+                model.Error = true;
                 return View(model);
             }
             var user = await _userManager.FindByIdAsync(model.UserId);
@@ -270,14 +275,14 @@ namespace Onym.Controllers
             {
                 model.EmailSettingsViewModel.FormShown = true;
                 ModelState.AddModelError("EmailSettingsViewModel.NewEmail", "Новая почта должна отличаться от текущей.");
-                TempData["model"] = JsonConvert.SerializeObject(model);
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
                 return RedirectToAction("Settings", "User");
             }
             if (!_userManager.CheckPasswordAsync(user, model.EmailSettingsViewModel.CurrentPassword).Result)
             {
                 model.EmailSettingsViewModel!.FormShown = true;
                 ModelState.AddModelError("EmailSettingsViewModel.CurrentPassword", "Неверный пароль.");
-                TempData["model"] = JsonConvert.SerializeObject(model);
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
                 return RedirectToAction("Settings", "User");
             }
             user.Email = model.EmailSettingsViewModel.NewEmail;
@@ -286,7 +291,7 @@ namespace Onym.Controllers
             await _userManager.UpdateNormalizedEmailAsync(user);
             model.EmailSettingsViewModel!.EmailChanged = true;
             model.EmailSettingsViewModel!.FormShown = true;
-            TempData["model"] = JsonConvert.SerializeObject(model);
+            TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
             return RedirectToAction("Settings", "User");
         }
         
@@ -321,7 +326,16 @@ namespace Onym.Controllers
                 $"Подтвердите вашу электронную почту, перейдя по <a href='{callbackUrl}'>ссылке</a>.");
             model.EmailSettingsViewModel!.EmailSended = true;
             model.EmailSettingsViewModel!.FormShown = true;
-            TempData["model"] = JsonConvert.SerializeObject(model);
+            TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
+            return RedirectToAction("Settings", "User");
+        }
+        
+        /* CHANGE AVATAR */
+        [HttpPost, Authorize, ValidateAntiForgeryToken]
+        [ExportModelState]
+        [Route("settings/change_avatar")]
+        public async Task<IActionResult> ChangeAvatar(IFormFile upload)
+        {
             return RedirectToAction("Settings", "User");
         }
     }

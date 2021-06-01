@@ -11,11 +11,14 @@
 }
 * body {
   background-color: var(--background-color) !important;
+  background-image: var(--background-image);
+  background-repeat: repeat;
 }
 * .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 320px;
 }
 /*-----RESET-----*/
 li {
@@ -78,27 +81,32 @@ div.separator:not(:empty):before {
 div.separator:not(:empty):after {
   margin-left: 4px;
 }
-/*-----USER-AVATAR-----*/
-.user-avatar {
-  border-radius: 50%;
-}
-.user-avatar img {
-  vertical-align: middle;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-/*-----USER-NICK-----*/
-.user-nick {
-  display: block;
+/*-----COUNTER-----*/
+.counter {
+  font-size: 24px;
+  line-height: 24px;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 16px;
-  margin: 0 0 2px 0;
+  margin: 0 6px 0 0;
+  cursor: default;
+  color: var(--primary-text-color);
+}
+.counter-label {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0 0 0 0;
+  cursor: default;
+  color: var(--primary-text-color);
+}
+.counter-label.link {
+  cursor: pointer;
   color: var(--primary-text-color);
   text-decoration: none;
 }
-.user-nick:hover {
+.counter-label.link:hover {
   color: var(--minor-accent-color);
+  text-decoration: none;
+}
+.counter-label.link.active {
+  color: var(--minor-accent-color);
+  text-decoration: none;
 }

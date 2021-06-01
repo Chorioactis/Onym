@@ -1,0 +1,61 @@
+﻿@model Onym.ViewModels.User.IndexViewModel
+@{
+    ViewBag.Title = Model.User!.UserName;
+    ViewBag.Page = "UserProfile";
+    var db = new OnymDbContext<User>();
+    var RateUps = db.PublicationRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.PublicationRating);
+    var RateDowns = db.PublicationRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.PublicationRating == false);
+}
+@{
+    await Html.RenderPartialAsync("_MainMenuPanelUser");
+}
+<!-- USER-PROFILE -->
+<div class="main-section">
+    <div class="main-section-item user-profile-header">
+        <!-- AVATAR -->
+        <div class="user-avatar large">
+            <img src="@ViewBag.DefaultAvatar" data-src="@Model.User!.UserProfilePictureNavigation.FileLink" alt="Аватар пользователя" asp-append-version="true">
+        </div>
+        <div class="user-profile-about">
+            <div class="user-profile-nick">
+                @Model.User!.UserName
+            </div>
+            <div class="user-profile-registration-date">
+                Зарегестрировался @Model.User!.RegistrationDate.ToString("dd MMMM yyyy")
+            </div>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <div class="main-section-item">
+        <div class="user-profile-rates">
+            Поставил <span class="positive">@RateUps</span> плюсов и <span class="negative">@RateDowns</span> минусов
+        </div>
+    </div>
+    <div class="separator"></div>
+    <div class="main-section-item user-profile-statistic">
+        <div>
+            <span class="counter">
+                @Model.User.RatingTotal
+            </span>
+            <div class="counter-label">
+                Рейтинг
+            </div>
+        </div>
+        <div>
+            <span class="counter">
+                @Model.User.Comments.Count
+            </span>
+            <div class="counter-label">
+                Комментарии
+            </div>
+        </div>
+        <div>
+            <span class="counter">
+                @Model.User.Publications.Count
+            </span>
+            <div class="counter-label">
+                Посты
+            </div>
+        </div>
+    </div>
+</div>

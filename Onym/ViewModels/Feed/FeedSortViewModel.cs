@@ -4,10 +4,10 @@ namespace Onym.ViewModels.Feed
 {
     public class FeedSortViewModel
     {
-        public SortState PublicationNameSort { get; private set; }
-        public SortState PublicationAgeSort { get; private set; }
-        public SortState PublicationRatingSort { get; private set; }
-        public SortState Current { get; private set; }
+        public SortState PublicationNameSort { get; set; }
+        public SortState PublicationAgeSort { get; set; }
+        public SortState PublicationRatingSort { get; set; }
+        public SortState Current { get; set; }
         
         public FeedSortViewModel(SortState sortOrder)
         {

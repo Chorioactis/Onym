@@ -15,7 +15,6 @@
   width: 100%;
   padding: 12px;
   text-align: left;
-  transition: none;
   justify-content: space-between;
   background-color: var(--section-background-color);
   color: var(--caption-color);
@@ -23,10 +22,12 @@
 .accordion-section .accordion-item .accordion-toggler .accordion-toggler-name {
   width: 20%;
   min-width: 130px;
+  transition: none;
 }
 .accordion-section .accordion-item .accordion-toggler .accordion-toggler-description {
   margin: 0 auto 0 0;
   font-style: italic;
+  transition: none;
 }
 .accordion-section .accordion-item .accordion-toggler:not(.collapsed) {
   background-color: var(--shadow-color);
@@ -45,6 +46,7 @@
   font-size: 16px;
   line-height: 16px;
   transform: rotate(0);
+  transition: transform 200ms ease-in-out;
 }
 .accordion-section .accordion-item-header {
   font-size: 16px;

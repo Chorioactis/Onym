@@ -147,8 +147,6 @@ accentCheckboxes.getElementsByClassName(Green_accent)[0].addEventListener('mouse
         switchAccent(this.activeAccent);
     });
 });
-
-
 // YELLOW
 accentCheckboxes.getElementsByClassName(Yellow_accent)[0].addEventListener('mouseenter', e => {
     this.activeAccent = getThemeSetting('accent');

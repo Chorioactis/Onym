@@ -1,0 +1,47 @@
+﻿@model Onym.ViewModels.Feed.EditPostViewModel
+@{
+    ViewBag.Title = "Изменить пост";
+    ViewBag.Page = "EditPost";
+}
+<div class="main-section">
+	<form asp-action="EditPost" asp-controller="Feed" method="post" enctype="multipart/form-data">
+		<div class="main-section-item">
+			<div class="form-header">Изменение поста</div>
+			<input asp-for="Name" value="@Model.Name" class="form-input-text"/>
+			<span asp-validation-for="Name" class=""></span>
+			<div id="Content" class="form-input-textarea publication-content">@Html.Raw(Model.Content)</div>
+            @{
+            	await Html.RenderPartialAsync("_TinyMCE");
+            }
+			<span asp-validation-for="Content" class=""></span>
+			<input asp-for="NewTags" value="@Model.NewTags" class="form-input-text"/>
+			<input asp-for="OldTags" value="@Model.OldTags" type="hidden"/>
+			<span asp-validation-for="NewTags" class=""></span>
+		</div>
+		<div class="separator"></div>
+		<div class="main-section-item add-post-media">
+			<input asp-for="NewUploads" multiple accept="image/*" type="file" />
+			<span asp-validation-for="NewUploads" class=""></span>
+		</div>
+		<div class="separator"></div>
+		@if (Model.OldUploads?.Count > 0)
+		{
+			<div class="main-section-item edit-post-media">
+				@foreach (var media in Model.OldUploads)
+				{
+					<div class="edit-post-media-item">
+						<a href="@media.Media.FileLink" target="_blank">
+							<img alt="@media.Media.FileLink" asp-append-version="true" class="lazy" data-src="@media.Media.FileLink" src="/media/img-placeholder.webp" title="@media.Media.FileLink">
+						</a>
+						<input type="checkbox" name="SavedUploads" value="@media.MediaId" checked><span class="message">Сохранить изображение.</span>
+					</div>
+				}
+			</div>
+		}
+		<div class="separator"></div>
+		<div class="main-section-item">
+			<button type="submit" class="form-confirm" style="margin: 0">Изменить пост</button>
+		</div>
+	</form>
+</div>
+

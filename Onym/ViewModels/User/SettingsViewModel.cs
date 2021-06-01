@@ -1,6 +1,4 @@
-﻿using Onym.ViewModels.Feed;
-
-#nullable enable
+﻿#nullable enable
 
 namespace Onym.ViewModels.User
 {

@@ -1,0 +1,103 @@
+﻿@import (reference) "palette";
+/*----- USER-PROFILE -----*/
+.user-profile-header {
+  flex-direction: row !important;
+}
+/*-----USER-AVATAR-----*/
+.user-avatar {
+  display: inline-block;
+  border-radius: 50%;
+  img {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    background-color: var(--section-background-color);
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  &.small {
+    border-radius: 50%;
+    background-color: var(--section-background-color);
+    width: 20px;
+    height: 20px;
+    margin: 0 6px 0 0;
+    transition: none;
+    img {
+      vertical-align: middle;
+      width: inherit;
+      height: inherit;
+      background-color: var(--section-background-color);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  &.large {
+  border-radius: 50%;
+  background-color: var(--section-background-color);
+  width: 64px;
+  height: 64px;
+  margin: 0 12px 0 0;
+  transition: none;
+  img {
+    vertical-align: middle;
+    width: inherit;
+    height: inherit;
+    background-color: var(--section-background-color);
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+}
+/*-----USER-ABOUT-----*/
+.user-profile-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  .user-profile-nick {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 22px;
+    color: var(--primary-text-color);
+  }
+  .user-profile-registration-date {
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--primary-text-color);
+  }
+}
+/*-----USER-STATISTICS-----*/
+.user-profile-statistic {
+  flex-direction: row !important;
+  div {
+    align-items: baseline;
+    margin: 0 24px 0 0;
+    &:last-child {
+      margin: 0;
+    }
+    .counter {
+    }
+    .counter-label {
+      margin: 6px 0 0 0 !important;
+    }
+  }
+}
+.user-profile-rates {
+  color: var(--article-text-color);
+  .positive {
+    color: var(--positive-color);
+  }
+  .negative {
+    color: var(--negative-color);
+  }
+}
+/*-----USER-NICK-----*/
+.user-nick {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  &:hover {
+    color: var(--minor-accent-color);
+  }
+}

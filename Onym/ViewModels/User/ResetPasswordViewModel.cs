@@ -5,7 +5,6 @@ namespace Onym.ViewModels.User
 {
     public class ResetPasswordViewModel
     {
-        public string Email { get; set; }
         [Display(Name = "Новый пароль", Prompt = "Новый пароль")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Введите новый пароль.")]

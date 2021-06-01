@@ -1,0 +1,178 @@
+﻿@model Onym.ViewModels.Feed.FeedViewModel
+@{
+    var creationDate = Model.Publication!.CreationDate.ToString("dd MMMM yyyy HH:mm");
+}
+<div class="main-section">
+    <div class="main-section-item publication-header">
+        <form asp-controller="Feed" asp-action="PublicationSetFavorite" class="publication-favorite-button">
+            @if (Model.Favorite != null)
+            {
+                <button class="favorite" name="PublicationSetFavorite" onclick="publicationFavorite(this, 'Remove');" value="@Model.Publication.Id">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke="currentColor" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                    </svg>
+                </button>
+            }
+            else
+            {
+                <button class="" name="PublicationSetFavorite" onclick="publicationFavorite(this, 'Set');" value="@Model.Publication.Id">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" stroke="currentColor" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                    </svg>
+                </button>
+            }
+        </form >
+        <div class="publication-author-block">
+            <a asp-action="Index" asp-controller="User" asp-route-userName="@Model.Publication.User.UserName" class="user-avatar small">
+                <img src="@ViewBag.DefaultAvatar" data-src="@Model.Publication.User.UserProfilePictureNavigation.FileLink" asp-append-version="true" alt="" class="lazy">
+            </a>
+            <div class="info">
+                <a asp-controller="User" asp-action="Index" asp-route-userName="@Model.Publication.User.UserName" class="user-nick">@Model.Publication.User.UserName</a>
+                <time class="publication-creation-time">@creationDate</time>
+            </div>
+        </div>
+        <div class="publication-title-block">
+            @{
+                if (ViewBag.Page == "Publication")
+                {
+                    <a class="publication-title disabled"><h5>@Model.Publication.Name</h5></a>
+                }
+                else
+                {
+                    <a asp-action="Publication" asp-controller="Feed" asp-route-urlSlug="@Model.Publication.UrlSlug" class="publication-title"><h5 class="publication-title">@Model.Publication.Name</h5></a>
+                }
+            }
+            <button class="title-button" name="PublicationCopyLink" onclick="publicationLinkCopy(this, '@Model.Publication.UrlSlug')" title="Скопировать ссылку на пост">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                </svg>
+            </button>
+            @{
+                if (ViewBag.Authenticated)
+                {
+                    if (User.IsInRole("Moderator") || ViewBag.User.Id == @Model.Publication.User.Id && DateTime.Now - @Model.Publication.CreationDate <= TimeSpan.FromHours(1))
+                    {
+                        <a asp-controller="Feed" asp-action="EditPost" asp-route-id="@Model.Publication.Id" class="title-button">
+                            <button class="title-button" name="PublicationEdit" title="Изменить пост">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                        </a>
+                    }
+                    if (User.IsInRole("Moderator"))
+                    {
+                        if (Model.Publication.PublicationStatusNavigation.Name == "Hidden")
+                        {
+                            <form asp-controller="Admin" asp-action="PublicationHide" class="title-button publication-hide">
+                                <button class="title-button hide" name="PublicationHide" onclick="publicationHide(this, 'Show')" value="@Model.Publication.Id" title="Раскрыть пост (Для всех)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                                    </svg>
+                                </button>
+                            </form> 
+                        }
+                        else if (Model.Publication.PublicationStatusNavigation.Name != "Hidden")
+                        {
+                            <form asp-controller="Admin" asp-action="PublicationHide" class="title-button publication-hide">
+                                <button class="title-button" name="PublicationHide" onclick="publicationHide(this, 'Hide')" value="@Model.Publication.Id" title="Скрыть пост (Для всех)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
+                            </form> 
+                        }
+                    }
+                }
+            }
+        </div>
+    </div>
+    @if (Model.Publication.Content != null)
+    {
+        <div class="main-section-item publication-content">
+            @Html.Raw(Model.Publication.Content)
+        </div>
+    }
+    @if (Model.Publication.PublicationMedia.Count == 0){}
+    @if (Model.Publication.PublicationMedia.Count == 1)
+    {
+        <div id="@Model.Publication.Id-media" class="main-section-item publication-media">
+            @foreach (var media in Model.Publication.PublicationMedia)
+            {
+                <figure class="publication-media-item" id="@media.Media.Id-image-figure">
+                    <a href="@media.Media.FileLink" data-fancybox="@Model.Publication.Name" target="_blank">
+                        <img data-src="@media.Media.FileLink" id="@media.Media.Id-image" class="lazy" alt="@Model.Publication.Name" asp-append-version="true" src="/media/img-placeholder.webp">
+                    </a>
+                </figure>
+            }
+        </div>
+    }
+    @if (Model.Publication.PublicationMedia.Count > 1)
+    {
+        <div id="@Model.Publication.Id-media" class="main-section-item publication-media">
+            @foreach (var media in Model.Publication.PublicationMedia)
+            {
+             
+                <figure class="publication-media-item" id="@media.Media.Id-image-figure">
+                    <a href="@media.Media.FileLink" data-fancybox="@Model.Publication.Name" target="_blank">
+                        <img data-src="@media.Media.FileLink" id="@media.Media.Id-image" class="lazy" alt="@Model.Publication.Name" asp-append-version="true" src="/media/img-placeholder.webp">
+                    </a>
+                </figure>
+            }
+        </div>
+    }
+    <div class="main-section-item publication-tag-block">
+        @foreach (var tag in Model.Publication.PublicationTags)
+        {
+            //TODO Реализовать поиск по тэгу 
+            <a href="#" class="tag">@tag.Tag.Name</a>
+        }
+    </div>
+    <div class="separator"></div>
+    <div class="main-section-item publication-footer">
+        <div class="publication-footer-content">
+            <a href="/story/@Model.Publication.UrlSlug#comments" class="publication-comments">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+                <span class="publication-comments-counter">@Model.Publication.Comments.Count</span>
+            </a>
+        </div>
+        <form asp-action="PublicationRate" asp-controller="Feed" class="publication-rating">
+            @{
+                if (Model.Tally != null)
+                {
+                    if (Model.Tally.PublicationRating == true)
+                    {
+                        <button class="rate-button material-icons plus active" name="PublicationRateUp" onclick="publicationRate(this, 'RemoveUp');" value="@Model.Publication.Id">arrow_drop_up</button>
+                    }
+                    else
+                    {
+                        <button class="rate-button material-icons plus" name="PublicationRateUp" onclick="publicationRate(this, 'UpFromDown');" value="@Model.Publication.Id">arrow_drop_up</button>
+                    }
+                }
+                else
+                {
+                    <button class="rate-button material-icons plus" name="PublicationRateUp" onclick="publicationRate(this, 'RateUp');" value="@Model.Publication.Id">arrow_drop_up</button>
+                }
+                <p class="rating-tally">@Model.Publication.RatingTotal</p>
+                if (Model.Tally != null)
+                {
+                    if (Model.Tally.PublicationRating == false)
+                    {
+                        <button class="rate-button material-icons minus active" name="PublicationRateDown" onclick="publicationRate(this, 'RemoveDown');" value="@Model.Publication.Id">arrow_drop_down</button>
+                    }
+                    else
+                    {
+                        <button class="rate-button material-icons minus" name="PublicationRateDown" onclick="publicationRate(this, 'DownFromUp');" value="@Model.Publication.Id">arrow_drop_down</button>
+                    }
+                }
+                else
+                {
+                    <button class="rate-button material-icons minus" name="PublicationRateDown" onclick="publicationRate(this, 'RateDown');" value="@Model.Publication.Id">arrow_drop_down</button>
+                }
+            }
+        </form>
+    </div>
+</div>

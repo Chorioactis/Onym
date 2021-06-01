@@ -1,21 +1,21 @@
-﻿<div id="Content" class="form-input-textarea"></div>
-<script src="https://cdn.tiny.cloud/1/0whn45accxwc58bwqq1f0syy9nlulcohla6j26t05lbimrlm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+﻿<script src="https://cdn.tiny.cloud/1/0whn45accxwc58bwqq1f0syy9nlulcohla6j26t05lbimrlm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
-      selector: '#Content',
-      menubar: false,
-        inline: true,
-        plugins: [
-          'autolink',
-          'link',
-          'media',
-          'image',
-          'quickbars',
-        ],
-        placeholder: 'Текст публикации...',
-        toolbar: false,
-        quickbars_insert_toolbar: false,
-        quickbars_selection_toolbar: 'bold italic underline | quicklink blockquote',
-        contextmenu: 'undo redo',
+    selector: '#Content',
+    menubar: false,
+    inline: true,
+    plugins: [
+      'autolink',
+      'link',
+      'media',
+      'image',
+      'quickbars',
+    ],
+    placeholder: 'Текст публикации...',
+    toolbar: false,
+    toolbar_location: 'bottom',
+    quickbars_insert_toolbar: false,
+    quickbars_selection_toolbar: 'bold italic underline strikethrough | quicklink blockquote | removeformat',
+    contextmenu: false,
    });
 </script>

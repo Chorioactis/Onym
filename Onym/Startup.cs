@@ -33,7 +33,8 @@ namespace Onym
             //Model-View-Controller
             services.AddControllersWithViews();
             services.AddRazorPages();
-
+            //Settings from .JSON
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             //Identity configuration
             services.Configure<IdentityOptions>(options =>
             {
@@ -117,6 +118,9 @@ namespace Onym
                 endpoints.MapControllerRoute(
                     name: "userSettings",
                     pattern: "{controller=User}/{action=Settings}");
+                endpoints.MapControllerRoute(
+                    name: "publication",
+                    pattern: "{controller=Feed}/{action=Publication}/{urlSlug}");
                 endpoints.MapRazorPages();
             });
         }

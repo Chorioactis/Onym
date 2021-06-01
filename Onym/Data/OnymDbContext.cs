@@ -3,8 +3,8 @@ using System.IO;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Onym.Models;
 
@@ -47,6 +47,7 @@ namespace Onym.Data
             configurationBuilder.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
             optionsBuilder
+                .ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))
                 .UseLazyLoadingProxies()
                 .UseNpgsql(configurationBuilder.Build().GetConnectionString("OnymDb"));
         }

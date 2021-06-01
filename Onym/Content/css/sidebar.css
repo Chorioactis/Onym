@@ -1,7 +1,9 @@
 /*-----SIDEBAR-----*/
 .sidebar {
-  position: relative;
+  position: sticky;
+  top: 56px;
   width: 20%;
+  height: 100%;
   margin: 0 12px 0 0;
 }
 .sidebar .sidebar-section {
@@ -16,6 +18,7 @@
 .sidebar .sidebar-section.add-post {
   border: none;
   background-color: var(--major-accent-color);
+  color: var(--secondary-text-color);
 }
 .sidebar .sidebar-section.add-post .add-post-button {
   display: flex;
@@ -26,15 +29,19 @@
   line-height: 16px;
   padding: 12px;
   width: 100%;
-  color: var(--active-color);
+  color: currentColor;
+  transition: none;
 }
 .sidebar .sidebar-section.add-post .add-post-icon {
   display: block;
   transform: rotate(0deg);
   margin: 0 0 0 6px;
-  font-size: 24px;
+  color: currentColor;
+  font-size: 23px;
+  transition: transform 200ms;
 }
 .sidebar .sidebar-section.add-post:hover {
+  color: var(--active-color);
   background-color: var(--minor-accent-color);
 }
 .sidebar .sidebar-section.add-post:hover .add-post-icon {
@@ -62,30 +69,12 @@
 .sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter {
   font-size: 24px;
   line-height: 24px;
-  font-weight: bold;
   margin: 0 6px 0 0;
-  cursor: default;
-  color: var(--primary-text-color);
 }
 .sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label {
   font-size: 14px;
   line-height: 14px;
   margin: 0 0 0 0;
-  cursor: default;
-  color: var(--primary-text-color);
-}
-.sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label.link {
-  cursor: pointer;
-  color: var(--primary-text-color);
-  text-decoration: none;
-}
-.sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label.link:hover {
-  color: var(--minor-accent-color);
-  text-decoration: none;
-}
-.sidebar .sidebar-section .sidebar-section-item.sidebar-counter div .counter-label.link.active {
-  color: var(--minor-accent-color);
-  text-decoration: none;
 }
 .sidebar .sidebar-section .sidebar-section-item:first-child {
   border-radius: 3px 3px 0 0;
@@ -171,6 +160,7 @@
   .sidebar {
     position: relative;
     width: 100%;
+    top: 0;
     margin: 0;
   }
   .sidebar .sidebar-section .sidebar-section-item.sidebar-counter {

@@ -1,0 +1,27 @@
+﻿@model Onym.ViewModels.Feed.FeedViewModel
+@{
+    ViewBag.Title = "Популярное";
+    ViewBag.Page = "UserPublications";
+}
+@{
+    await Html.RenderPartialAsync("_MainMenuPanelUser");
+}
+@if (Model.FeedPageViewModel!.HasPreviousPage)
+{
+    <a asp-action="Index" asp-route-name="@(Model.FeedFilterViewModel!.SearchString)" asp-route-page="@(Model.FeedPageViewModel.PageNumber - 1)" asp-route-sortorder="@(Model.FeedSortViewModel!.Current)" class="btn btn-outline-secondary d-flex justify-content-center w-100 mb-3">
+        @ViewBag.PagePrevious
+    </a>
+}
+@foreach (var publication in Model.Publications!)
+{
+    Model.Publication = publication;
+    Model.Favorite = publication.Favorites!.FirstOrDefault(f => f.PublicationId == publication.Id && f.User.UserName == ViewBag.UserName)!;
+    Model.Tally = publication.PublicationRatingTallies!.FirstOrDefault(t => t.PublicationId == publication.Id && t.User.UserName == ViewBag.UserName)!;
+    await Html.RenderPartialAsync("_PublicationCard");
+}
+@if (Model.FeedPageViewModel!.HasNextPage)
+{
+    <a asp-action="Index" asp-route-name="@(Model.FeedFilterViewModel!.SearchString)" asp-route-page="@(Model.FeedPageViewModel.PageNumber - 1)" asp-route-sortorder="@(Model.FeedSortViewModel!.Current)" class="btn btn-outline-secondary d-flex justify-content-center w-100 mb-3">
+        @ViewBag.PagePrevious
+    </a>
+}

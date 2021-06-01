@@ -21,13 +21,16 @@
             <e p="main-menu.css" t="Include" />
             <e p="main.css" t="Include" />
             <e p="palette.css" t="Include" />
+            <e p="publication.css" t="Include" />
             <e p="sidebar.css" t="Include" />
             <e p="sign-in-up.css" t="Include" />
             <e p="theme-switcher.css" t="Include" />
             <e p="tinyMCE.css" t="Include" />
+            <e p="user-profile.css" t="Include" />
           </e>
           <e p="js" t="Include">
             <e p="constants.js" t="Include" />
+            <e p="jquery-plugins.js" t="Include" />
             <e p="publication.js" t="Include" />
             <e p="search.js" t="Include" />
             <e p="theme-switcher.js" t="Include" />
@@ -40,10 +43,12 @@
             <e p="main-menu.less" t="Include" />
             <e p="main.less" t="Include" />
             <e p="palette.less" t="Include" />
+            <e p="publication.less" t="Include" />
             <e p="sidebar.less" t="Include" />
             <e p="sign-in-up.less" t="Include" />
             <e p="theme-switcher.less" t="Include" />
             <e p="tinyMCE.less" t="Include" />
+            <e p="user-profile.less" t="Include" />
           </e>
         </e>
         <e p="Controllers" t="Include">
@@ -53,7 +58,9 @@
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="Data" t="Include">
+          <e p="AppSettings.cs" t="Include" />
           <e p="Enums" t="Include">
+            <e p="FeedAction.cs" t="Include" />
             <e p="SortState.cs" t="Include" />
           </e>
           <e p="Initializers" t="Include">
@@ -115,12 +122,14 @@
           <e p="ErrorViewModel.cs" t="Include" />
           <e p="Feed" t="Include">
             <e p="AddPostViewModel.cs" t="Include" />
+            <e p="EditPostViewModel.cs" t="Include" />
             <e p="FeedFilterViewModel.cs" t="Include" />
             <e p="FeedModerateViewModel.cs" t="Include" />
             <e p="FeedPageViewModel.cs" t="Include" />
             <e p="FeedRateViewModel.cs" t="Include" />
             <e p="FeedSortViewModel.cs" t="Include" />
             <e p="FeedViewModel.cs" t="Include" />
+            <e p="Publication.cs" t="Include" />
           </e>
           <e p="User" t="Include">
             <e p="EmailSettingsViewModel.cs" t="Include" />
@@ -149,14 +158,13 @@
           </e>
           <e p="Feed" t="Include">
             <e p="AddPost.cshtml" t="Include" />
-            <e p="Best.cshtml" t="Include" />
             <e p="Comments.cshtml" t="Include" />
-            <e p="Favorite.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
-            <e p="New.cshtml" t="Include" />
+            <e p="EditPost.cshtml" t="Include" />
+            <e p="Feed.cshtml" t="Include" />
+            <e p="Publication.cshtml" t="Include" />
             <e p="Random.cshtml" t="Include" />
-            <e p="Rated.cshtml" t="Include" />
             <e p="Search.cshtml" t="Include" />
+            <e p="UserPublications.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="_Error.cshtml" t="Include" />
@@ -164,6 +172,7 @@
             <e p="_MainMenuPanelFeed.cshtml" t="Include" />
             <e p="_MainMenuPanelUser.cshtml" t="Include" />
             <e p="_oauthLinks.cshtml" t="Include" />
+            <e p="_PublicationCard.cshtml" t="Include" />
             <e p="_ScriptsPartial.cshtml" t="Include" />
             <e p="_SideBlockAdmin.cshtml" t="Include" />
             <e p="_SideBlockOther.cshtml" t="Include" />
@@ -173,7 +182,7 @@
           </e>
           <e p="User" t="Include">
             <e p="ForgotPassword.cshtml" t="Include" />
-            <e p="Index.cshtml" t="Include" />
+            <e p="Profile.cshtml" t="Include" />
             <e p="ResetPassword.cshtml" t="Include" />
             <e p="Settings.cshtml" t="Include" />
             <e p="SignIn.cshtml" t="Include" />
@@ -234,7 +243,8 @@
                 <e p="jquery.min.map" t="Include" />
               </e>
               <e p="LICENSE.txt" t="Include" />
-              <e p="plagins" t="Include">
+              <e p="plagins" t="Include" />
+              <e p="plugins" t="Include">
                 <e p="jquery-validation" t="Include">
                   <e p="dist" t="Include">
                     <e p="additional-methods.js" t="Include" />
@@ -249,16 +259,47 @@
                   <e p="jquery.validate.unobtrusive.min.js" t="Include" />
                   <e p="LICENSE.txt" t="Include" />
                 </e>
+                <e p="jquery.lazy-master" t="Include">
+                  <e p="gulpfile.js" t="Include" />
+                  <e p="jquery.lazy.js" t="Include" />
+                  <e p="jquery.lazy.min.js" t="Include" />
+                  <e p="jquery.lazy.plugins.js" t="Include" />
+                  <e p="jquery.lazy.plugins.min.js" t="Include" />
+                  <e p="plugins" t="Include">
+                    <e p="jquery.lazy.ajax.js" t="Include" />
+                    <e p="jquery.lazy.ajax.min.js" t="Include" />
+                    <e p="jquery.lazy.av.js" t="Include" />
+                    <e p="jquery.lazy.av.min.js" t="Include" />
+                    <e p="jquery.lazy.iframe.js" t="Include" />
+                    <e p="jquery.lazy.iframe.min.js" t="Include" />
+                    <e p="jquery.lazy.noop.js" t="Include" />
+                    <e p="jquery.lazy.noop.min.js" t="Include" />
+                    <e p="jquery.lazy.picture.js" t="Include" />
+                    <e p="jquery.lazy.picture.min.js" t="Include" />
+                    <e p="jquery.lazy.script.js" t="Include" />
+                    <e p="jquery.lazy.script.min.js" t="Include" />
+                    <e p="jquery.lazy.vimeo.js" t="Include" />
+                    <e p="jquery.lazy.vimeo.min.js" t="Include" />
+                    <e p="jquery.lazy.youtube.js" t="Include" />
+                    <e p="jquery.lazy.youtube.min.js" t="Include" />
+                    <e p="README.md" t="Include" />
+                  </e>
+                </e>
               </e>
             </e>
           </e>
           <e p="manifest.json" t="Include" />
           <e p="media" t="Include">
+            <e p="img-placeholder.webp" t="Include" />
             <e p="post_img" t="Include">
               <e p="2021" t="Include">
-                <e p="5" t="Include">
-                  <e p="testovaya-zapis-4389706211565684971.png" t="Include" />
-                  <e p="testovaya-zapis-438970621398744253.png" t="Include" />
+                <e p="5" t="Include" />
+                <e p="6" t="Include">
+                  <e p="italyanskiy-zhulik-419065429817161396.png" t="Include" />
+                  <e p="test-ssylok-v-postakh-207551379557753871.png" t="Include" />
+                  <e p="test-vyvoda-izobrazheniy-v-poste-16134636231068704349.png" t="Include" />
+                  <e p="test-vyvoda-izobrazheniy-v-poste-1613463623556569530.png" t="Include" />
+                  <e p="test-vyvoda-izobrazheniy-v-poste-1613463623743577222.png" t="Include" />
                 </e>
               </e>
             </e>

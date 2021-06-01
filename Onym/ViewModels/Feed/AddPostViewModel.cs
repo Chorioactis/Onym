@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
-using Onym.Models;
 
 namespace Onym.ViewModels.Feed
 {
@@ -11,8 +9,8 @@ namespace Onym.ViewModels.Feed
         [Required(ErrorMessage = "Введите заголовок.")]
         [RegularExpression(@"^.{1,100}$",
             ErrorMessage = "Заголовок должен быть до 100 символов.")]
-        public string? Name { get; set; }
-        
+        public string Name { get; set; } = null!;
+
         [Display(Name = "Текст публикации", Prompt = "Текст публикации")]
         public string? Content { get; set; }
         

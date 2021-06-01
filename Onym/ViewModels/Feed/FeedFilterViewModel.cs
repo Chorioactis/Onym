@@ -11,7 +11,7 @@ namespace Onym.ViewModels.Feed
     {
         public FeedFilterViewModel(IEnumerable<Tag>? tags, string? searchString, int? minRating, int? maxRating, DateTime? oldestCreationDate, DateTime? newestCreationDate)
         {
-            Tags = new SelectList(tags);
+            Tags = new List<Tag>(tags!);
             SearchString = searchString;
             SelectedMinRating = minRating;
             SelectedMaxRating = maxRating;
@@ -19,18 +19,17 @@ namespace Onym.ViewModels.Feed
             SelectedNewestCreationDate = newestCreationDate;
         }
 
-        public FeedFilterViewModel(string? searchString)
+        public FeedFilterViewModel()
         {
-            SearchString = searchString;
         }
 
-        public SelectList? Tags { get; private set; }
-        public string? SearchString { get; private set; }
-        public int? SelectedMinRating { get; private set; }
-        public int? SelectedMaxRating { get; private set; }
+        public List<Tag>? Tags { get; set; }
+        public string? SearchString { get; set; }
+        public int? SelectedMinRating { get; set; }
+        public int? SelectedMaxRating { get; set; }
         
-        public DateTime? SelectedOldestCreationDate { get; private set; }
+        public DateTime? SelectedOldestCreationDate { get; set; }
         
-        public DateTime? SelectedNewestCreationDate { get; private set; }
+        public DateTime? SelectedNewestCreationDate { get; set; }
     }
 }

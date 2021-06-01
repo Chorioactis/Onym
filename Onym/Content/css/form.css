@@ -134,6 +134,22 @@ span.settings-saved-message {
   margin: 12px 0 0 0;
   color: var(--positive-color);
 }
+span.post-added-message {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 12px 0 0 0;
+  color: var(--primary-text-color);
+}
+span.post-added-message .link {
+  font-size: 14px;
+  line-height: 14px;
+  color: var(--minor-accent-color);
+  text-decoration: none;
+}
+span.post-added-message .link:hover {
+  color: var(--major-accent-color);
+  text-decoration: underline;
+}
 span.field-validation-valid {
   margin: 0;
   color: var(--negative-color);

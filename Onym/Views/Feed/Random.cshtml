@@ -1,7 +1,6 @@
-﻿@{
-    ViewBag.Title = "Случайное";
-    ViewBag.Page = "Random";
-}
+﻿@model Onym.ViewModels.Feed.FeedViewModel
 @{
     await Html.RenderPartialAsync("_MainMenuPanelFeed");
+    await Html.RenderPartialAsync("_PublicationCard");
 }
+<a asp-action="Random" class="feed-pagination-button">Покажите мне другой пост</a>

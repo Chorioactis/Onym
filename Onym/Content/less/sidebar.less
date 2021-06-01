@@ -1,8 +1,10 @@
 ﻿@import (reference) "palette";
 /*-----SIDEBAR-----*/
 .sidebar {
-  position: relative;
+  position: sticky;
+  top: 56px;
   width: 20%;
+  height: 100%;
   margin: 0 12px 0 0;
   .sidebar-section {
     border: 1px solid var(--border-color);
@@ -15,6 +17,7 @@
     &.add-post {
       border: none;
       background-color: var(--major-accent-color);
+      color: var(--secondary-text-color);
       .add-post-button {
         display: flex;
         flex-direction: row;
@@ -24,15 +27,19 @@
         line-height: 16px;
         padding: 12px;
         width: 100%;
-        color: var(--active-color);
+        color: currentColor;
+        transition: none;
       }
       .add-post-icon {
         display: block;
         transform: rotate(0deg);
         margin: 0 0 0 6px;
-        font-size: 24px;
+        color: currentColor;
+        font-size: 23px;
+        transition: transform 200ms;
       }
       &:hover {
+        color: var(--active-color);
         background-color: var(--minor-accent-color);
         .add-post-icon {
           transform: rotate(360deg);
@@ -58,30 +65,12 @@
           .counter {
             font-size: 24px;
             line-height: 24px;
-            font-weight: bold;
             margin: 0 6px 0 0;
-            cursor: default;
-            color: var(--primary-text-color);
           }
           .counter-label {
             font-size: 14px;
             line-height: 14px;
             margin: 0 0 0 0;
-            cursor: default;
-            color: var(--primary-text-color);
-            &.link {
-              cursor: pointer;
-              color: var(--primary-text-color);
-              text-decoration: none;
-              &:hover {
-                color: var(--minor-accent-color);
-                text-decoration: none;
-              }
-              &.active {
-                color: var(--minor-accent-color);
-                text-decoration: none;
-              }
-            }
           }
         }
       }
@@ -173,6 +162,7 @@
   .sidebar {
     position: relative;
     width: 100%;
+    top: 0;
     margin: 0;
     .sidebar-section {
       .sidebar-section-item {

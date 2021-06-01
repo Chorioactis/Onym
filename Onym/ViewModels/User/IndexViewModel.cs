@@ -6,6 +6,6 @@ namespace Onym.ViewModels.User
 {
     public class IndexViewModel
     {
-        public FeedFilterViewModel? FeedFilterViewModel { get; set; }
+        public Models.User? User { get; set; }
     }
 }

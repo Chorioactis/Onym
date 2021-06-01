@@ -1894,6 +1894,33 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\dropzone\dist\min\dropzone.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\dropzone\index.js" />
       <_ContentIncludedByDefault Remove="wwwroot\lib\dropzone\README.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\bower.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\gulpfile.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\jquery.lazy.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\jquery.lazy.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\jquery.lazy.plugins.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\jquery.lazy.plugins.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\LICENSE" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\package-lock.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\package.json" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.ajax.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.ajax.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.av.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.av.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.iframe.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.iframe.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.noop.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.noop.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.picture.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.picture.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.script.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.script.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.vimeo.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.vimeo.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.youtube.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\jquery.lazy.youtube.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\plugins\README.md" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery.lazy-master\README.md" />
     </ItemGroup>
 
     <ItemGroup>
@@ -1904,6 +1931,7 @@
       <Folder Include="wwwroot\lib" />
       <Folder Include="wwwroot\lib\jquery\plagins" />
       <Folder Include="wwwroot\media\post_img" />
+      <Folder Include="wwwroot\media\post_img\2021\5" />
     </ItemGroup>
 
     <ItemGroup>

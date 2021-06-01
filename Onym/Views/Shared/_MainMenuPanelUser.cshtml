@@ -12,13 +12,13 @@
             }
             if (ViewBag.Page == "UserPublications")
             {
-                <li class="main-menu-panel-li"><a class="main-menu-panel-link active">Публикации</a></li>
+                <li class="main-menu-panel-li"><a asp-action="UserPublications" asp-controller="Feed" asp-route-userName="@ViewBag.SoughtUserName" class="main-menu-panel-link active">Посты</a></li>
             }
             else
             {
-                <li class="main-menu-panel-li"><a class="main-menu-panel-link">Публикации</a></li>
+                <li class="main-menu-panel-li"><a asp-action="UserPublications" asp-controller="Feed" asp-route-userName="@ViewBag.SoughtUserName" class="main-menu-panel-link">Посты</a></li>
             }
-            if (ViewBag.UserName == ViewBag.SoughtUserName)
+            if (User.Identity!.Name == ViewBag.SoughtUserName)
             {
                 if (ViewBag.Page == "UserSettings")
                 {

@@ -1,0 +1,19 @@
+﻿@model Onym.ViewModels.Feed.FeedViewModel
+@{
+    await Html.RenderPartialAsync("_MainMenuPanelFeed");
+}
+@if (Model.FeedPageViewModel!.HasPreviousPage)
+{
+    <a asp-action="@Model.FeedPageViewModel.FeedAction" asp-route-page="@(Model.FeedPageViewModel.PageNumber - 1)" asp-route-sortorder="@(Model.FeedSortViewModel!.Current)" class="feed-pagination-button">@ViewBag.PagePrevious</a>
+}
+@foreach (var publication in Model.Publications!)
+{
+    Model.Publication = publication;
+    Model.Favorite = publication.Favorites!.FirstOrDefault(f => f.PublicationId == publication.Id && f.User.UserName == ViewBag.UserName)!;
+    Model.Tally = publication.PublicationRatingTallies!.FirstOrDefault(t => t.PublicationId == publication.Id && t.User.UserName == ViewBag.UserName)!;
+    await Html.RenderPartialAsync("_PublicationCard");
+}
+@if (Model.FeedPageViewModel!.HasNextPage)
+{
+    <a asp-action="@Model.FeedPageViewModel.FeedAction" asp-route-page="@(Model.FeedPageViewModel.PageNumber + 1)" asp-route-sortOrder="@(Model.FeedSortViewModel!.Current)" class="feed-pagination-button">@ViewBag.PageNext</a>
+}
