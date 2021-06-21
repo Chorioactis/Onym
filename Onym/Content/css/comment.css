@@ -1,56 +1,56 @@
-/* PUBLICATION */
-.publication-content {
+/* COMMENT */
+.comment-content {
   transition: none;
   font-size: 14px !important;
   line-height: 18px !important;
   color: var(--article-text-color) !important;
 }
-.publication-content span {
+.comment-content span {
   font-size: 14px !important;
   line-height: 18px !important;
   color: var(--article-text-color) !important;
 }
-.publication-content em {
+.comment-content em {
   transition: none;
   font-size: 14px !important;
   line-height: 18px !important;
   color: var(--article-text-color) !important;
 }
-.publication-content strong {
+.comment-content strong {
   transition: none;
   font-size: 14px !important;
   line-height: 18px !important;
   color: var(--article-text-color) !important;
 }
-.publication-content p {
+.comment-content p {
   font-size: 14px !important;
   line-height: 18px !important;
   color: var(--article-text-color) !important;
   margin: 0 !important;
 }
-.publication-content p a {
+.comment-content p a {
   font-size: 14px !important;
   line-height: 18px !important;
   text-decoration: none;
   color: var(--major-accent-color) !important;
 }
-.publication-content p a:hover {
+.comment-content p a:hover {
   color: var(--minor-accent-color) !important;
   text-decoration: underline;
 }
-.publication-content p span {
+.comment-content p span {
   font-size: 14px !important;
   line-height: 18px !important;
   background: none !important;
   transition: none;
 }
-.publication-content p + p {
+.comment-content p + p {
   margin: 12px 0 0 0 !important;
 }
-.publication-content p + blockquote {
+.comment-content p + blockquote {
   margin: 12px 0 0 0 !important;
 }
-.publication-content blockquote {
+.comment-content blockquote {
   padding: 12px;
   margin: 0 !important;
   color: var(--article-text-color);
@@ -58,30 +58,30 @@
   border-radius: 4px;
   border-left: 4px solid var(--negative-color);
 }
-.publication-content blockquote + blockquote {
+.comment-content blockquote + blockquote {
   margin: 12px 0 0 0 !important;
 }
-.publication-content blockquote + p {
+.comment-content blockquote + p {
   margin: 12px 0 0 0 !important;
 }
-.publication-media {
+.comment-media {
   padding: 0 !important;
   display: flex;
   flex-direction: column;
 }
-.publication-media .publication-media-item {
+.comment-media .comment-media-item {
   margin: 0 0 6px 0;
   width: 100%;
   transition: 200ms;
   background-color: #FFFFFF;
 }
-.publication-media .publication-media-item:last-child {
+.comment-media .comment-media-item:last-child {
   margin: 0;
 }
-.publication-media .publication-media-item a {
+.comment-media .comment-media-item a {
   display: flex;
 }
-.publication-media .publication-media-item a img {
+.comment-media .comment-media-item a img {
   background-color: #FFFFFF;
   min-height: 15vh;
   max-height: 50vh;

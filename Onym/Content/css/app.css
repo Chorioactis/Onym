@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   padding: 0;
   margin: 0;
-  transition: 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
   font-size: 16px;
   line-height: 16px;
   font-family: "Roboto Conde", "Roboto", "Arial", sans-serif;
@@ -19,6 +19,7 @@
   flex-direction: column;
   min-height: 100vh;
   min-width: 320px;
+  margin: 0 0 12px 0;
 }
 /*-----RESET-----*/
 li {

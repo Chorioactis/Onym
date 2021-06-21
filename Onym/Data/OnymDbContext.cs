@@ -370,6 +370,7 @@ namespace Onym.Data
                     .HasMaxLength(100)
                     .HasColumnType("character varying(100)")
                     .HasColumnName("publication_name");
+                
                 b.Property<string>("UrlSlug")
                     .IsRequired()
                     .HasMaxLength(100)

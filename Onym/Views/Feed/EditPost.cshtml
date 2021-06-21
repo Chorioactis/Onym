@@ -8,6 +8,7 @@
 		<div class="main-section-item">
 			<div class="form-header">Изменение поста</div>
 			<input asp-for="Name" value="@Model.Name" class="form-input-text"/>
+			<input asp-for="Id" value="@Model.Id" type="hidden"/>
 			<span asp-validation-for="Name" class=""></span>
 			<div id="Content" class="form-input-textarea publication-content">@Html.Raw(Model.Content)</div>
             @{

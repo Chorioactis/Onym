@@ -3,8 +3,8 @@
     ViewBag.Title = Model.User!.UserName;
     ViewBag.Page = "UserProfile";
     var db = new OnymDbContext<User>();
-    var RateUps = db.PublicationRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.PublicationRating);
-    var RateDowns = db.PublicationRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.PublicationRating == false);
+    var rateUps = db.PublicationRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.PublicationRating) + db.CommentRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.Rating);
+    var rateDowns = db.PublicationRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.PublicationRating == false) + db.CommentRatingTallies.Where(t => t.UserId == Model.User.Id).Count(p => p.Rating == false);
 }
 @{
     await Html.RenderPartialAsync("_MainMenuPanelUser");
@@ -13,9 +13,9 @@
 <div class="main-section">
     <div class="main-section-item user-profile-header">
         <!-- AVATAR -->
-        <div class="user-avatar large">
-            <img src="@ViewBag.DefaultAvatar" data-src="@Model.User!.UserProfilePictureNavigation.FileLink" alt="Аватар пользователя" asp-append-version="true">
-        </div>
+        <a class="user-avatar large" href="@Model.User!.UserProfilePictureNavigation.FileLink" type="_blank">
+            <img src="@ViewBag.DefaultAvatar" data-src="@Model.User!.UserProfilePictureNavigation.FileLink" alt="Аватар пользователя" asp-append-version="true" class="lazy">
+        </a>
         <div class="user-profile-about">
             <div class="user-profile-nick">
                 @Model.User!.UserName
@@ -28,7 +28,7 @@
     <div class="separator"></div>
     <div class="main-section-item">
         <div class="user-profile-rates">
-            Поставил <span class="positive">@RateUps</span> плюсов и <span class="negative">@RateDowns</span> минусов
+            Поставил <span class="positive">@rateUps</span> плюсов и <span class="negative">@rateDowns</span> минусов
         </div>
     </div>
     <div class="separator"></div>

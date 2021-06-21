@@ -28,11 +28,41 @@
     flex-direction: column;
     padding: 0;
     margin: 12px 0 0 0;
-
     .main-section-item {
       display: flex;
       flex-direction: column;
       padding: 12px;
+      &.comment {
+        padding: 12px 12px 0 12px;
+        &:last-child {
+          padding: 12px;
+        }
+      }
+      .filter-button {
+        margin: 0;
+      }
+      .filter-item {
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 0 12px 0;
+        &:last-of-type {
+          margin: 0;
+        }
+        label {
+          margin: 0 12px 0 0;
+          font-size: 16px;
+          line-height: 16px;
+          cursor: default;
+          color: var(--primary-text-color);
+        }
+        input {
+          margin: 0;
+          display: flex;
+          width: 100%;
+        }
+      }
       &:first-child {
         border-radius: 3px 3px 0 0;
       }
@@ -114,73 +144,26 @@
             color: var(--primary-text-color);
             text-decoration: none;
             margin: 0 6px 0 0;
+            transition: none;
 
             h5 {
               font-weight: bold;
               font-size: 20px;
               line-height: 20px;
               color: currentColor;
-              transition: none;
+              transition: 200ms;
               margin: 0;
-            }
-
-            &:hover {
-              color: var(--minor-accent-color);
-            }
-
-            &.disabled {
               &:hover {
-                color: var(--primary-text-color);
-              }
-            }
-          }
-
-          .title-button {
-            display: block;
-            border: none;
-            border-radius: 4px;
-            background: none;
-            width: 20px;
-            height: 20px;
-            margin: 0 6px 0 0;
-            transition: inherit;
-
-            &.hide {
-              svg {
-                fill: none;
-                color: var(--negative-color);
+                transition: 200ms;
+                color: var(--minor-accent-color);
               }
             }
             
-            &:last-child {
-              margin: 0;
-            }
-            &.publication-hide {
-              svg {
-                fill: none;
-              }
+            &.disabled {
               &:hover {
-                svg {
-                  fill: none;
-                  color: var(--active-color);
+                h5{
+                color: var(--primary-text-color);
                 }
-              }
-            }
-            svg {
-              height: 20px;
-              width: 20px;
-              fill: var(--section-background-color);
-              color: var(--border-color);
-              transition: none;
-            }
-
-            &:hover {
-              background-color: var(--minor-accent-color);
-              transition: inherit;
-
-              svg {
-                fill: var(--minor-accent-color);
-                color: var(--active-color);
               }
             }
           }
@@ -266,7 +249,7 @@
           margin: -12px;
 
           .rate-button {
-            font-size: 26px;
+            font-size: 36px;
             line-height: 18px;
             color: var(--primary-text-color);
             background: none;
@@ -305,7 +288,6 @@
           }
         }
       }
-      
       &.edit-post-media {
         display: flex;
         flex-direction: column;
@@ -338,10 +320,207 @@
           }
         }
       }
+      .comment-header {
+        flex-direction: row;
+        display: flex;
+        padding-bottom: 0;
+        margin: 0 0 6px 0;
+        .comment-author-block {
+          display: flex;
+          flex-direction: row;
+          margin: 0 6px 0 0;
+          .info {
+            align-self: center;
+
+            .user-nick {
+              font-size: 14px;
+              line-height: 14px;
+              &.author
+              {
+                background-color: var(--major-accent-color);
+                border-radius: 4px;
+                padding: 0 2px;
+                color: var(--active-color);
+                &:hover {
+                  background-color: var(--minor-accent-color);
+                }
+              }
+            }
+
+            .comment-creation-time {
+              font-size: 14px;
+              line-height: 14px;
+              color: var(--primary-text-color);
+            }
+          }
+        }
+      }
+      .comment-content {
+        padding-top: 0;
+        margin: 0 0 6px 0;
+      }
+      .comment-footer {
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        padding: 0 0 4px 0;
+        .comment-rating {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .rate-button {
+          font-size: 36px;
+          line-height: 16px;
+          color: var(--primary-text-color);
+          background: none;
+          border: none;
+
+          &.plus {
+            margin: 0 -6px 0 0-10px;
+            padding: 2px 0 0 0;
+            &.active {
+              color: var(--positive-color);
+            }
+
+            &:hover {
+              color: var(--positive-color);
+            }
+          }
+
+          &.minus {
+            padding: 0 0 2px 0;
+            margin: 0 0 0 -6px;
+            &.active {
+              color: var(--negative-color);
+            }
+
+            &:hover {
+              color: var(--negative-color);
+            }
+          }
+        }
+
+        .rating-tally {
+          font-size: 14px;
+          line-height: 14px;
+          margin: 0;
+          color: var(--primary-text-color);
+
+          &.hide {
+            opacity: 0;
+          }
+        }
+      }
+        .comment-replay-button {
+          font-size: 14px;
+          line-height: 14px;
+          margin: 0;
+          font-weight: bold;
+          text-decoration: none;
+          color: var(--border-color);
+          &:hover {
+            color: var(--minor-accent-color);
+          }
+        }
+      }
+      .child-comments {
+        border-left: 2px solid var(--border-color);
+        margin: 6px 0 0 0;
+        padding: 0;
+        .main-section-item {
+          padding: 6px 12px 0 12px;
+        }
+      }
+    }
+    &.filter {
+      padding: 0;
+      .accordion-toggler {
+        border-radius: 4px;
+        color: var(--primary-text-color);
+        background-color: var(--dark-section-background-color) !important;
+        padding: 0 12px 0 12px !important;
+        .accordion-toggler-name {
+          text-decoration: none;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 48px;
+        }
+        .accordion-toggler-icon {
+          text-decoration: none;
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 48px;
+        }
+        &:hover {
+          color: var(--minor-accent-color);
+          background-color: var(--dark-section-background-color);
+          border-radius: 3px;
+        }
+        &:not(.collapsed) {
+          background-color: var(--dark-section-background-color);
+          color: var(--minor-accent-color);
+          border-radius: 3px 3px 0 0;
+
+          .accordion-toggler-icon {
+            transform: rotate(180deg);
+          }
+        }
+      }
     }
   }
 }
+.title-button {
+  display: block;
+  border: none;
+  border-radius: 4px;
+  background: none;
+  width: 20px;
+  height: 20px;
+  margin: 0 6px 0 0;
+  transition: inherit;
 
+  &.hide {
+    svg {
+      fill: none;
+      color: var(--negative-color);
+    }
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+  &.hide-button {
+    svg {
+      fill: none;
+    }
+    &:hover {
+      svg {
+        fill: none;
+        color: var(--active-color);
+      }
+    }
+  }
+  svg {
+    height: 20px;
+    width: 20px;
+    fill: var(--section-background-color);
+    color: var(--border-color);
+    transition: none;
+  }
+
+  &:hover {
+    background-color: var(--minor-accent-color);
+    transition: inherit;
+
+    svg {
+      fill: var(--minor-accent-color);
+      color: var(--active-color);
+    }
+  }
+}
 @media (max-width: 991px) {
   .main {
   position: relative;

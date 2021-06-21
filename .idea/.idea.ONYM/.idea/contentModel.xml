@@ -16,6 +16,7 @@
           <e p="css" t="Include">
             <e p="accordion.css" t="Include" />
             <e p="app.css" t="Include" />
+            <e p="comment.css" t="Include" />
             <e p="form.css" t="Include" />
             <e p="header.css" t="Include" />
             <e p="main-menu.css" t="Include" />
@@ -38,6 +39,7 @@
           <e p="Less" t="Include">
             <e p="accordion.less" t="Include" />
             <e p="app.less" t="Include" />
+            <e p="comment.less" t="Include" />
             <e p="form.less" t="Include" />
             <e p="header.less" t="Include" />
             <e p="main-menu.less" t="Include" />
@@ -79,7 +81,6 @@
         <e p="Migrations" t="Include">
           <e p="20210512215636_initial.cs" t="Include" />
           <e p="20210512215636_initial.Designer.cs" t="Include" />
-          <e p="OnymDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Comment.cs" t="Include" />
@@ -123,6 +124,7 @@
           <e p="Feed" t="Include">
             <e p="AddPostViewModel.cs" t="Include" />
             <e p="EditPostViewModel.cs" t="Include" />
+            <e p="FeedAddCommentViewModel.cs" t="Include" />
             <e p="FeedFilterViewModel.cs" t="Include" />
             <e p="FeedModerateViewModel.cs" t="Include" />
             <e p="FeedPageViewModel.cs" t="Include" />
@@ -132,6 +134,7 @@
             <e p="Publication.cs" t="Include" />
           </e>
           <e p="User" t="Include">
+            <e p="AvatarSettingsViewModel.cs" t="Include" />
             <e p="EmailSettingsViewModel.cs" t="Include" />
             <e p="ForgotPasswordViewModel.cs" t="Include" />
             <e p="IndexViewModel.cs" t="Include" />
@@ -163,10 +166,10 @@
             <e p="Feed.cshtml" t="Include" />
             <e p="Publication.cshtml" t="Include" />
             <e p="Random.cshtml" t="Include" />
-            <e p="Search.cshtml" t="Include" />
             <e p="UserPublications.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
+            <e p="_CommentCard.cshtml" t="Include" />
             <e p="_Error.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
             <e p="_MainMenuPanelFeed.cshtml" t="Include" />
@@ -295,15 +298,19 @@
               <e p="2021" t="Include">
                 <e p="5" t="Include" />
                 <e p="6" t="Include">
+                  <e p="italiya-14480007211272454441.png" t="Include" />
                   <e p="italyanskiy-zhulik-419065429817161396.png" t="Include" />
-                  <e p="test-ssylok-v-postakh-207551379557753871.png" t="Include" />
-                  <e p="test-vyvoda-izobrazheniy-v-poste-16134636231068704349.png" t="Include" />
-                  <e p="test-vyvoda-izobrazheniy-v-poste-1613463623556569530.png" t="Include" />
-                  <e p="test-vyvoda-izobrazheniy-v-poste-1613463623743577222.png" t="Include" />
+                  <e p="test-funktsionala-svyazannogo-s-izobrazheniya-430781350642738546.png" t="Include" />
+                  <e p="testovaya-zapis-131579607664279301.png" t="Include" />
+                  <e p="vinodelnya-v-italii-20607045251375147210.png" t="Include" />
                 </e>
               </e>
             </e>
             <e p="user-avatar-placeholder.webp" t="Include" />
+            <e p="user_avatar" t="Include">
+              <e p="Admin.png" t="Include" />
+              <e p="Chorioactis.png" t="Include" />
+            </e>
           </e>
         </e>
       </e>

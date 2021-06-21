@@ -61,7 +61,6 @@ D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_ScriptsPartial.cshtml.g.
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_StylesPartial.cshtml.g.cs
 D:\Repos\Onym\Onym\bin\Debug\net5.0\BundlerMinifier.TagHelpers.dll
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Onym.MvcApplicationPartsAssemblyInfo.cs
-D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Search.cshtml.g.cs
 D:\Repos\Onym\Onym\bin\Debug\net5.0\Onym.StaticWebAssets.xml
 D:\Repos\Onym\Onym\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
 D:\Repos\Onym\Onym\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.UI.dll
@@ -193,3 +192,4 @@ D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Feed.cshtml.g.cs
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\Random.cshtml.g.cs
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\User\Profile.cshtml.g.cs
 D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Feed\EditPost.cshtml.g.cs
+D:\Repos\Onym\Onym\obj\Debug\net5.0\Razor\Views\Shared\_CommentCard.cshtml.g.cs

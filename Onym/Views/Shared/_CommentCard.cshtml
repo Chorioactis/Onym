@@ -1,0 +1,147 @@
+﻿@model Onym.ViewModels.Feed.FeedViewModel
+@{
+    var creationDate = Model.Comment!.CreationDate.ToString("dd MMMM yyyy HH:mm");
+    var childComments = Model.Publication!.Comments.OrderBy(comment => comment.RatingTotal).Where(parent => parent.ParentalCommentId == Model.Comment.Id).ToList();
+}
+<li id="comment_@Model.Comment.Id" class="main-section-item comment">
+    <div class="comment-header">
+        <div class="comment-author-block">
+            <a asp-action="Index" asp-controller="User" asp-route-userName="@Model.Comment!.User.UserName" class="user-avatar small">
+                <img src="@ViewBag.DefaultAvatar" data-src="@Model.Comment.User.UserProfilePictureNavigation.FileLink" asp-append-version="true" alt="" class="lazy">
+            </a>
+            <div class="info">
+                @if (Model.Comment.User.UserName == Model.Publication.User.UserName)
+                {
+                    <a asp-controller="User" asp-action="Index" asp-route-userName="@Model.Comment.User.UserName" class="user-nick author">@Model.Comment.User.UserName</a>
+                }
+                else
+                {
+                    <a asp-controller="User" asp-action="Index" asp-route-userName="@Model.Comment.User.UserName" class="user-nick">@Model.Comment.User.UserName</a>
+                }
+                <time class="comment-creation-time">@creationDate</time>
+            </div>
+        </div>
+        <button class="title-button" name="CommentCopyLink" onclick="LinkCopy(this, '@Model.Publication.UrlSlug'+'#comment_@Model.Comment.Id')" title="Скопировать ссылку на комментарий">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+            </svg>
+        </button>
+        @{
+            if (ViewBag.Authenticated)
+            {
+                if (User.IsInRole("Moderator") || ViewBag.User.Id == Model.Comment.User.Id && DateTime.Now - Model.Comment.CreationDate <= TimeSpan.FromHours(1))
+                {
+                    <a asp-controller="Feed" asp-action="" class="title-button">
+                        <button class="title-button" name="CommentEdit" title="Изменить комментарий">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                        </button>
+                    </a>
+                }
+                if (User.IsInRole("Moderator"))
+                {
+                    if (Model.Publication.PublicationStatusNavigation.Name == "Hidden")
+                    {
+                        <form asp-controller="Admin" asp-action="" class="title-button hide-button">
+                            <button class="title-button hide" name="CommentHide" onclick="Hide(this, 'Show')" value="@Model.Comment.Id" title="Раскрыть комментарий (Для всех)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                                </svg>
+                            </button>
+                        </form> 
+                    }
+                    else if (Model.Publication.PublicationStatusNavigation.Name != "Hidden")
+                    {
+                        <form asp-controller="Admin" asp-action="" class="title-button hide-button">
+                            <button class="title-button" name="CommentHide" onclick="Hide(this, 'Hide')" value="@Model.Comment.Id" title="Скрыть комментарий (Для всех)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
+                        </form> 
+                    }
+                }
+            }
+        }
+    </div>
+    @switch(Model.Comment.CommentStatusNavigation.Name)
+    {
+        case "Hidden":
+            <div class="comment-content">
+                <blockquote><p><em>Содержимое скрыто модератором.</em></p></blockquote>
+            </div>
+            break;
+        default:
+            if (Model.Comment.Content != null)
+            {
+                <div class="comment-content">
+                    @Html.Raw(Model.Comment.Content)
+                </div>
+            }
+            if (Model.Comment.CommentMedia.Count > 0)
+            {
+                <div id="@Model.Comment.Id-media" class="main-section-item comment-media">
+                    @foreach (var media in Model.Comment.CommentMedia)
+                    {
+                        <figure class="comment-media-item" id="@media.Media.Id-image-figure">
+                            <a href="@media.Media.FileLink" data-fancybox="@Model.Comment.Content" target="_blank">
+                                <img data-src="@media.Media.FileLink" id="@media.Media.Id-image" class="lazy" alt="@Model.Comment.Content" asp-append-version="true" src="/media/img-placeholder.webp">
+                            </a>
+                        </figure>
+                    }
+                </div>
+            }
+            break;
+    }
+    <div class="comment-footer">
+        <form asp-action="CommentRate" asp-controller="Feed" class="comment-rating">
+            @{
+                if (Model.CommentRatingTally != null)
+                {
+                    if (Model.CommentRatingTally?.Rating == true)
+                    {
+                        <button class="rate-button material-icons plus active" name="CommentRateUp" onclick="Rate(this, 'RemoveUp');" value="@Model.Comment.Id">arrow_drop_up</button>
+                    }
+                    else
+                    {
+                        <button class="rate-button material-icons plus" name="CommentRateUp" onclick="Rate(this, 'UpFromDown');" value="@Model.Comment.Id">arrow_drop_up</button>
+                    }
+                }
+                else
+                {
+                    <button class="rate-button material-icons plus" name="CommentRateUp" onclick="Rate(this, 'RateUp');" value="@Model.Comment.Id">arrow_drop_up</button>
+                }
+                <p class="rating-tally">@Model.Comment.RatingTotal</p>
+                if (Model.CommentRatingTally != null)
+                {
+                    if (Model.CommentRatingTally?.Rating == false)
+                    {
+                        <button class="rate-button material-icons minus active" name="CommentRateDown" onclick="Rate(this, 'RemoveDown');" value="@Model.Comment.Id">arrow_drop_down</button>
+                    }
+                    else
+                    {
+                        <button class="rate-button material-icons minus" name="CommentRateDown" onclick="Rate(this, 'DownFromUp');" value="@Model.Comment.Id">arrow_drop_down</button>
+                    }
+                }
+                else
+                {
+                    <button class="rate-button material-icons minus" name="CommentRateDown" onclick="Rate(this, 'RateDown');" value="@Model.Comment.Id">arrow_drop_down</button>
+                }
+            }
+        </form>
+        <a asp-action="Publication" asp-controller="Feed" asp-route-repl="@Model.Comment.Id" asp-fragment="add-comment" class="comment-replay-button">Ответить</a>
+    </div>
+    @if (childComments.Count > 0)
+    {
+        <ul class="child-comments">
+            @foreach (var childComment in childComments)
+            {
+                Model.Comment = childComment;
+                Model.CommentRatingTally = childComment.CommentRatingTallies!.FirstOrDefault(t => t.CommentId == childComment.Id && t.User.UserName == ViewBag.UserName);
+                await Html.RenderPartialAsync("_CommentCard");     
+            }
+        </ul> 
+    }
+</li>

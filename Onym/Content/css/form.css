@@ -93,6 +93,9 @@
   font-size: 16px;
   line-height: 16px;
 }
+.form-input-textarea.small {
+  min-height: 80px;
+}
 .form-input-textarea:first-child {
   margin: 0;
 }
@@ -102,30 +105,30 @@
 .form-input-textarea.valid {
   border-color: var(--border-color);
 }
-.email-status {
+.status {
   display: flex;
   flex-direction: row;
 }
-.email-status span {
+.status span {
   margin: 0 6px 0 0;
 }
-.email-status span:last-of-type {
+.status span:last-of-type {
   margin: 0;
 }
-.email-status span:only-of-type {
+.status span:only-of-type {
   margin: 0 6px 0 0;
 }
-.email-status span.confirmed {
+.status span.confirmed {
   font-size: 16px;
   line-height: 16px;
   color: var(--positive-color);
 }
-.email-status span.not-confirmed {
+.status span.not-confirmed {
   font-size: 16px;
   line-height: 16px;
   color: var(--caption-color);
 }
-.email-status button {
+.status button {
   margin: 0;
 }
 span.settings-saved-message {

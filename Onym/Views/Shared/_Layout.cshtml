@@ -82,28 +82,29 @@
             <!-- NAVBAR-RIGHT-MENU -->
             <div class="navbar-right d-none d-lg-flex">
                 <!-- SEARCH -->
-                <form asp-action="Search" asp-controller="Feed" class="search hidden navbar-right-item" autocomplete="off" method="get">
-                    <div class="input-group input-group-sm">
-                        <input class="search-input-field form-control" name="search" type="search" on placeholder="Поиск" value="" aria-describedby="search-button-addon">
-                        <button class="search-button material-icons" type="submit" id="search-button-addon">search</button>
-                    </div>
-                </form>
+                @if (ViewBag.Page != "Random")
+                {
+                    <form class="search hidden navbar-right-item" autocomplete="off" method="get">
+                        <div class="input-group input-group-sm">
+                            <input class="search-input-field form-control" name="q" type="search" on placeholder="Поиск" value="" aria-describedby="search-button-addon">
+                            <button class="search-button material-icons" type="submit" id="search-button-addon">search</button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="New" asp-controller="Feed" class="search hidden navbar-right-item" autocomplete="off" method="get">
+                        <div class="input-group input-group-sm">
+                            <input class="search-input-field form-control" name="q" type="search" on placeholder="Поиск" value="" aria-describedby="search-button-addon">
+                            <button class="search-button material-icons" type="submit" id="search-button-addon">search</button>
+                        </div>
+                    </form>
+                }
                 <!-- AVATAR -->
                 <div class="d-none d-lg-block navbar-right-item">
-                @{
-                    if (ViewBag.Authenticated)
-                    {
-                        <a asp-action="Index" asp-controller="User" asp-route-userName="@ViewBag.UserName" class="user-avatar">
-                            <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" alt="Аватар пользователя" asp-append-version="true">
-                        </a>
-                    }
-                    else
-                    {
-                        <a asp-action="SignIn" asp-controller="User" class="user-avatar">
-                            <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar"  alt="Аватар пользователя" asp-append-version="true">
-                        </a>
-                    }
-                }
+                    <a asp-action="Index" asp-controller="User" asp-route-userName="@ViewBag.UserName" class="user-avatar">
+                        <img src="@ViewBag.Avatar" alt="Аватар пользователя @ViewBag.UserName">
+                    </a>
                 </div>
             </div>
             </div>
@@ -122,8 +123,8 @@
             }
             /*await Html.RenderPartialAsync("_CommOfTheDay");
             await Html.RenderPartialAsync("_Advertising");
-            await Html.RenderPartialAsync("_TopTags");*/
-            await Html.RenderPartialAsync("_SideBlockOther");
+            await Html.RenderPartialAsync("_TopTags");
+            await Html.RenderPartialAsync("_SideBlockOther");*/
         }
     </aside>
     <!-- MAIN -->

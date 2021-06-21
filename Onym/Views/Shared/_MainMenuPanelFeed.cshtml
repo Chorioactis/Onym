@@ -1,8 +1,54 @@
-﻿<!-- MAIN MENU PANEL -->
-<div class="main-section">
-    <ul class="main-section-item main-menu-panel">
-        @{
-            <li class="main-menu-panel-li"><a class="main-menu-panel-link">Фильтр</a></li>
-        }
-    </ul>
+﻿@model Onym.ViewModels.Feed.FeedViewModel
+@{
+	var filter = Model.FeedFilterViewModel;
+}
+
+<!-- MAIN MENU PANEL -->
+<div class="main-section filter">
+    <div class="accordion-section" id="mainMenuPanel">
+        <!-- FILTER -->
+        <div class="accordion-item">
+            <button class="accordion-toggler accordion-item-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filter" aria-expanded="false" aria-controls="filter">
+                <div class="accordion-toggler-name">Фильтр</div>
+                <span class="material-icons accordion-toggler-icon">expand_more</span>
+            </button>
+            <div id="filter" class="accordion-collapse collapse" data-bs-parent="#mainMenuPanel">
+                <div class="accordion-item-body">
+                <form asp-action="@ViewBag.Page" asp-controller="Feed" method="get">
+                    <div class="main-section-item">
+                        <div class="filter-item">
+                            <input name="tg" id="tags" value="@filter!.Tags" placeholder="Введите метки через запятую" class="form-input-text"/>
+                        </div>
+                    </div>
+                    <div class="separator">По дате</div>
+                    <div class="main-section-item">
+                        <div class="filter-item">
+                            <label for="ocd">От:</label>
+                            <input name="ocd" id="ocd" value="@filter.OldestCreationDate" placeholder="дд.мм.гггг" class="form-input-text"/>
+                        </div>
+                        <div class="filter-item">
+                            <label for="ncd">До:</label>
+                            <input name="ncd" id="ncd" value="@filter.NewestCreationDate" placeholder="дд.мм.гггг" class="form-input-text"/>
+                        </div>
+                    </div>
+                    <div class="separator">По рейтингу</div>
+                        <div class="main-section-item">
+                            <div class="filter-item">
+                                <label for="mnr">От:</label>
+                                <input name="mnr" id="mnr" value="@filter.MinRating" placeholder="Минимальный рейтинг" class="form-input-text"/>
+                            </div>
+                            <div class="filter-item">
+                                <label for="mxr">До:</label>
+                                <input name="mxr" id="mxr" value="@filter.MaxRating" placeholder="Максимальный рейтинг" class="form-input-text"/>
+                            </div>
+                        </div>
+                    <div class="separator"></div>
+                    <div class="main-section-item">
+                        <button type="submit" class="form-confirm filter-button">Отфильтровать</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

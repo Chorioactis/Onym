@@ -7,7 +7,7 @@
             <div class="sidebar-section-item section-header">
                 <!-- AVATAR -->
                 <a asp-action="Index" asp-controller="User" asp-route-userName="@ViewBag.UserName" class="user-avatar">
-                    <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" alt="Аватар пользователя" asp-append-version="true">
+                    <img src="@ViewBag.Avatar" alt="Аватар пользователя @ViewBag.UserName">
                 </a>
                 <!-- USERNAME/SIGN-OUT -->
                 <div class="user-section">
@@ -60,7 +60,7 @@
             <div class="sidebar-section-item section-header">
                 <!-- AVATAR -->
                 <a asp-action="SignIn" asp-controller="User" class="user-avatar">
-                    <img src="@ViewBag.DefaultAvatar" data-src="@ViewBag.Avatar" alt="Аватар пользователя" asp-append-version="true">
+                    <img src="@ViewBag.Avatar" alt="Аватар пользователя @ViewBag.UserName">
                 </a>
                 <!-- GUEST/SIGN-IN -->
                 <div class="user-section">

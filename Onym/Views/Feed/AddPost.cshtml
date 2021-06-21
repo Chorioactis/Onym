@@ -12,16 +12,17 @@
 			<div id="Content" class="form-input-textarea publication-content">@Html.Raw(Model.Content)</div>
 			@{
                 await Html.RenderPartialAsync("_TinyMCE");
-            }
+			}
+			<span asp-validation-for="Content" class=""></span>
 			<input asp-for="Tags" class="form-input-text"/>
 			<span asp-validation-for="Tags" class=""></span>
 		</div>
-		<div class="separator"></div>
+		<div class="separator semi"></div>
 		<div class="main-section-item add-post-media">
 			<input type="file" asp-for="Uploads" multiple accept="image/*"/>
 			<span asp-validation-for="Uploads" class=""></span>
 		</div>
-		<div class="separator"></div>
+		<div class="separator semi"></div>
 		<div class="main-section-item">
 			<button type="submit" class="form-confirm" style="margin: 0">Добавить пост</button>
 			@{

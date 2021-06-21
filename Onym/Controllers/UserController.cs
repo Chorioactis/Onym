@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Onym.Data;
 using Onym.Models;
@@ -21,13 +23,17 @@ namespace Onym.Controllers
         private readonly RoleManager<IdentityRole<int>> _roleManager;
         private readonly OnymDbContext<User> _db;
         private readonly EmailService _emailService;
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole<int>> roleManager, OnymDbContext<User> db, EmailService emailService)
+        private static IOptions<AppSettings>? _settings;
+        private readonly IWebHostEnvironment _appEnvironment;
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole<int>> roleManager, IWebHostEnvironment appEnvironment, OnymDbContext<User> db, EmailService emailService, IOptions<AppSettings> settings)
         {
             _db = db;
             _emailService = emailService;
             _roleManager = roleManager;
             _userManager = userManager;  
             _signInManager = signInManager;  
+            _settings = settings;
+            _appEnvironment = appEnvironment;
         }  
         
         /* PROFILE */
@@ -151,12 +157,16 @@ namespace Onym.Controllers
                 model = new SettingsViewModel
                 {
                     PasswordSettingsViewModel = new PasswordSettingsViewModel(),
-                    EmailSettingsViewModel = new EmailSettingsViewModel()
+                    EmailSettingsViewModel = new EmailSettingsViewModel(),
+                    AvatarSettingsViewModel = new AvatarSettingsViewModel()
                 };
             }
             else
             {
                 model = JsonConvert.DeserializeObject<SettingsViewModel>((string) TempData["SettingsViewModel"]);
+                model.AvatarSettingsViewModel ??= new AvatarSettingsViewModel();
+                model.EmailSettingsViewModel ??= new EmailSettingsViewModel();
+                model.PasswordSettingsViewModel ??= new PasswordSettingsViewModel();
             }
             return View(model);
         }
@@ -168,6 +178,7 @@ namespace Onym.Controllers
         public async Task<IActionResult> ChangePassword(SettingsViewModel model)
         {
             model.EmailSettingsViewModel = new EmailSettingsViewModel();
+            model.AvatarSettingsViewModel = new AvatarSettingsViewModel();
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
             if (await _userManager.CheckPasswordAsync(user, model.PasswordSettingsViewModel!.NewPassword))
             {
@@ -262,6 +273,89 @@ namespace Onym.Controllers
             model.PasswordChanged = true;
             return View(model);
         }
+         
+        /* CHANGE AVATAR */
+        [HttpPost, Authorize, ValidateAntiForgeryToken]
+        [ExportModelState]
+        [Route("settings/avatar_change")]
+        public async Task<IActionResult> ChangeAvatar(SettingsViewModel model)
+        {
+            model.PasswordSettingsViewModel = new PasswordSettingsViewModel();
+            model.EmailSettingsViewModel = new EmailSettingsViewModel();
+            var user = await _userManager.FindByNameAsync(User.Identity?.Name);
+            if (model.AvatarSettingsViewModel!.Upload == null)
+            {
+                model.AvatarSettingsViewModel.FormShown = true;
+                ModelState.AddModelError("AvatarSettingsViewModel.Upload", "Выберите файл.");
+                model.AvatarSettingsViewModel.Upload = null;
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
+                return RedirectToAction("Settings", "User");
+            }
+            if (!(model.AvatarSettingsViewModel!.Upload.Length <= _settings!.Value.MaxFileSize))
+            {
+                model.AvatarSettingsViewModel.FormShown = true;
+                ModelState.AddModelError("AvatarSettingsViewModel.Upload", "Файл превысил максимальный размер и не был загружен.");
+                model.AvatarSettingsViewModel.Upload = null;
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
+                return RedirectToAction("Settings", "User");
+            }
+            string subPath = "/media/user_avatar";
+            string filePath = subPath + '/' + user.UserName + ".png";
+            string path = _appEnvironment.WebRootPath + subPath;
+            DirectoryInfo directory = new DirectoryInfo(path);
+            if (!directory.Exists) directory.Create();
+            await using (var fileStream = new FileStream(_appEnvironment.WebRootPath + filePath, FileMode.Create))
+            {
+                await model.AvatarSettingsViewModel.Upload.CopyToAsync(fileStream);
+            }
+            Media file = _db.Media.FirstOrDefaultAsync(media =>
+                media.FileLink == "/media/user_avatar/" + user.UserName + ".png").Result;
+            if (file == null)
+            {
+                file = new Media {FileLink = filePath};
+                await _db.Media.AddAsync(file);
+                await _db.SaveChangesAsync();
+                file = _db.Media.FirstOrDefaultAsync(media => media.FileLink == file.FileLink).Result;
+                user.ProfilePicture = file.Id;
+                _db.Users.Update(user);
+                await _db.SaveChangesAsync();
+            }
+            else
+            {
+                file.FileLink = filePath;
+                _db.Media.Update(file);
+                user.ProfilePicture = file.Id;
+                _db.Users.Update(user);
+                await _db.SaveChangesAsync();
+            }
+            model.AvatarSettingsViewModel!.AvatarChanged = true;
+            model.AvatarSettingsViewModel!.FormShown = true;
+            model.AvatarSettingsViewModel.Upload = null;
+            ViewBag.Avatar = user.UserProfilePictureNavigation.FileLink;
+            TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
+            return RedirectToAction("Settings", "User");
+        }
+        
+        /* RESET AVATAR */
+        [HttpPost, Authorize, ValidateAntiForgeryToken]
+        [ExportModelState]
+        [Route("settings/avatar_reset")]
+        public async Task<IActionResult> ResetAvatar(SettingsViewModel model)
+        {
+            model.PasswordSettingsViewModel = new PasswordSettingsViewModel();
+            model.EmailSettingsViewModel = new EmailSettingsViewModel();
+            model.AvatarSettingsViewModel = new AvatarSettingsViewModel();
+            var user = await _userManager.FindByNameAsync(User.Identity?.Name);
+            user.ProfilePicture = 1;
+            _db.Users.Update(user);
+            await _db.SaveChangesAsync();
+            model.AvatarSettingsViewModel!.AvatarChanged = true;
+            model.AvatarSettingsViewModel!.FormShown = true;
+            model.AvatarSettingsViewModel.Upload = null;
+            ViewBag.Avatar = user.UserProfilePictureNavigation.FileLink;
+            TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
+            return RedirectToAction("Settings", "User");
+        }
         
         /* CHANGE EMAIL */
         [HttpPost, Authorize, ValidateAntiForgeryToken]
@@ -270,11 +364,23 @@ namespace Onym.Controllers
         public async Task<IActionResult> ChangeEmail(SettingsViewModel model)
         {
             model.PasswordSettingsViewModel = new PasswordSettingsViewModel();
+            model.AvatarSettingsViewModel = new AvatarSettingsViewModel();
             var user = await _userManager.FindByNameAsync(User.Identity?.Name);
             if (model.EmailSettingsViewModel!.NewEmail == user.Email)
             {
                 model.EmailSettingsViewModel.FormShown = true;
                 ModelState.AddModelError("EmailSettingsViewModel.NewEmail", "Новая почта должна отличаться от текущей.");
+                TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
+                return RedirectToAction("Settings", "User");
+            }
+
+            var a = model.EmailSettingsViewModel!.NewEmail.ToUpper();
+            var user2 = _db.Users
+                .FirstOrDefaultAsync(u => u.NormalizedEmail == a).Result;
+            if ( user2 != null)
+            {
+                model.EmailSettingsViewModel!.FormShown = true;
+                ModelState.AddModelError("EmailSettingsViewModel.NewEmail", "Почта уже занята.");
                 TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
                 return RedirectToAction("Settings", "User");
             }
@@ -327,15 +433,6 @@ namespace Onym.Controllers
             model.EmailSettingsViewModel!.EmailSended = true;
             model.EmailSettingsViewModel!.FormShown = true;
             TempData["SettingsViewModel"] = JsonConvert.SerializeObject(model);
-            return RedirectToAction("Settings", "User");
-        }
-        
-        /* CHANGE AVATAR */
-        [HttpPost, Authorize, ValidateAntiForgeryToken]
-        [ExportModelState]
-        [Route("settings/change_avatar")]
-        public async Task<IActionResult> ChangeAvatar(IFormFile upload)
-        {
             return RedirectToAction("Settings", "User");
         }
     }

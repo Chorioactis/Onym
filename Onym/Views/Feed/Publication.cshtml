@@ -1,7 +1,50 @@
-﻿@model Onym.ViewModels.Feed.FeedViewModel
+﻿@using System.Web
+@using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute
+@model Onym.ViewModels.Feed.FeedViewModel
 @{
    await Html.RenderPartialAsync("_PublicationCard");
 }
-<div class="main-section" id="comments">
-   
-</div>
+<ul class="main-section" id="comments">
+	<form asp-action="AddComment" asp-controller="Feed" asp-route-urlSlug="@Model.Publication!.UrlSlug" method="post" enctype="multipart/form-data">
+		<div class="main-section-item section-header" id="add-comment">
+			Добавить комментарий
+		</div>
+		<div class="separator"></div>
+		<div class="main-section-item">
+			<div id="FeedAddCommentViewModel.Content" class="form-input-textarea small comment-content m-0">@Html.Raw(Model.FeedAddCommentViewModel!.Content)</div>
+			@{
+				await Html.RenderPartialAsync("_TinyMCE");
+			}
+			@if (Model.FeedAddCommentViewModel.ParentalComment != null && Model.FeedAddCommentViewModel.ParentalComment != 0)
+			{
+				@*<div>Ответ на комментарий "@Model.FeedAddCommentViewModel.ParentalComment"</div>*@
+			}
+			<span asp-validation-for="FeedAddCommentViewModel.Content" class=""></span>
+		</div>
+		<div class="separator semi"></div>
+		<div class="main-section-item add-post-media">
+			<input type="file" asp-for="FeedAddCommentViewModel.Uploads" multiple accept="image/*"/>
+			<span asp-validation-for="FeedAddCommentViewModel.Uploads" class=""></span>
+			<input type="hidden" asp-for="FeedAddCommentViewModel.Publication" value="@Model.Publication!.Id"/>
+			<input type="hidden" asp-for="FeedAddCommentViewModel.ParentalComment"/>
+		</div>
+		<div class="separator semi"></div>
+		<div class="main-section-item">
+			<button type="submit" class="form-confirm" style="margin: 0">Добавить комментарий</button>
+		</div>
+	</form>
+	@if (Model.Publication.Comments.Count > 0)
+	{
+		<div class="separator"></div>
+		<div class="main-section-item section-header">
+			Комментарии
+		</div>
+		<div class="separator"></div>
+		@foreach (var comment in Model.Publication!.Comments.OrderByDescending(comment => comment.RatingTotal).Where(parent => parent.ParentalCommentId == null))
+		{
+			Model.Comment = comment;
+			Model.CommentRatingTally = comment.CommentRatingTallies!.FirstOrDefault(t => t.CommentId == comment.Id && t.User.UserName == ViewBag.UserName);
+			await Html.RenderPartialAsync("_CommentCard");
+		}
+	}
+</ul>

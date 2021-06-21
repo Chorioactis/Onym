@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
-using MimeKit.Cryptography;
 using Onym.Models;
 
 namespace Onym.ViewModels.Feed
